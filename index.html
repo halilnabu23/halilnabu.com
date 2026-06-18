@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio von Khalil Nabu, Webdesigner und Frontend Entwickler mit Fokus auf moderne Websites, Screen Design und digitale Inhalte.">
+  <meta name="theme-color" content="#111111">
+  <title>Khalil Nabu - Webdesigner & Frontend Entwickler</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner shell">
+      <a class="brand" href="#home" data-i18n-aria="header.brandAria" aria-label="Khalil Nabu Startseite">
+        <span class="brand-mark">KN</span>
+        <span class="brand-name">Khalil Nabu</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only" data-i18n="header.menuOpen">Menü öffnen</span>
+        <span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" data-i18n-aria="header.navAria" aria-label="Hauptnavigation">
+        <a href="#home" data-i18n="header.navHome">Home</a>
+        <a href="#about" data-i18n="header.navAbout">Über mich</a>
+        <a href="#projects" data-i18n="header.navProjects">Projekte</a>
+        <a href="#services" data-i18n="header.navServices">Leistungen</a>
+        <a href="#experience" data-i18n="header.navExperience">Erfahrung</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button button-small button-dark header-contact" href="#contact" data-i18n="header.contactCta">Kontakt</a>
+        <div class="language-switcher" data-i18n-aria="header.languageAria" aria-label="Sprache auswählen">
+          <button class="language-button is-active" type="button" data-lang="de" aria-pressed="true">DE</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-grid shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.status">Verfügbar für neue Projekte</span></p>
+          <h1><span data-i18n="hero.titleLine1">Hallo, ich bin Khalil Nabu.</span><br><em data-i18n="hero.titleLine2">Webdesigner & Frontend Entwickler.</em></h1>
+          <p class="hero-intro" data-i18n="hero.copy">Ich gestalte moderne Websites, klare Benutzeroberflächen und digitale Inhalte für Marken, Unternehmen und kreative Projekte.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#projects"><span data-i18n="hero.primaryCta">Projekte ansehen</span><span aria-hidden="true">↘</span></a>
+            <a class="button button-outline" href="assets/projects/Lebenslauf-Khalil-Nabu.pdf" download data-i18n="hero.cvCta">CV herunterladen</a>
+            <a class="button button-outline" href="assets/projects/Bewerbung-Khalil-Nabu.pdf" download data-i18n="hero.applicationCta">Bewerbung herunterladen</a>
+            <a class="text-link" href="#contact"><span data-i18n="hero.secondaryCta">Kontakt aufnehmen</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <figure class="hero-portrait reveal reveal-delay-1">
+          <img src="assets/images/hero-portrait.jpg" alt="Portrait von Khalil Nabu">
+        </figure>
+      </div>
+
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-group">
+            <span data-i18n="hero.ticker1">WEBDESIGN</span><i>✦</i><span data-i18n="hero.ticker2">FRONTEND</span><i>✦</i><span data-i18n="hero.ticker3">SCREEN DESIGN</span><i>✦</i><span data-i18n="hero.ticker4">CONTENT</span><i>✦</i><span data-i18n="hero.ticker5">SOCIAL MEDIA</span><i>✦</i><span data-i18n="hero.ticker6">VIDEO EDITING</span><i>✦</i>
+          </div>
+          <div class="ticker-group">
+            <span data-i18n="hero.ticker1">WEBDESIGN</span><i>✦</i><span data-i18n="hero.ticker2">FRONTEND</span><i>✦</i><span data-i18n="hero.ticker3">SCREEN DESIGN</span><i>✦</i><span data-i18n="hero.ticker4">CONTENT</span><i>✦</i><span data-i18n="hero.ticker5">SOCIAL MEDIA</span><i>✦</i><span data-i18n="hero.ticker6">VIDEO EDITING</span><i>✦</i>
+          </div>
+          <div class="ticker-group">
+            <span data-i18n="hero.ticker1">WEBDESIGN</span><i>✦</i><span data-i18n="hero.ticker2">FRONTEND</span><i>✦</i><span data-i18n="hero.ticker3">SCREEN DESIGN</span><i>✦</i><span data-i18n="hero.ticker4">CONTENT</span><i>✦</i><span data-i18n="hero.ticker5">SOCIAL MEDIA</span><i>✦</i><span data-i18n="hero.ticker6">VIDEO EDITING</span><i>✦</i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">01</p>
+          <p class="section-kicker" data-i18n="about.kicker">Über mich</p>
+        </div>
+        <div class="about-grid">
+          <h2 class="display-title reveal" data-i18n="about.title">Fokus auf klare digitale Erlebnisse.</h2>
+          <div class="about-copy reveal reveal-delay-1">
+            <p data-i18n="about.copy">Ich bin Fachinformatiker für Anwendungsentwicklung mit drei Jahren Berufserfahrung im Bereich Webdesign, Frontend-Entwicklung und digitale Medien. Mein Schwerpunkt liegt auf modernen Unternehmenswebsites, responsivem Design, klaren Benutzeroberflächen und kreativen digitalen Inhalten.</p>
+            <p data-i18n="about.copySecondary">Ich verbinde Gestaltung, Struktur und technische Umsetzung zu digitalen Auftritten, die professionell wirken und einfach zu bedienen sind.</p>
+            <div class="about-actions">
+              <a class="text-link" href="#experience"><span data-i18n="about.link">Mehr über meinen Weg</span><span aria-hidden="true">→</span></a>
+              <a class="button button-outline button-small" href="assets/projects/Lebenslauf-Khalil-Nabu.pdf" download data-i18n="about.cvCta">CV herunterladen</a>
+              <a class="button button-outline button-small" href="assets/projects/Bewerbung-Khalil-Nabu.pdf" download data-i18n="about.applicationCta">Bewerbung herunterladen</a>
+            </div>
+          </div>
+        </div>
+        <div class="facts-grid reveal">
+          <div class="fact"><strong>4</strong><span data-i18n="about.fact1">Jahre Berufserfahrung</span></div>
+          <div class="fact"><strong>33K+</strong><span data-i18n="about.fact2">Instagram Community</span></div>
+          <div class="fact"><strong>DE/EN</strong><span data-i18n="about.fact3">Bilingual für internationale Kommunikation</span></div>
+          <div class="fact"><strong>360°</strong><span data-i18n="about.fact4">Design, Code und Content</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">02</p>
+          <p class="section-kicker" data-i18n="skills.kicker">Skills & Tools</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-intro reveal">
+            <h2 data-i18n="skills.title">Gestaltung trifft Technik.</h2>
+            <p data-i18n="skills.intro">Ein vielseitiges Profil für moderne Markenauftritte, digitale Produkte und visuelle Kommunikation.</p>
+          </div>
+          <div class="skill-list reveal reveal-delay-1">
+            <div class="skill-row"><span>01</span><strong data-i18n="skills.webTitle">Webentwicklung</strong><small data-i18n="skills.webList">HTML5, CSS3, JavaScript, Responsive Webdesign, WordPress, CMS</small></div>
+            <div class="skill-row"><span>02</span><strong data-i18n="skills.designTitle">Design</strong><small data-i18n="skills.designList">Figma, Adobe XD, Photoshop, Illustrator, InDesign, UI Design, Screen Design</small></div>
+            <div class="skill-row"><span>03</span><strong data-i18n="skills.contentTitle">Content & Video</strong><small data-i18n="skills.contentList">Premiere Pro, After Effects, Canva, Social Media, Content Creation, Video Editing</small></div>
+            <div class="skill-row"><span>04</span><strong data-i18n="skills.platformsTitle">Plattformen</strong><small data-i18n="skills.platformsList">Instagram, TikTok, YouTube, LinkedIn, Meta Business Suite</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">03</p>
+          <p class="section-kicker" data-i18n="projects.kicker">Portfolio</p>
+        </div>
+        <div class="projects-top reveal">
+          <h2 class="display-title" data-i18n-html="projects.title">Ausgewählte<br>Projekte</h2>
+          <div class="project-filters" role="group" data-i18n-aria="projects.filtersAria" aria-label="Projekte filtern">
+            <button class="filter-button is-active" type="button" data-filter="all" data-i18n="projects.filterAll">Alle</button>
+            <button class="filter-button" type="button" data-filter="websites" data-i18n="projects.filterWebsites">Websites</button>
+            <button class="filter-button" type="button" data-filter="screen-designs" data-i18n="projects.filterScreenDesigns">Screen Designs</button>
+            <button class="filter-button" type="button" data-filter="business-cards" data-i18n="projects.filterBusinessCards">Visitenkarten</button>
+            <button class="filter-button" type="button" data-filter="brochures" data-i18n="projects.filterBrochures">Broschüren</button>
+            <button class="filter-button" type="button" data-filter="social-media" data-i18n="projects.filterSocialMedia">Social Media</button>
+            <button class="filter-button" type="button" data-filter="video" data-i18n="projects.filterVideo">Video</button>
+          </div>
+        </div>
+
+        <div class="project-grid" id="project-grid"></div>
+        <div class="projects-more">
+          <button class="button button-outline" type="button" id="projects-more-button" data-i18n="projects.showMore" hidden>Mehr anzeigen</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="shell">
+        <div class="section-heading light reveal">
+          <p class="section-number">04</p>
+          <p class="section-kicker" data-i18n="services.kicker">Leistungen</p>
+        </div>
+        <div class="services-layout">
+          <h2 class="display-title reveal" data-i18n="services.title">Digitale Gestaltung für starke Auftritte.</h2>
+          <div class="service-list reveal reveal-delay-1">
+            <article><span>01</span><div><h3 data-i18n="services.item1Title">Websites</h3><p data-i18n="services.item1Copy">Moderne, responsive Websites für Unternehmen, Bewerbungen und kreative Projekte.</p></div><i>↗</i></article>
+            <article><span>02</span><div><h3 data-i18n="services.item2Title">Screen Design</h3><p data-i18n="services.item2Copy">Klare Benutzeroberflächen, Landingpages und Layouts mit Fokus auf Struktur und Nutzerführung.</p></div><i>↗</i></article>
+            <article><span>03</span><div><h3 data-i18n="services.item3Title">Print & Branding</h3><p data-i18n="services.item3Copy">Visitenkarten, Broschüren und visuelle Gestaltung für einen konsistenten Markenauftritt.</p></div><i>↗</i></article>
+            <article><span>04</span><div><h3 data-i18n="services.item4Title">Content & Video</h3><p data-i18n="services.item4Copy">Social Media Assets, Video Editing und digitale Inhalte für Reichweite und Wiedererkennung.</p></div><i>↗</i></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">05</p>
+          <p class="section-kicker" data-i18n="experience.kicker">Erfahrung</p>
+        </div>
+        <div class="experience-grid">
+          <div class="experience-copy reveal">
+            <h2 class="display-title" data-i18n="experience.title">Beruf, Ausbildung und Studium.</h2>
+            <p data-i18n="experience.intro">Ein Überblick über meinen beruflichen Weg, meine Ausbildung und mein aktuelles Studium im Bereich Technologie und digitale Gestaltung.</p>
+            <div class="about-actions">
+              <a class="button button-outline button-small" href="assets/projects/Lebenslauf-Khalil-Nabu.pdf" download data-i18n="experience.cvCta">CV herunterladen</a>
+              <a class="button button-outline button-small" href="assets/projects/Bewerbung-Khalil-Nabu.pdf" download data-i18n="experience.applicationCta">Bewerbung herunterladen</a>
+            </div>
+          </div>
+          <div class="experience-list reveal reveal-delay-1">
+            <article class="experience-card">
+              <p class="experience-label" data-i18n="experience.block1Label">Berufserfahrung</p>
+              <h3 data-i18n="experience.block1Title">Webdesigner & Frontend Entwickler</h3>
+              <p class="experience-org" data-i18n="experience.block1Org">breadcrumb mediasolutions GmbH</p>
+              <p class="experience-date" data-i18n="experience.block1Date">09.2023 - heute</p>
+              <p data-i18n="experience.block1Copy">Während meiner dreijährigen Berufserfahrung war ich an der Entwicklung und Betreuung zahlreicher Websites sowie digitaler Projekte beteiligt. Zu meinen Aufgaben gehörten die Gestaltung moderner Benutzeroberflächen, die technische Umsetzung responsiver Websites, die Erstellung von Werbematerialien und digitalen Inhalten sowie die Zusammenarbeit mit Kunden und Projektteams.</p>
+            </article>
+
+            <article class="experience-card">
+              <p class="experience-label" data-i18n="experience.block2Label">Ausbildung</p>
+              <h3 data-i18n="experience.block2Title">Fachinformatiker für Anwendungsentwicklung</h3>
+              <p class="experience-org" data-i18n="experience.block2Org">breadcrumb mediasolutions GmbH</p>
+              <p class="experience-date" data-i18n="experience.block2Date">09.2023 - 06.2026</p>
+              <p data-i18n="experience.block2Copy">Während meiner Ausbildung bei breadcrumb mediasolutions GmbH war ich an zahlreichen realen Kundenprojekten beteiligt. Dort habe ich den Großteil meiner Websites, Screen Designs, Printmaterialien, CMS-Strukturen und Social-Media-Arbeiten umgesetzt.</p>
+              <ul class="experience-tags">
+                <li data-i18n="experience.block2Tag1">Schwerpunkt Webentwicklung</li>
+                <li data-i18n="experience.block2Tag2">Erfolgreich abgeschlossen</li>
+                <li data-i18n="experience.block2Tag3">Corporate Websites & Portale</li>
+                <li data-i18n="experience.block2Tag4">Screen Design & UI Konzepte</li>
+                <li data-i18n="experience.block2Tag5">Print, Content & Social Media</li>
+              </ul>
+            </article>
+
+            <article class="experience-card">
+              <p class="experience-label" data-i18n="experience.block3Label">Studium</p>
+              <h3 data-i18n="experience.block3Title">Bachelorstudium Computer Engineering</h3>
+              <p class="experience-org" data-i18n="experience.block3Org">Charkiwer Nationaluniversität für Radioelektronik (ChNURE)</p>
+              <p class="experience-date" data-i18n="experience.block3Date">seit 2023</p>
+              <ul class="experience-tags">
+                <li data-i18n="experience.block3Tag1">Aktuell im 4. Studienjahr</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section presence" id="presence">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">06</p>
+          <p class="section-kicker" data-i18n="presence.kicker">Online Präsenz</p>
+        </div>
+        <div class="presence-grid">
+          <div class="presence-copy reveal">
+            <h2 data-i18n="presence.title">Public Presence & digitale Reichweite.</h2>
+            <p data-i18n="presence.copy">Neben Websites und Designprojekten entwickle ich auch Content, persönliche Formate und Social Media Präsenz über mehrere Plattformen hinweg.</p>
+          </div>
+          <div class="presence-links reveal reveal-delay-1">
+            <a href="https://www.instagram.com/halilnabu/?hl=de" target="_blank" rel="noreferrer"><span>Instagram</span><small data-i18n="presence.instagram">33.000+ Community</small><i>↗</i></a>
+            <a href="https://www.tiktok.com/@halilnabu" target="_blank" rel="noreferrer"><span>TikTok</span><small data-i18n="presence.tiktok">Short-form content & reach</small><i>↗</i></a>
+            <a href="https://www.youtube.com/@Khalil_Nabu" target="_blank" rel="noreferrer"><span>YouTube</span><small data-i18n="presence.youtube">Vlogs, storytelling & video</small><i>↗</i></a>
+            <a href="https://linkedin.com/in/halilnabu" target="_blank" rel="noreferrer"><span>LinkedIn</span><small data-i18n="presence.linkedin">Professional profile</small><i>↗</i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lifestyle" id="lifestyle">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-number">07</p>
+          <p class="section-kicker" data-i18n="lifestyle.kicker">Beyond Design</p>
+        </div>
+        <div class="lifestyle-grid">
+          <div class="lifestyle-copy reveal">
+            <h2 class="display-title" data-i18n="lifestyle.title">Kreativität endet nicht am Bildschirm.</h2>
+            <p data-i18n="lifestyle.copy">Reisen, Musik, Konzerte, Blogging, Videoformate und ein aktiver Lifestyle inspirieren meine Arbeit und beeinflussen, wie ich Marken, Content und digitale Erlebnisse denke.</p>
+            <div class="lifestyle-tags" id="lifestyle-list"></div>
+            <div class="lifestyle-detail">
+              <p class="lifestyle-detail-label" id="lifestyle-detail-label">Reisen</p>
+              <p class="lifestyle-detail-copy" id="lifestyle-detail-copy">Ich liebe Reisen in warme Länder, entdecke gerne neue Architektur, Museen und Kunst und sammle so ständig neue visuelle Eindrücke.</p>
+            </div>
+          </div>
+          <div class="lifestyle-interactive reveal reveal-delay-1">
+            <div class="lifestyle-collage" id="lifestyle-collage">
+              <figure class="lifestyle-collage-card lifestyle-collage-card-large"><img id="lifestyle-collage-image-1" src="assets/images/travel-1.png" alt="Khalil Nabu travelling"></figure>
+              <figure class="lifestyle-collage-card"><img id="lifestyle-collage-image-2" src="assets/images/travel-2.png" alt="Khalil Nabu lifestyle visual"></figure>
+              <figure class="lifestyle-collage-card"><img id="lifestyle-collage-image-3" src="assets/images/travel-3.png" alt="Khalil Nabu travel photo"></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="shell">
+        <div class="section-heading light reveal">
+          <p class="section-number">08</p>
+          <p class="section-kicker" data-i18n="contact.kicker">Kontakt</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-copy reveal">
+            <p class="contact-overline" data-i18n="contact.overline">Haben Sie ein Projekt im Kopf?</p>
+            <h2 data-i18n="contact.title">Lassen Sie uns zusammen etwas Starkes gestalten.</h2>
+            <div class="contact-methods">
+              <a class="contact-method" href="mailto:halilnabu23@gmail.com"><span data-i18n="contact.emailLabel">E-Mail</span><strong>halilnabu23@gmail.com</strong></a>
+              <a class="contact-method" href="tel:+4915124088773"><span data-i18n="contact.phoneLabel">Telefon</span><strong>+49 15124088773</strong></a>
+              <a class="contact-method" href="https://www.instagram.com/halilnabu/?hl=de" target="_blank" rel="noreferrer"><span data-i18n="contact.instagramLabel">Instagram</span><strong>@halilnabu</strong></a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal reveal-delay-1" id="contact-form">
+            <label><span data-i18n="contact.name">Name</span><input type="text" name="name" autocomplete="name" required data-i18n-placeholder="contact.namePlaceholder" placeholder="Ihr Name"></label>
+            <label><span data-i18n="contact.email">E-Mail</span><input type="email" name="email" autocomplete="email" required data-i18n-placeholder="contact.emailPlaceholder" placeholder="name@unternehmen.de"></label>
+            <label><span data-i18n="contact.subject">Worum geht es?</span><select name="subject"><option value="websites" data-i18n="contact.subjectOption1">Websites</option><option value="screen-design" data-i18n="contact.subjectOption2">Screen Design</option><option value="branding" data-i18n="contact.subjectOption3">Visitenkarten / Broschüren</option><option value="social-media" data-i18n="contact.subjectOption4">Social Media</option><option value="video" data-i18n="contact.subjectOption5">Video</option></select></label>
+            <label><span data-i18n="contact.message">Nachricht</span><textarea name="message" rows="4" required data-i18n-placeholder="contact.messagePlaceholder" placeholder="Erzählen Sie mir kurz von Ihrem Projekt ..."></textarea></label>
+            <button class="button button-accent" type="submit"><span data-i18n="contact.submit">Nachricht senden</span><span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="project-modal" id="project-modal" hidden aria-hidden="true">
+    <div class="project-modal-backdrop" data-modal-close></div>
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button class="modal-close" type="button" id="project-modal-close" data-i18n-aria="projects.modalCloseAria" aria-label="Projekt schließen">×</button>
+      <div class="project-modal-layout">
+        <div class="project-modal-visual" id="project-modal-visual"></div>
+        <div class="project-modal-copy">
+          <p class="project-modal-category" id="project-modal-category"></p>
+          <h3 id="project-modal-title"></h3>
+          <p class="project-modal-description" id="project-modal-description"></p>
+          <div class="project-modal-meta">
+            <div>
+              <span class="modal-meta-label" data-i18n="projects.toolsLabel">Tools</span>
+              <ul class="project-modal-tools" id="project-modal-tools"></ul>
+            </div>
+            <div>
+              <span class="modal-meta-label" data-i18n="projects.detailLabel">Details</span>
+              <p class="project-modal-detail" id="project-modal-detail"></p>
+            </div>
+          </div>
+          <a class="button button-dark" href="#contact" id="project-modal-cta"><span data-i18n="projects.modalCta">Projekt anfragen</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-lightbox" id="image-lightbox" hidden aria-hidden="true">
+    <div class="image-lightbox-backdrop" data-lightbox-close></div>
+    <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="image-lightbox-title">
+      <button class="modal-close image-lightbox-close" type="button" id="image-lightbox-close" data-i18n-aria="projects.modalCloseAria" aria-label="Bild schlieÃŸen">Ã—</button>
+      <p class="sr-only" id="image-lightbox-title">Projektbild in voller Ansicht</p>
+      <img id="image-lightbox-image" src="" alt="">
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <a class="brand" href="#home"><span class="brand-mark brand-mark-light">KN</span><span class="brand-name">Khalil Nabu</span></a>
+      <p data-i18n-html="footer.copy">Webdesigner & Frontend Entwickler<br>Portfolio & Digital Presence</p>
+      <div class="footer-links">
+        <a href="#top" data-i18n="footer.backToTop">Nach oben ↑</a>
+        <span><span data-i18n="footer.copyright">©</span> <span id="current-year">2026</span> Khalil Nabu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

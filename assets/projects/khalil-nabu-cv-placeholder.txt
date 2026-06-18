@@ -1,0 +1,4 @@
+Khalil Nabu CV Placeholder
+
+This file is a temporary download target for the portfolio website.
+Replace it with the final CV PDF before deploying the portfolio publicly.
