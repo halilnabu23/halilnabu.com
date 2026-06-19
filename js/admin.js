@@ -69,6 +69,7 @@ const state = {
   pendingHeroImage: null,
   pendingLifestyleImages: new Map(),
   searchQuery: "",
+  isSaving: false,
   github: {
     token: "",
     remember: false,
@@ -100,6 +101,12 @@ function setStatus(message, tone = "default") {
   }
 
   adminStatus.dataset.tone = tone;
+}
+
+function setSavingState(isSaving) {
+  state.isSaving = isSaving;
+  saveAllButton.disabled = isSaving;
+  saveAllButton.textContent = isSaving ? "Saving..." : "Save Changes";
 }
 
 function escapeHtml(value) {
@@ -885,10 +892,17 @@ async function createGitHubBlobFromFile(file) {
   return result.sha;
 }
 
-async function publishToGitHub() {
-  const refData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/ref/heads/${REPO_CONFIG.branch}`);
-  const parentCommitSha = refData.object.sha;
-  const commitData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits/${parentCommitSha}`);
+function isFastForwardConflict(error) {
+  return /not a fast forward/i.test(error?.message || "");
+}
+
+function clearPendingUploads() {
+  state.pendingProjectImages.clear();
+  state.pendingLifestyleImages.clear();
+  state.pendingHeroImage = null;
+}
+
+async function buildGitHubTreeEntries() {
   const treeEntries = [];
 
   if (state.pendingHeroImage) {
@@ -901,7 +915,6 @@ async function publishToGitHub() {
       sha: await createGitHubBlobFromFile(state.pendingHeroImage),
     });
     state.siteContent.heroPortrait.src = heroPath;
-    state.pendingHeroImage = null;
   }
 
   for (const [projectId, file] of state.pendingProjectImages.entries()) {
@@ -920,7 +933,6 @@ async function publishToGitHub() {
     });
     project.image = filePath;
   }
-  state.pendingProjectImages.clear();
 
   for (const [key, file] of state.pendingLifestyleImages.entries()) {
     const [profileId, collageIndex] = key.split(":");
@@ -940,7 +952,6 @@ async function publishToGitHub() {
     });
     ensureCollageItem(profile, index).image = filePath;
   }
-  state.pendingLifestyleImages.clear();
 
   treeEntries.push({
     path: "data/projects.json",
@@ -955,37 +966,65 @@ async function publishToGitHub() {
     sha: await createGitHubBlobFromText(`${JSON.stringify(buildSiteContentPayload(), null, 2)}\n`),
   });
 
-  const treeData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/trees`, {
-    method: "POST",
-    body: JSON.stringify({
-      base_tree: commitData.tree.sha,
-      tree: treeEntries,
-    }),
-  });
+  return treeEntries;
+}
 
-  const commitMessage = `Update portfolio content via /admin (${new Date().toISOString()})`;
-  const newCommit = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits`, {
-    method: "POST",
-    body: JSON.stringify({
-      message: commitMessage,
-      tree: treeData.sha,
-      parents: [parentCommitSha],
-    }),
-  });
+async function publishToGitHub() {
+  const treeEntries = await buildGitHubTreeEntries();
 
-  await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/refs/heads/${REPO_CONFIG.branch}`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      sha: newCommit.sha,
-      force: false,
-    }),
-  });
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const refData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/ref/heads/${REPO_CONFIG.branch}`);
+    const parentCommitSha = refData.object.sha;
+    const commitData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits/${parentCommitSha}`);
+
+    const treeData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/trees`, {
+      method: "POST",
+      body: JSON.stringify({
+        base_tree: commitData.tree.sha,
+        tree: treeEntries,
+      }),
+    });
+
+    const commitMessage = `Update portfolio content via /admin (${new Date().toISOString()})`;
+    const newCommit = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits`, {
+      method: "POST",
+      body: JSON.stringify({
+        message: commitMessage,
+        tree: treeData.sha,
+        parents: [parentCommitSha],
+      }),
+    });
+
+    try {
+      await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/refs/heads/${REPO_CONFIG.branch}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          sha: newCommit.sha,
+          force: false,
+        }),
+      });
+
+      clearPendingUploads();
+      return;
+    } catch (error) {
+      if (isFastForwardConflict(error) && attempt < 2) {
+        continue;
+      }
+
+      throw error;
+    }
+  }
 }
 
 async function saveAllChanges() {
+  if (state.isSaving) {
+    return;
+  }
+
   syncSelectedProjectFromForm();
   syncHeroSection();
   persistGitHubToken();
+  setSavingState(true);
 
   try {
     if (state.github.token) {
@@ -1006,6 +1045,8 @@ async function saveAllChanges() {
   } catch (error) {
     console.error(error);
     setStatus(error.message || "Saving failed.", "error");
+  } finally {
+    setSavingState(false);
   }
 }
 
