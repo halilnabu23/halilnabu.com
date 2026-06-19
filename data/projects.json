@@ -1,0 +1,1377 @@
+{
+  "projects": [
+    {
+      "id": "mt-propeller",
+      "order": 0,
+      "category": "websites",
+      "image": "assets/projects/mt-propeller-home.png",
+      "link": "https://www.mt-website.breadcrumb-online.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "MT-Propeller Facts",
+          "description": "Technischer Vergleich und Corporate Website mit Produktlogik, Suchsystem, Kartenmodul und Dokument-Downloads.",
+          "detail": "Für MT-Propeller habe ich das komplette Design und die technische Umsetzung des Projekts entwickelt. Die Website verbindet einen komplexen technischen Produktvergleich mit klarer Informationsarchitektur, Filter- und Suchfunktionen, Kartenansichten und downloadbaren Dokumenten.",
+          "imageAlt": "Startseite des MT-Propeller Projekts",
+          "tools": [
+            "MySite",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "MT-Propeller Facts",
+          "description": "Technical comparison and corporate website with product logic, search system, map module and document downloads.",
+          "detail": "For MT-Propeller I created the complete design and technical implementation of the project. The website combines a complex technical comparison with clear information architecture, filter and search functions, map views and downloadable documents.",
+          "imageAlt": "MT-Propeller project homepage",
+          "tools": [
+            "MySite",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tima-tungsten",
+      "order": 1,
+      "category": "websites",
+      "image": "assets/projects/tima-tungsten-home.png",
+      "link": "https://tima-tungsten.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Tima Tungsten",
+          "description": "Kompletter Unternehmensauftritt mit mehrsprachiger Website, modernem Screen Design und strukturierter Produktpräsentation.",
+          "detail": "Dieses Projekt habe ich vollständig gestaltet und umgesetzt. Der Fokus lag auf einem klaren, technisch sauberen Markenauftritt, einer verständlichen Produktdarstellung und einer mehrsprachigen Struktur für internationale Kommunikation.",
+          "imageAlt": "Startseite des Projekts Tima Tungsten",
+          "tools": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "CMS"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "Tima Tungsten",
+          "description": "Complete company presence with a multilingual website, modern screen design and structured product presentation.",
+          "detail": "I designed and built this project end to end. The focus was a clean technical brand presence, understandable product communication and a multilingual structure for international audiences.",
+          "imageAlt": "Tima Tungsten website homepage",
+          "tools": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "CMS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ausbildungsportal-kulmbach",
+      "order": 2,
+      "category": "websites",
+      "image": "assets/projects/ausbildungsportal-home.png",
+      "link": "https://www.ausbildungsportal-kulmbach.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Ausbildungsportal Kulmbach",
+          "description": "Ausbildungsportal zur regionalen Jobsuche mit Stellenübersicht, zielgruppengerechtem UI und starker Nutzerführung für Schüler und Unternehmen.",
+          "detail": "Dieses Portal wurde für die Suche nach Ausbildungsplätzen in der Region entwickelt. Ich habe an Design und Umsetzung gearbeitet, damit Ausbildungsstellen, Praktika und Firmen klar strukturiert, leicht filterbar und mobil gut nutzbar sind.",
+          "imageAlt": "Startseite des Ausbildungsportals Kulmbach",
+          "tools": [
+            "UI Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Portal UX"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "Ausbildungsportal Kulmbach",
+          "description": "Training and job portal for regional career search with a clear job overview, strong UX and easy orientation for students and companies.",
+          "detail": "This portal was developed to help users find apprenticeships in the region. I worked on the design and implementation so that job listings, internships and company pages are clearly structured, easy to filter and mobile-friendly.",
+          "imageAlt": "Ausbildungsportal Kulmbach homepage",
+          "tools": [
+            "UI Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Portal UX"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wicklein-group",
+      "order": 3,
+      "category": "screen-designs",
+      "image": "assets/projects/wicklein-home.png",
+      "link": "https://www.wicklein-group.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Screen Design & Website",
+          "title": "Wicklein Group",
+          "description": "Screen Design und Website-Relaunch inklusive Logoentwicklung, Markenstruktur sowie ergänzenden Broschüren und Printmaterialien.",
+          "detail": "Bei diesem Projekt war ich für das Screen Design und die Entwicklung der Website verantwortlich. Zusätzlich habe ich das Logo mitentwickelt und visuelle Materialien wie Broschüren und weitere Markenelemente gestaltet.",
+          "imageAlt": "Website der Wicklein Group",
+          "tools": [
+            "Screen Design",
+            "Logo Design",
+            "HTML",
+            "CSS",
+            "Branding"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Screen Design & Website",
+          "title": "Wicklein Group",
+          "description": "Screen design and website relaunch including logo development, brand structure and supporting brochures and print materials.",
+          "detail": "In this project I was responsible for the screen design and website development. I also contributed to the logo and created additional visual material such as brochures and supporting brand assets.",
+          "imageAlt": "Wicklein Group website",
+          "tools": [
+            "Screen Design",
+            "Logo Design",
+            "HTML",
+            "CSS",
+            "Branding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "klp-baumaschinen",
+      "order": 4,
+      "category": "websites",
+      "image": "assets/projects/klp-home.png",
+      "link": "https://www.klp-baumaschinen.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "KLP Baumaschinen",
+          "description": "Corporate Website mit Kategorien, Gerätefinder-Logik und individuell gestalteten Custom Icons für verschiedene Maschinenbereiche.",
+          "detail": "Für KLP Baumaschinen habe ich die Website strukturiert, gestaltet und technisch umgesetzt. Besonders wichtig waren die klare Kategorisierung, die schnelle Orientierung für Nutzer und die von mir entwickelten individuellen Icons für die jeweiligen Leistungsbereiche.",
+          "imageAlt": "Startseite von KLP Baumaschinen",
+          "tools": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Custom Icons"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "KLP Baumaschinen",
+          "description": "Corporate website with category logic, equipment finder structure and custom-made icons for machine segments.",
+          "detail": "For KLP Baumaschinen I structured, designed and implemented the website. A key part of the work was clear categorization, fast user orientation and the custom icons I created for each service area.",
+          "imageAlt": "KLP Baumaschinen homepage",
+          "tools": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Custom Icons"
+          ]
+        }
+      }
+    },
+    {
+      "id": "enjoy-future",
+      "order": 5,
+      "category": "websites",
+      "image": "assets/projects/enjoy-future-website.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "enjoy future GmbH",
+          "description": "Umsetzung gemÃ¤ÃŸ der Screendesigns mit responsiver Webseiten-Entwicklung und sauberem Styling.",
+          "detail": "FÃ¼r enjoy future GmbH habe ich die Website auf Grundlage der Screendesigns umgesetzt, responsiv entwickelt und visuell sauber ausgearbeitet. Der Fokus lag auf einer stabilen technischen Umsetzung und einem konsistenten digitalen Auftritt auf allen BildschirmgrÃ¶ÃŸen.",
+          "imageAlt": "Website Umsetzung fÃ¼r enjoy future GmbH",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive Design",
+            "Styling"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "enjoy future GmbH",
+          "description": "Implementation based on the screen designs with responsive website development and polished styling.",
+          "detail": "For enjoy future GmbH I implemented the website based on the approved screen designs, built the responsive frontend and refined the visual styling. The focus was on clean implementation quality and a consistent user experience across screen sizes.",
+          "imageAlt": "Website implementation for enjoy future GmbH",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive Design",
+            "Styling"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wicklein-wood-energy-website",
+      "order": 6,
+      "category": "websites",
+      "image": "assets/projects/wicklein-wood-energy-website.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Wicklein Wood & Energy",
+          "description": "Screen Design und Websitebau für Wicklein Wood & Energy mit modernem Auftritt und klarer Bildsprache.",
+          "detail": "Ich habe für Wicklein Wood & Energy sowohl das Screendesign als auch die Website selbst entwickelt. Der Fokus lag auf einem starken visuellen Auftritt, klaren Leistungsbereichen und einer modernen Unternehmensdarstellung.",
+          "imageAlt": "Website von Wicklein Wood & Energy",
+          "tools": [
+            "Screen Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Website Build"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "Wicklein Wood & Energy",
+          "description": "Screen design and website build for Wicklein Wood & Energy with a modern presence and strong visual language.",
+          "detail": "For Wicklein Wood & Energy I created both the screen design and the website itself. The focus was a strong visual identity, clear service areas and a modern company presentation.",
+          "imageAlt": "Wicklein Wood & Energy website",
+          "tools": [
+            "Screen Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Website Build"
+          ]
+        }
+      }
+    },
+    {
+      "id": "bindlach-rathaus",
+      "order": 7,
+      "category": "websites",
+      "image": "assets/projects/bindlach-home.png",
+      "link": "https://bindlach-rathaus.breadcrumb-online.de/",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Gemeinde Bindlach",
+          "description": "Kommunale Website mit klarer Informationsarchitektur für Bürgerservice, Gemeindeinhalte und eine moderne digitale Präsenz.",
+          "detail": "Für die Gemeinde Bindlach habe ich an einer übersichtlichen und vertrauenswürdigen Webpräsenz mitgearbeitet. Ziel war es, wichtige Informationen für Bürger schnell zugänglich zu machen und gleichzeitig einen modernen kommunalen Auftritt zu schaffen.",
+          "imageAlt": "Website der Gemeinde Bindlach",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Information Design",
+            "CMS"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "Gemeinde Bindlach",
+          "description": "Municipal website with clear information architecture for public services, local content and a modern civic web presence.",
+          "detail": "For the municipality of Bindlach I contributed to a clear and trustworthy website experience. The goal was to make important information for citizens easy to reach while creating a modern digital presence for the community.",
+          "imageAlt": "Gemeinde Bindlach website",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Information Design",
+            "CMS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tourismusteam-nordstrand",
+      "order": 8,
+      "category": "websites",
+      "image": "assets/projects/tourismusteam-nordstrand.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "TourismusTeam Nordstrand",
+          "description": "Screen Design, Websitebau, Überarbeitung von Änderungen und GoLive für einen touristischen Webauftritt.",
+          "detail": "Bei TourismusTeam Nordstrand habe ich den Screen-Design-Prozess begleitet, die Website selbst aufgebaut, Änderungen eingearbeitet und den GoLive umgesetzt. Damit wurde aus dem Entwurf ein vollständiger live geschalteter Webauftritt.",
+          "imageAlt": "Website von TourismusTeam Nordstrand",
+          "tools": [
+            "Screen Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "GoLive"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "TourismusTeam Nordstrand",
+          "description": "Screen design, website build, change revisions and go-live for a tourism-focused website.",
+          "detail": "For TourismusTeam Nordstrand I worked on the screen design, built the website, implemented requested changes and handled the go-live. This turned the concept into a complete live website.",
+          "imageAlt": "TourismusTeam Nordstrand website",
+          "tools": [
+            "Screen Design",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "GoLive"
+          ]
+        }
+      }
+    },
+    {
+      "id": "kwb-screen-design",
+      "order": 9,
+      "category": "screen-designs",
+      "image": "assets/projects/kwb-screen.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Screen Design",
+          "title": "KWB Screendesigns",
+          "description": "Entwicklung von Screendesigns für das KWB Marketingcenter mit strukturierter Oberfläche und klarer Nutzerführung.",
+          "detail": "Für KWB habe ich Screendesigns entwickelt, die Inhalte, Medien und interne Prozesse visuell klar strukturieren. Der Fokus lag auf einer modernen Oberfläche und einer gut nutzbaren Informationslogik.",
+          "imageAlt": "Screendesign für das KWB Marketingcenter",
+          "tools": [
+            "Screen Design",
+            "UI Design",
+            "Dashboard Layout",
+            "Responsive Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Screen Design",
+          "title": "KWB Screen Designs",
+          "description": "Development of screen designs for the KWB marketing center with a structured interface and clear user guidance.",
+          "detail": "For KWB I developed screen designs that organize content, media and internal processes in a visually clear way. The focus was on a modern interface and a strong information structure.",
+          "imageAlt": "Screen design for the KWB marketing center",
+          "tools": [
+            "Screen Design",
+            "UI Design",
+            "Dashboard Layout",
+            "Responsive Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "willach-portal",
+      "order": 10,
+      "category": "screen-designs",
+      "image": "assets/projects/willach-intranet.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "Willach Portal",
+          "description": "Neue Designelemente, Stilisierung des Willach-Portals und responsive Umsetzung für eine moderne Benutzeroberfläche.",
+          "detail": "Ich habe das Willach-Portal visuell überarbeitet, neue Designbausteine entwickelt und die responsive Darstellung umgesetzt. Dadurch entstand ein klareres und moderneres Portal für den Arbeitsalltag.",
+          "imageAlt": "Willach Portal und Intranet Styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Elements",
+            "Intranet UI"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "Willach Portal",
+          "description": "New design elements, visual styling of the Willach portal and responsive implementation for a modern interface.",
+          "detail": "I visually refined the Willach portal, created new design elements and implemented the responsive layout. The result is a cleaner and more modern portal for everyday internal use.",
+          "imageAlt": "Willach portal and intranet styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Elements",
+            "Intranet UI"
+          ]
+        }
+      }
+    },
+    {
+      "id": "kadeco-portal",
+      "order": 11,
+      "category": "screen-designs",
+      "image": "assets/projects/kadeco-intranet.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "KADECO Portal",
+          "description": "Stilisierung des KADECO-Portals, responsive Umsetzung und Integration der Mehrsprachigkeit.",
+          "detail": "Für KADECO habe ich das Portal gestaltet, responsiv umgesetzt und die Mehrsprachigkeit integriert. Dadurch wurde die Benutzeroberfläche sowohl visuell stimmig als auch flexibler für verschiedene Sprachversionen.",
+          "imageAlt": "KADECO Portal Styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "Multilingual UI",
+            "Intranet UI"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "KADECO Portal",
+          "description": "Styling of the KADECO portal, responsive implementation and multilingual integration.",
+          "detail": "For KADECO I designed the portal, implemented the responsive behavior and integrated multilingual support. This made the interface more flexible and visually consistent across language versions.",
+          "imageAlt": "KADECO portal styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "Multilingual UI",
+            "Intranet UI"
+          ]
+        }
+      }
+    },
+    {
+      "id": "instagram-campaigns",
+      "order": 12,
+      "category": "social-media",
+      "image": "assets/projects/instagram-profile-posts.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Social Media",
+          "title": "Ausbildungsportal Instagram Posts",
+          "description": "Instagram-Posts, Content Templates und Redaktionsplanung für Recruiting- und Informationskampagnen.",
+          "detail": "Neben Websites entwickle ich auch Social-Media-Content. Dazu gehören Post-Serien, visuelle Templates, Veröffentlichungspläne und Inhalte, die sowohl informativ als auch aufmerksamkeitsstark funktionieren.",
+          "imageAlt": "Instagram Profil und Beiträge für das Ausbildungsportal",
+          "tools": [
+            "Photoshop",
+            "Illustrator",
+            "Canva",
+            "Instagram",
+            "Content Planning"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Social Media",
+          "title": "Ausbildungsportal Instagram Posts",
+          "description": "Instagram post series, content templates and publication planning for recruiting and information campaigns.",
+          "detail": "Alongside websites I also create social media content. This includes visual post series, reusable templates, publishing plans and assets that work both informatively and with strong visual impact.",
+          "imageAlt": "Instagram profile and post designs for Ausbildungsportal",
+          "tools": [
+            "Photoshop",
+            "Illustrator",
+            "Canva",
+            "Instagram",
+            "Content Planning"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tshirt-designs",
+      "order": 13,
+      "category": "business-cards",
+      "image": "assets/projects/doernhoefer-logo-design.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Logo Design",
+          "title": "Dörnhöfer Logo & Workwear",
+          "description": "Shirt-Designs und Branding-Mockups für Arbeitgeber-, Team- und Eventauftritte mit mehreren Logo-Varianten.",
+          "detail": "Diese Entwürfe zeigen, wie ich Logos und Branding auch auf physische Produkte übertrage. Die Serie umfasst verschiedene Platzierungen, Varianten und Mockups für ein konsistentes Erscheinungsbild.",
+          "imageAlt": "Dörnhöfer Logoentwicklung und Anwendung auf Workwear",
+          "tools": [
+            "Illustrator",
+            "Photoshop",
+            "Mockup Design",
+            "Branding"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Logo Design",
+          "title": "Dörnhöfer Logo & Workwear",
+          "description": "T-shirt designs and branding mockups for employer branding, teamwear and event appearances with multiple logo variations.",
+          "detail": "These concepts show how I translate logos and brand identity onto physical products. The series includes different placements, visual directions and mockups for a consistent appearance.",
+          "imageAlt": "Dörnhöfer logo design and workwear application",
+          "tools": [
+            "Illustrator",
+            "Photoshop",
+            "Mockup Design",
+            "Branding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "invitation-designs",
+      "order": 14,
+      "category": "screen-designs",
+      "image": "assets/projects/invitation-design-1.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Einladungsdesign",
+          "title": "Event & Einladungsgestaltung",
+          "description": "Einladungsdesigns für private und festliche Events mit Bildkomposition, Typografie und druckfertigen Layouts.",
+          "detail": "Auch im Printbereich gestalte ich komplette Layouts von der Idee bis zur finalen Version. Diese Beispiele zeigen Einladungen mit emotionaler Bildsprache, klarer Struktur und unterschiedlichen Designstilen.",
+          "imageAlt": "Gestaltete Einladung für ein Event",
+          "tools": [
+            "Photoshop",
+            "InDesign",
+            "Typography",
+            "Print Layout"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Invitation Design",
+          "title": "Event & Invitation Design",
+          "description": "Invitation layouts for private and festive events with image composition, typography and print-ready design systems.",
+          "detail": "I also work on print-focused layouts from concept to final version. These examples show invitations with emotional imagery, clear structure and different design styles tailored to the occasion.",
+          "imageAlt": "Designed invitation for an event",
+          "tools": [
+            "Photoshop",
+            "InDesign",
+            "Typography",
+            "Print Layout"
+          ]
+        }
+      }
+    },
+    {
+      "id": "gemeinde-heinersreuth",
+      "order": 15,
+      "category": "websites",
+      "image": "assets/projects/gemeinde-heinersreuth-home.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Gemeinde Heinersreuth",
+          "description": "Moderner kommunaler Webauftritt mit klarer Startseite, Servicebereichen und einer strukturierten Nutzerführung für Bürgerinnen und Bürger.",
+          "detail": "Dieser Entwurf zeigt meine Arbeit an kommunalen Interfaces mit vertrauenswürdigem Look, guter Übersicht und schnellen Einstiegen in die wichtigsten Themenbereiche wie Bürgerservice, Leben & Wohnen und Freizeit.",
+          "imageAlt": "Startseite der Gemeinde Heinersreuth",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "UI Design",
+            "CMS"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "Gemeinde Heinersreuth",
+          "description": "Modern municipal website with a clear homepage, service areas and structured user guidance for citizens.",
+          "detail": "This example shows my work on civic interfaces with a trustworthy visual language, strong overview and quick access to key topics such as public service, living and leisure.",
+          "imageAlt": "Gemeinde Heinersreuth homepage",
+          "tools": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "UI Design",
+            "CMS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "saga-medien-mysyde",
+      "order": 16,
+      "category": "screen-designs",
+      "image": "assets/projects/saga-medien-vg-creussen.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "MySyde Umsetzung",
+          "title": "SaGa Medien & Vertrieb OHG",
+          "description": "Grundeinrichtung und Umsetzung in MySyde für einen strukturierten digitalen Unternehmensauftritt.",
+          "detail": "Für SaGa Medien & Vertrieb OHG habe ich die Grundeinrichtung in MySyde vorbereitet und die Umsetzung innerhalb des Systems begleitet. Der Schwerpunkt lag auf sauberer Struktur, konsistenter Gestaltung und einer funktionalen Basis für den späteren Ausbau.",
+          "imageAlt": "MySyde Umsetzung für SaGa Medien und VG Creußen",
+          "tools": [
+            "MySyde",
+            "Setup",
+            "Content Structure",
+            "UI Styling"
+          ]
+        },
+        "en": {
+          "categoryLabel": "MySyde Implementation",
+          "title": "SaGa Medien & Vertrieb OHG",
+          "description": "Basic setup and implementation in MySyde for a structured digital company presence.",
+          "detail": "For SaGa Medien & Vertrieb OHG I prepared the basic setup in MySyde and supported the implementation inside the system. The focus was on clean structure, visual consistency and a functional base for future expansion.",
+          "imageAlt": "MySyde implementation for SaGa Medien and VG Creußen",
+          "tools": [
+            "MySyde",
+            "Setup",
+            "Content Structure",
+            "UI Styling"
+          ]
+        }
+      }
+    },
+    {
+      "id": "protec-magnets-banners",
+      "order": 17,
+      "category": "screen-designs",
+      "image": "assets/projects/protec-auto-magnets-banners.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Print Design",
+          "title": "Protec Auto-Magnete & Banner",
+          "description": "Neues Design für Auto-Magnete und Banner mit klarer Markenwirkung und hoher Sichtbarkeit im Außenbereich.",
+          "detail": "Dieses Projekt war auf schnelle Wiedererkennbarkeit im öffentlichen Raum ausgerichtet. Die Gestaltung wurde so aufgebaut, dass Logo, Botschaft und Kontaktdaten auch aus Distanz klar funktionieren.",
+          "imageAlt": "Protec Auto-Magnete und Banner Design",
+          "tools": [
+            "Photoshop",
+            "Illustrator",
+            "Print Layout",
+            "Branding"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Print Design",
+          "title": "Protec Auto Magnets & Banners",
+          "description": "New design for auto magnets and banners with strong brand visibility and outdoor readability.",
+          "detail": "This project focused on fast recognition in public space. The layout was developed so that logo, message and contact information stay clear even from a distance.",
+          "imageAlt": "Protec auto magnets and banners design",
+          "tools": [
+            "Photoshop",
+            "Illustrator",
+            "Print Layout",
+            "Branding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wicklein-wood-energy-packaging",
+      "order": 18,
+      "category": "brochures",
+      "image": "assets/projects/packaging-wicklein-wood-energy.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Infopoint",
+          "title": "Wicklein Wood & Energy",
+          "description": "Neues Verpackungsdesign mit klarer Markenführung und passender visueller Sprache für das Produktumfeld.",
+          "detail": "Für Wicklein Wood & Energy habe ich eine Verpackungslösung entwickelt, die Markenidentität, Produktwirkung und klare Informationshierarchie miteinander verbindet.",
+          "imageAlt": "Packaging Design für Wicklein Wood & Energy",
+          "tools": [
+            "Packaging Design",
+            "Illustrator",
+            "Typography",
+            "Branding"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Packaging Design",
+          "title": "Wicklein Wood & Energy",
+          "description": "New packaging design with clear brand guidance and a visual language tailored to the product context.",
+          "detail": "For Wicklein Wood & Energy I developed a packaging solution that combines brand identity, product appeal and a strong information hierarchy.",
+          "imageAlt": "Packaging design for Wicklein Wood & Energy",
+          "tools": [
+            "Packaging Design",
+            "Illustrator",
+            "Typography",
+            "Branding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ago-packaging",
+      "order": 19,
+      "category": "screen-designs",
+      "image": "assets/projects/ago-infopoint.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Infopoint",
+          "title": "AGO Infopoint",
+          "description": "Verpackungsdesign und visuelle Aufbereitung für ein technisches Unternehmensumfeld.",
+          "detail": "Der Fokus lag auf einer klaren, technisch passenden Gestaltung mit professionellem Gesamtbild und gut lesbarer Informationsstruktur.",
+          "imageAlt": "AGO Infopoint Design",
+          "tools": [
+            "InfoPoint UI",
+            "Dashboard",
+            "UI Design",
+            "Information Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Infopoint",
+          "title": "AGO Infopoint",
+          "description": "Packaging design and visual preparation for a technical company environment.",
+          "detail": "The focus was a clear and technically fitting design with a professional overall appearance and readable information structure.",
+          "imageAlt": "AGO infopoint design",
+          "tools": [
+            "InfoPoint UI",
+            "Dashboard",
+            "UI Design",
+            "Information Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "kuefner-infopoint",
+      "order": 20,
+      "category": "brochures",
+      "image": "assets/projects/kuefner-mietbroschuere.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Mietbroschüre",
+          "title": "Küfner Arbeitsbühnen",
+          "description": "Infopoint-Konzept mit strukturierter Oberfläche für Informationen, Orientierung und schnelle Bedienbarkeit.",
+          "detail": "Für Küfner Arbeitsbühnen habe ich ein Screen-Konzept entwickelt, das Informationen klar gliedert und auf eine direkte Nutzung im Unternehmens- oder Messekontext ausgerichtet ist.",
+          "imageAlt": "Mietbroschüre für Küfner Arbeitsbühnen",
+          "tools": [
+            "Screen Design",
+            "UI Layout",
+            "Information Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Infopoint",
+          "title": "Küfner Arbeitsbühnen",
+          "description": "Infopoint concept with a structured interface for information, orientation and quick usability.",
+          "detail": "For Küfner Arbeitsbühnen I developed a screen concept that organizes information clearly and is aimed at direct use in a company or trade fair context.",
+          "imageAlt": "Rental brochure for Küfner Arbeitsbühnen",
+          "tools": [
+            "Screen Design",
+            "UI Layout",
+            "Information Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "edeka-wiki-intranet",
+      "order": 21,
+      "category": "screen-designs",
+      "image": "assets/projects/edeka-wiki-intranet-styling.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Intranet Styling",
+          "title": "EDEKA Wiki Intranet Styling",
+          "description": "Visuelles Styling für ein internes Wiki- und Intranet-Umfeld mit Fokus auf Lesbarkeit und Struktur.",
+          "detail": "Hier stand eine saubere Informationsdarstellung im Vordergrund. Das Styling wurde so aufgebaut, dass Inhalte intern schneller erfasst und im täglichen Gebrauch angenehmer genutzt werden können.",
+          "imageAlt": "EDEKA Wiki Intranet Styling",
+          "tools": [
+            "Intranet UI",
+            "Typography",
+            "Design System",
+            "UX"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Intranet Styling",
+          "title": "EDEKA Wiki Intranet Styling",
+          "description": "Visual styling for an internal wiki and intranet environment with a focus on readability and structure.",
+          "detail": "This work focused on clean information presentation so internal content becomes easier to scan and more pleasant to use in day-to-day work.",
+          "imageAlt": "EDEKA wiki intranet styling",
+          "tools": [
+            "Intranet UI",
+            "Typography",
+            "Design System",
+            "UX"
+          ]
+        }
+      }
+    },
+    {
+      "id": "uni-bayreuth-screen",
+      "order": 22,
+      "category": "screen-designs",
+      "image": "assets/projects/screendesign-uni-bayreuth.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Screen Design",
+          "title": "Screendesign Uni Bayreuth",
+          "description": "Screen-Design-Arbeit für ein universitäres Umfeld mit klarer Struktur und professioneller visueller Sprache.",
+          "detail": "Das Projekt konzentrierte sich auf ein ruhiges, seriöses Interface mit klaren Informationsblöcken und einer Gestaltung, die zum akademischen Kontext passt.",
+          "imageAlt": "Screendesign für die Uni Bayreuth",
+          "tools": [
+            "Screen Design",
+            "Figma",
+            "Layout",
+            "UX"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Screen Design",
+          "title": "Screen Design Uni Bayreuth",
+          "description": "Screen design work for a university context with clear structure and a professional visual tone.",
+          "detail": "The project focused on a calm and serious interface with clear information blocks and a visual language appropriate for an academic environment.",
+          "imageAlt": "Screen design for the University of Bayreuth",
+          "tools": [
+            "Screen Design",
+            "Figma",
+            "Layout",
+            "UX"
+          ]
+        }
+      }
+    },
+    {
+      "id": "doernhoefer-company-ad",
+      "order": 23,
+      "category": "brochures",
+      "image": "assets/projects/doernhoefer-company-ad.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Anzeige",
+          "title": "Dörnhöfer Unternehmensanzeige",
+          "description": "Design für eine Unternehmensanzeige mit prägnanter Botschaft, klarer Typografie und professionellem Markenbild.",
+          "detail": "Für Dörnhöfer wurde eine Anzeige entwickelt, die Leistungen und Markencharakter kompakt vermittelt und im Printumfeld aufmerksamkeitsstark funktioniert.",
+          "imageAlt": "Unternehmensanzeige für Dörnhöfer",
+          "tools": [
+            "InDesign",
+            "Illustrator",
+            "Ad Design",
+            "Typography"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Ad Design",
+          "title": "Dörnhöfer Company Ad",
+          "description": "Company advertisement design with a clear message, strong typography and professional brand presentation.",
+          "detail": "For Dörnhöfer I developed an ad layout that communicates services and brand character in a compact and attention-grabbing print format.",
+          "imageAlt": "Company ad for Dörnhöfer",
+          "tools": [
+            "InDesign",
+            "Illustrator",
+            "Ad Design",
+            "Typography"
+          ]
+        }
+      }
+    },
+    {
+      "id": "protec-company-ad",
+      "order": 24,
+      "category": "brochures",
+      "image": "assets/projects/protec-technologies-ad.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Anzeige",
+          "title": "Protec Technologies Anzeige",
+          "description": "Unternehmensanzeige für Protec Technologies GmbH mit technischer Klarheit und sauberer Markenkommunikation.",
+          "detail": "Die Gestaltung wurde auf ein modernes, zuverlässiges Erscheinungsbild ausgerichtet und verbindet präzise Informationen mit einer klaren visuellen Hierarchie.",
+          "imageAlt": "Anzeige für Protec Technologies",
+          "tools": [
+            "Print Design",
+            "Typography",
+            "Corporate Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Ad Design",
+          "title": "Protec Technologies Ad",
+          "description": "Corporate advertisement for Protec Technologies GmbH with technical clarity and clean brand communication.",
+          "detail": "The design was built around a modern and reliable appearance, combining precise information with a clear visual hierarchy.",
+          "imageAlt": "Corporate ad for Protec Technologies",
+          "tools": [
+            "Print Design",
+            "Typography",
+            "Corporate Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ausbildungsmesse-flyer",
+      "order": 25,
+      "category": "brochures",
+      "image": "",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Flyer",
+          "title": "Flyer für Ausbildungsmesse",
+          "description": "Flyer-Entwicklung für eine Ausbildungsmesse mit klarer Zielgruppenansprache und gutem Informationsfluss.",
+          "detail": "Der Flyer wurde so gestaltet, dass junge Zielgruppen schnell die wichtigsten Inhalte erfassen und gleichzeitig ein professioneller Eindruck des Veranstalters entsteht.",
+          "imageAlt": "",
+          "tools": [
+            "Flyer Design",
+            "InDesign",
+            "Typography",
+            "Print Layout"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Flyer",
+          "title": "Training Fair Flyer",
+          "description": "Flyer development for a training fair with clear audience targeting and strong information flow.",
+          "detail": "The flyer was designed so younger audiences can capture the key content quickly while the organizer still appears professional and well structured.",
+          "imageAlt": "",
+          "tools": [
+            "Flyer Design",
+            "InDesign",
+            "Typography",
+            "Print Layout"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ago-tradefair-stand",
+      "order": 26,
+      "category": "screen-designs",
+      "image": "",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Messestand",
+          "title": "AGO Messestand Konzept",
+          "description": "Entwicklung eines Messestand-Konzepts für die Ausbildungsmesse mit klarer Markenpräsenz und guter Besucherführung.",
+          "detail": "Bei diesem Projekt ging es um die visuelle Planung eines Standes, der im Raum funktioniert, aufmerksam macht und Informationen klar kommuniziert.",
+          "imageAlt": "",
+          "tools": [
+            "Exhibition Design",
+            "Branding",
+            "Visual Concept",
+            "Layout"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Trade Fair Stand",
+          "title": "AGO Trade Fair Stand Concept",
+          "description": "Trade fair stand concept for a training fair with clear brand presence and strong visitor guidance.",
+          "detail": "This project focused on the visual planning of a stand that works in physical space, attracts attention and communicates information clearly.",
+          "imageAlt": "",
+          "tools": [
+            "Exhibition Design",
+            "Branding",
+            "Visual Concept",
+            "Layout"
+          ]
+        }
+      }
+    },
+    {
+      "id": "hausaufgabenheft-ad",
+      "order": 27,
+      "category": "brochures",
+      "image": "assets/projects/ago-hausaufgabenheft-anzeige.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Anzeige",
+          "title": "Hausaufgabenheft Anzeige",
+          "description": "Anzeigengestaltung für ein Hausaufgabenheft mit jugendnaher Ansprache und klarer Leserichtung.",
+          "detail": "Die Anzeige wurde auf ein junges Umfeld ausgerichtet und verbindet Aufmerksamkeit, Übersicht und Markenwirkung in einem kompakten Format.",
+          "imageAlt": "AGO Hausaufgabenheft Anzeige",
+          "tools": [
+            "Ad Design",
+            "Illustrator",
+            "InDesign",
+            "Layout"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Ad Design",
+          "title": "Homework Planner Ad",
+          "description": "Advertisement design for a homework planner with youth-oriented communication and a clear reading flow.",
+          "detail": "The layout was tailored to a younger audience and combines attention, clarity and brand impact in a compact format.",
+          "imageAlt": "AGO homework planner ad",
+          "tools": [
+            "Ad Design",
+            "Illustrator",
+            "InDesign",
+            "Layout"
+          ]
+        }
+      }
+    },
+    {
+      "id": "gwb-portal",
+      "order": 28,
+      "category": "screen-designs",
+      "image": "assets/projects/gwb-intranet.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "GWB Portal",
+          "description": "Stilisierung des GWB-Portals mit responsiver Umsetzung und klarer Gestaltung für interne Inhalte.",
+          "detail": "Für GWB habe ich das Portal gestalterisch überarbeitet und responsiv umgesetzt. Die Struktur wurde so aufgebaut, dass News, Kommunikation und interne Bereiche schnell erfassbar bleiben.",
+          "imageAlt": "GWB Portal Styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "Intranet UI",
+            "Dashboard"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "GWB Portal",
+          "description": "Styling of the GWB portal with responsive implementation and a clear layout for internal content.",
+          "detail": "For GWB I redesigned the portal visually and implemented it responsively. The structure was built so news, communication and internal sections stay easy to understand.",
+          "imageAlt": "GWB portal styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "Intranet UI",
+            "Dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "id": "premo-group-portal",
+      "order": 29,
+      "category": "screen-designs",
+      "image": "assets/projects/premo-intranet.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "PREMO Group Portal",
+          "description": "Neue Designelemente, Stilisierung des PREMO-Portals und responsive Umsetzung für ein modernes Intranet-Erlebnis.",
+          "detail": "Ich habe für PREMO Group neue Designbausteine entwickelt, das Portal visuell stilisiert und die responsive Darstellung umgesetzt. Das Ergebnis ist ein klar gegliedertes Portal mit starker Markenwirkung.",
+          "imageAlt": "PREMO Group Portal Styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Elements",
+            "Intranet UI"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "PREMO Group Portal",
+          "description": "New design elements, portal styling and responsive implementation for a modern PREMO intranet experience.",
+          "detail": "For PREMO Group I created new design components, styled the portal and implemented the responsive behavior. The result is a clearly structured portal with stronger brand presence.",
+          "imageAlt": "PREMO Group portal styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Elements",
+            "Intranet UI"
+          ]
+        }
+      }
+    },
+    {
+      "id": "drz-portal",
+      "order": 30,
+      "category": "screen-designs",
+      "image": "assets/projects/drz-infopoint.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "DRZ Portal",
+          "description": "Stilisierung des DRZ-Portals mit klarer Benutzeroberfläche und strukturiertem Aufbau für interne Inhalte.",
+          "detail": "Beim DRZ-Portal lag mein Fokus auf einer klaren visuellen Struktur, guten Kontrasten und einer benutzerfreundlichen Darstellung für die wichtigsten Portalbereiche.",
+          "imageAlt": "DRZ Portal Styling",
+          "tools": [
+            "Portal Styling",
+            "UI Design",
+            "Information Design",
+            "Dashboard"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "DRZ Portal",
+          "description": "Styling of the DRZ portal with a clean user interface and structured layout for internal content.",
+          "detail": "For the DRZ portal I focused on clear visual structure, good contrast and a user-friendly presentation of the most important portal areas.",
+          "imageAlt": "DRZ portal styling",
+          "tools": [
+            "Portal Styling",
+            "UI Design",
+            "Information Design",
+            "Dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "id": "schiller-portal",
+      "order": 31,
+      "category": "screen-designs",
+      "image": "assets/projects/schiller-intranet.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Portal Styling",
+          "title": "SCHILLER Portal",
+          "description": "Stilisierung des SCHILLER-Portals und responsive Umsetzung für einen klaren und modernen internen Auftritt.",
+          "detail": "Ich habe das SCHILLER-Portal visuell überarbeitet und für verschiedene Bildschirmgrößen responsiv angepasst. Ziel war eine strukturierte Oberfläche mit starker Wiedererkennbarkeit.",
+          "imageAlt": "SCHILLER Portal Styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Design",
+            "Intranet UI"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Portal Styling",
+          "title": "SCHILLER Portal",
+          "description": "Styling of the SCHILLER portal and responsive implementation for a clean and modern internal experience.",
+          "detail": "I visually refined the SCHILLER portal and adapted it responsively for different screen sizes. The goal was a structured interface with strong brand recognition.",
+          "imageAlt": "SCHILLER portal styling",
+          "tools": [
+            "Portal Styling",
+            "Responsive Design",
+            "UI Design",
+            "Intranet UI"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ago-infopoint-dashboard",
+      "order": 32,
+      "category": "screen-designs",
+      "image": "assets/projects/ago-infopoint-dashboard.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Infopoint",
+          "title": "AGO Dashboard Infopoint",
+          "description": "Dashboard- und Infopoint-Design für AGO mit Live-Daten, Kennzahlen und einer klaren Kachelstruktur.",
+          "detail": "Dieses AGO-Konzept zeigt die von mir gestaltete Dashboard-Ansicht für einen Infopoint. Der Fokus lag auf Live-Daten, technischem Kontext und einer klaren visuellen Führung durch die Inhalte.",
+          "imageAlt": "Dashboard Infopoint für AGO",
+          "tools": [
+            "Dashboard",
+            "InfoPoint UI",
+            "Data Visualisation",
+            "UI Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Infopoint",
+          "title": "AGO Dashboard Infopoint",
+          "description": "Dashboard and infopoint design for AGO with live data, key figures and a clearly structured tile layout.",
+          "detail": "This AGO concept shows the dashboard view I designed for an infopoint. The focus was live data, technical context and a clear visual hierarchy across the interface.",
+          "imageAlt": "AGO dashboard infopoint",
+          "tools": [
+            "Dashboard",
+            "InfoPoint UI",
+            "Data Visualisation",
+            "UI Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "awo-infopoint",
+      "order": 33,
+      "category": "screen-designs",
+      "image": "assets/projects/awo-infopoint.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Infopoint",
+          "title": "AWO Infopoint",
+          "description": "Infopoint für eine Kita mit Informationen zu Tagesabläufen, Essensplänen und organisatorischen Hinweisen.",
+          "detail": "Für AWO habe ich einen Infopoint gestaltet, der wichtige Informationen für den Kita-Alltag klar und freundlich aufbereitet. Dazu gehören Termine, Mittagessen, Hinweise und Kontaktinformationen.",
+          "imageAlt": "AWO Infopoint Design",
+          "tools": [
+            "InfoPoint UI",
+            "Information Design",
+            "Dashboard Layout",
+            "UI Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Infopoint",
+          "title": "AWO Infopoint",
+          "description": "Infopoint for a kindergarten with information about daily routines, meal plans and organisational updates.",
+          "detail": "For AWO I designed an infopoint that prepares important kindergarten information in a clear and friendly way. This includes appointments, meals, notes and contact details.",
+          "imageAlt": "AWO infopoint design",
+          "tools": [
+            "InfoPoint UI",
+            "Information Design",
+            "Dashboard Layout",
+            "UI Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "klp-business-card",
+      "order": 34,
+      "category": "business-cards",
+      "image": "assets/projects/klp-visitenkarte.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Visitenkarte",
+          "title": "KLP Visitenkarte",
+          "description": "Neues Design für eine Visitenkarte mit klarer Markenführung und direkter Kontaktstruktur.",
+          "detail": "Für KLP habe ich eine Visitenkarte gestaltet, die Markenfarben, technische Bildwelt und Kontaktinformationen sauber miteinander verbindet. Ziel war ein professioneller und direkt nutzbarer Firmenauftritt im Printformat.",
+          "imageAlt": "Visitenkarten-Design für KLP",
+          "tools": [
+            "Business Card Design",
+            "Branding",
+            "Print Layout",
+            "Typography"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Business Card",
+          "title": "KLP Business Card",
+          "description": "New business card design with clear brand guidance and direct contact structure.",
+          "detail": "For KLP I designed a business card that combines brand colors, technical imagery and contact information in a clean professional print format.",
+          "imageAlt": "Business card design for KLP",
+          "tools": [
+            "Business Card Design",
+            "Branding",
+            "Print Layout",
+            "Typography"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wicklein-flyer",
+      "order": 35,
+      "category": "brochures",
+      "image": "assets/projects/wicklein-broschuere.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Broschüre",
+          "title": "Wicklein Flyer",
+          "description": "Druckbarer Flyer mit Leistungsübersicht, Standorten und einer klar strukturierten Darstellung der Unternehmensbereiche.",
+          "detail": "Dieser Flyer wurde für Wicklein als druckbare Übersicht gestaltet. Ich habe Inhalte, Karten, Leistungsblöcke und Bilder so aufgebaut, dass der Gesamtauftritt informativ und professionell wirkt.",
+          "imageAlt": "Druckbarer Wicklein Flyer",
+          "tools": [
+            "Brochure Design",
+            "Print Layout",
+            "Branding",
+            "Information Design"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Brochure",
+          "title": "Wicklein Flyer",
+          "description": "Printable flyer with service overview, locations and a clearly structured presentation of company divisions.",
+          "detail": "This flyer was created as a printable overview for Wicklein. I structured the content, map, service blocks and imagery so the overall presentation feels informative and professional.",
+          "imageAlt": "Printable Wicklein flyer",
+          "tools": [
+            "Brochure Design",
+            "Print Layout",
+            "Branding",
+            "Information Design"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wicklein-bag-designs",
+      "order": 36,
+      "category": "brochures",
+      "image": "assets/projects/wicklein-wood-energy-bags.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Verpackungsdesign",
+          "title": "Wicklein Sackdesigns",
+          "description": "Neue Designs für Säcke sowie Logoentwicklung für Wicklein Wood & Energy GmbH.",
+          "detail": "Für Wicklein Wood & Energy habe ich neue Designs für die Säcke entwickelt und die visuelle Markenführung inklusive Logoarbeit weiter aufgebaut. Das Projekt verbindet Verpackung, Produktpräsenz und Wiedererkennbarkeit.",
+          "imageAlt": "Neue Sackdesigns für Wicklein Wood & Energy",
+          "tools": [
+            "Packaging Design",
+            "Logo Design",
+            "Illustrator",
+            "Branding"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Packaging Design",
+          "title": "Wicklein Bag Designs",
+          "description": "New sack designs and logo development for Wicklein Wood & Energy GmbH.",
+          "detail": "For Wicklein Wood & Energy I developed new sack designs and expanded the visual brand direction including logo work. The project combines packaging, product presentation and brand recognition.",
+          "imageAlt": "New bag designs for Wicklein Wood & Energy",
+          "tools": [
+            "Packaging Design",
+            "Logo Design",
+            "Illustrator",
+            "Branding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "team-photo-editing",
+      "order": 37,
+      "category": "social-media",
+      "image": "assets/projects/rotec-photo-editing.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Bildbearbeitung",
+          "title": "Bearbeitung von Teamfotos",
+          "description": "Retusche und visuelle Aufbereitung von Teamfotos für einen einheitlichen, professionellen Unternehmensauftritt.",
+          "detail": "Auch die Nachbearbeitung von Bildmaterial gehört zu meinem Workflow. Dazu zählen Farbkorrektur, Freistellung, Bildharmonie und die Vorbereitung für Web, Print oder Social Media.",
+          "imageAlt": "Vorher-Nachher Bearbeitung von Teamfotos",
+          "tools": [
+            "Photoshop",
+            "Retouching",
+            "Color Correction",
+            "Image Editing"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Photo Editing",
+          "title": "Team Photo Editing",
+          "description": "Retouching and visual refinement of team photos for a consistent and professional company presence.",
+          "detail": "Image post-production is also part of my workflow. This includes color correction, retouching, visual harmony and preparation for web, print or social media use.",
+          "imageAlt": "Before and after team photo editing",
+          "tools": [
+            "Photoshop",
+            "Retouching",
+            "Color Correction",
+            "Image Editing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "new-project-39",
+      "order": 38,
+      "category": "websites",
+      "image": "assets/projects/new-project-39.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Test",
+          "description": "test",
+          "detail": "test",
+          "imageAlt": "",
+          "tools": []
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "test",
+          "description": "test",
+          "detail": "test",
+          "imageAlt": "",
+          "tools": []
+        }
+      }
+    }
+  ]
+}

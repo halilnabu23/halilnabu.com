@@ -1,0 +1,185 @@
+{
+  "heroPortrait": {
+    "src": "assets/images/hero-portrait.png",
+    "alt": {
+      "de": "Portrait von Khalil Nabu",
+      "en": "Portrait of Khalil Nabu"
+    }
+  },
+  "lifestyleProfiles": [
+    {
+      "id": "travel",
+      "label": {
+        "de": "Reisen",
+        "en": "Travel"
+      },
+      "detail": {
+        "de": "Ich liebe Reisen in warme Länder, entdecke gerne neue Architektur, Museen und Kunst und sammle so ständig neue visuelle Eindrücke.",
+        "en": "I love travelling to warm countries, exploring new architecture, museums and art, and constantly collecting fresh visual impressions."
+      },
+      "collage": [
+        {
+          "image": "assets/images/travel-1.png",
+          "alt": "Khalil Nabu travelling"
+        },
+        {
+          "image": "assets/images/travel-2.png",
+          "alt": "Khalil Nabu travel portrait"
+        },
+        {
+          "image": "assets/images/travel-3.png",
+          "alt": "Khalil Nabu in Paris"
+        },
+        {
+          "image": "assets/images/lifestyle-3.png",
+          "alt": "Khalil Nabu outdoors"
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "label": {
+        "de": "Konzerte & Musik",
+        "en": "Concerts & Music"
+      },
+      "detail": {
+        "de": "Musik, Konzerte und Live-Erlebnisse inspirieren mein Gefühl für Rhythmus, Atmosphäre, Inszenierung und kreative Dramaturgie.",
+        "en": "Music, concerts and live experiences inspire my sense of rhythm, atmosphere, staging and creative storytelling."
+      },
+      "collage": [
+        {
+          "image": "assets/images/concert-1.png",
+          "alt": "Khalil Nabu in a music setting"
+        },
+        {
+          "image": "assets/images/lifestyle-2.png",
+          "alt": "Black and white portrait"
+        },
+        {
+          "image": "assets/images/lifestyle-1.png",
+          "alt": "Khalil Nabu portrait"
+        },
+        {
+          "image": "assets/images/travel-4.png",
+          "alt": "Khalil Nabu lifestyle"
+        }
+      ]
+    },
+    {
+      "id": "blogging",
+      "label": {
+        "de": "Blogging & Social Media",
+        "en": "Blogging & Social Media"
+      },
+      "detail": {
+        "de": "Ich entwickle gerne eigene Formate, filme, poste und denke Ideen direkt in Reichweite, Storytelling und Community-Aufbau.",
+        "en": "I enjoy building personal formats, filming, posting and thinking ideas directly in terms of reach, storytelling and community."
+      },
+      "collage": [
+        {
+          "image": "assets/images/travel-2.png",
+          "alt": "Content creation lifestyle visual"
+        },
+        {
+          "image": "assets/images/travel-4.png",
+          "alt": "Khalil Nabu social media portrait"
+        },
+        {
+          "image": "assets/images/lifestyle-1.png",
+          "alt": "Street style portrait"
+        },
+        {
+          "image": "assets/images/concert-1.png",
+          "alt": "Lifestyle and culture"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "label": {
+        "de": "Blogging & Content",
+        "en": "Content Production"
+      },
+      "detail": {
+        "de": "Content Creation gehört für mich ganz natürlich dazu. Ich mag es, Ideen visuell aufzubereiten und Inhalte mit Persönlichkeit zu verbinden.",
+        "en": "Content creation is a natural part of my work. I enjoy shaping ideas visually and giving digital formats a personal voice."
+      },
+      "collage": [
+        {
+          "image": "assets/images/lifestyle-1.png",
+          "alt": "Content production portrait"
+        },
+        {
+          "image": "assets/images/travel-1.png",
+          "alt": "Travel visual"
+        },
+        {
+          "image": "assets/images/travel-2.png",
+          "alt": "Lifestyle content"
+        },
+        {
+          "image": "assets/images/lifestyle-4.png",
+          "alt": "Outdoor portrait"
+        }
+      ]
+    },
+    {
+      "id": "vlogs",
+      "label": {
+        "de": "Vlogs & Storytelling",
+        "en": "Vlogs & Storytelling"
+      },
+      "detail": {
+        "de": "Ich liebe es, Erlebnisse in kleine Geschichten zu verwandeln, besondere Momente festzuhalten und visuell spannend zu erzählen.",
+        "en": "I love turning experiences into short stories, capturing special moments and telling them in a visually engaging way."
+      },
+      "collage": [
+        {
+          "image": "assets/images/travel-3.png",
+          "alt": "Travel storytelling image"
+        },
+        {
+          "image": "assets/images/travel-4.png",
+          "alt": "Story driven portrait"
+        },
+        {
+          "image": "assets/images/travel-1.png",
+          "alt": "Travel architecture inspiration"
+        },
+        {
+          "image": "assets/images/concert-1.png",
+          "alt": "Lifestyle moment"
+        }
+      ]
+    },
+    {
+      "id": "fitness",
+      "label": {
+        "de": "Fitness & Aktivität",
+        "en": "Fitness & Gym"
+      },
+      "detail": {
+        "de": "Ein aktiver Lebensstil gibt mir Fokus, Disziplin und Energie. Das hilft mir auch im kreativen Alltag strukturiert und klar zu bleiben.",
+        "en": "An active lifestyle gives me focus, discipline and energy. It helps me stay structured and clear in creative work too."
+      },
+      "collage": [
+        {
+          "image": "assets/images/lifestyle-1.png",
+          "alt": "Fitness and lifestyle portrait"
+        },
+        {
+          "image": "assets/images/lifestyle-4.png",
+          "alt": "Active outdoor photo"
+        },
+        {
+          "image": "assets/images/lifestyle-2.png",
+          "alt": "Focused portrait"
+        },
+        {
+          "image": "assets/images/lifestyle-3.png",
+          "alt": "Outdoor chair portrait"
+        }
+      ]
+    }
+  ]
+}
