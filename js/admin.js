@@ -18,11 +18,22 @@ const projectImageFileInput = document.querySelector("#project-image-file-input"
 const heroImagePreview = document.querySelector("#hero-image-preview");
 const heroImageUploadButton = document.querySelector("#hero-image-upload-button");
 const heroImageFileInput = document.querySelector("#hero-image-file-input");
+const cvFilePathInput = document.querySelector("#cv-file-path-input");
+const cvFileUploadButton = document.querySelector("#cv-file-upload-button");
+const cvFileInput = document.querySelector("#cv-file-input");
+const applicationFilePathInput = document.querySelector("#application-file-path-input");
+const applicationFileUploadButton = document.querySelector("#application-file-upload-button");
+const applicationFileInput = document.querySelector("#application-file-input");
 const lifestyleAdminList = document.querySelector("#lifestyle-admin-list");
 const githubTokenInput = document.querySelector("#github-token-input");
 const rememberGitHubTokenInput = document.querySelector("#remember-github-token-input");
 const githubRepoLabel = document.querySelector("#github-repo-label");
 const githubBranchLabel = document.querySelector("#github-branch-label");
+const connectionSummary = document.querySelector("#connection-summary");
+const connectionSettings = document.querySelector("#connection-settings");
+const manageGitHubConnectionButton = document.querySelector("#manage-github-connection-button");
+const disconnectGitHubButton = document.querySelector("#disconnect-github-button");
+const closeGitHubSettingsButton = document.querySelector("#close-github-settings-button");
 
 const projectFields = {
   id: document.querySelector("#project-id-input"),
@@ -67,12 +78,17 @@ const state = {
   directoryHandle: null,
   pendingProjectImages: new Map(),
   pendingHeroImage: null,
+  pendingDocumentFiles: {
+    cv: null,
+    application: null,
+  },
   pendingLifestyleImages: new Map(),
   searchQuery: "",
   isSaving: false,
   github: {
     token: "",
     remember: false,
+    settingsOpen: false,
   },
 };
 
@@ -83,6 +99,14 @@ function createDefaultSiteContent() {
       alt: {
         de: "Portrait von Khalil Nabu",
         en: "Portrait of Khalil Nabu",
+      },
+    },
+    documents: {
+      cv: {
+        src: "assets/projects/Lebenslauf-Khalil-Nabu.pdf",
+      },
+      application: {
+        src: "assets/projects/Bewerbung-Khalil-Nabu.pdf",
       },
     },
     lifestyleProfiles: [],
@@ -199,6 +223,11 @@ function normalizeSiteContent(siteContent) {
   normalized.heroPortrait.alt = normalized.heroPortrait.alt || { de: "", en: "" };
   normalized.heroPortrait.alt.de = normalized.heroPortrait.alt.de || "Portrait von Khalil Nabu";
   normalized.heroPortrait.alt.en = normalized.heroPortrait.alt.en || "Portrait of Khalil Nabu";
+  normalized.documents = normalized.documents || createDefaultSiteContent().documents;
+  normalized.documents.cv = normalized.documents.cv || { src: "assets/projects/Lebenslauf-Khalil-Nabu.pdf" };
+  normalized.documents.application = normalized.documents.application || { src: "assets/projects/Bewerbung-Khalil-Nabu.pdf" };
+  normalized.documents.cv.src = normalized.documents.cv.src || "assets/projects/Lebenslauf-Khalil-Nabu.pdf";
+  normalized.documents.application.src = normalized.documents.application.src || "assets/projects/Bewerbung-Khalil-Nabu.pdf";
 
   normalized.lifestyleProfiles = Array.isArray(normalized.lifestyleProfiles)
     ? normalized.lifestyleProfiles.map((profile) => ({
@@ -276,6 +305,58 @@ function persistGitHubToken() {
   } catch {
     // Ignore storage failures and keep the current in-memory token.
   }
+
+  updateConnectionUi();
+}
+
+function updateConnectionUi() {
+  const hasToken = Boolean(state.github.token);
+  const showSettings = state.github.settingsOpen || !hasToken;
+
+  if (connectionSummary) {
+    connectionSummary.hidden = !hasToken || showSettings;
+  }
+
+  if (connectionSettings) {
+    connectionSettings.hidden = !showSettings;
+  }
+
+  if (closeGitHubSettingsButton) {
+    closeGitHubSettingsButton.hidden = !hasToken;
+  }
+}
+
+function openGitHubSettings() {
+  state.github.settingsOpen = true;
+  updateConnectionUi();
+  githubTokenInput.focus();
+}
+
+function closeGitHubSettings() {
+  if (!state.github.token) {
+    return;
+  }
+
+  state.github.settingsOpen = false;
+  updateConnectionUi();
+}
+
+function disconnectGitHubToken() {
+  state.github.token = "";
+  state.github.remember = false;
+  state.github.settingsOpen = true;
+  githubTokenInput.value = "";
+  rememberGitHubTokenInput.checked = false;
+
+  try {
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
+    sessionStorage.removeItem(SESSION_TOKEN_STORAGE_KEY);
+  } catch {
+    // Ignore storage cleanup failures.
+  }
+
+  updateConnectionUi();
+  setStatus("GitHub token removed. Add a new token if you want to keep publishing directly to the live site.", "warning");
 }
 
 function renderProjectList() {
@@ -509,6 +590,16 @@ function syncHeroSection() {
   );
 }
 
+function fillDocumentSection() {
+  cvFilePathInput.value = state.siteContent.documents?.cv?.src || "";
+  applicationFilePathInput.value = state.siteContent.documents?.application?.src || "";
+}
+
+function syncDocumentSection() {
+  state.siteContent.documents.cv.src = cvFilePathInput.value.trim();
+  state.siteContent.documents.application.src = applicationFilePathInput.value.trim();
+}
+
 function ensureCollageItem(profile, index) {
   if (!Array.isArray(profile.collage)) {
     profile.collage = [];
@@ -660,6 +751,7 @@ function renderAdmin() {
   renderProjectList();
   fillProjectForm(getSelectedProject());
   fillHeroSection();
+  fillDocumentSection();
   renderLifestyleAdmin();
 }
 
@@ -797,6 +889,16 @@ async function saveToLocalFolder() {
     state.pendingHeroImage = null;
   }
 
+  if (state.pendingDocumentFiles.cv) {
+    await writeBinaryFile(state.siteContent.documents.cv.src, state.pendingDocumentFiles.cv);
+    state.pendingDocumentFiles.cv = null;
+  }
+
+  if (state.pendingDocumentFiles.application) {
+    await writeBinaryFile(state.siteContent.documents.application.src, state.pendingDocumentFiles.application);
+    state.pendingDocumentFiles.application = null;
+  }
+
   for (const [projectId, file] of state.pendingProjectImages.entries()) {
     const project = state.projects.find((item) => item.id === projectId);
     if (!project) {
@@ -900,6 +1002,8 @@ function clearPendingUploads() {
   state.pendingProjectImages.clear();
   state.pendingLifestyleImages.clear();
   state.pendingHeroImage = null;
+  state.pendingDocumentFiles.cv = null;
+  state.pendingDocumentFiles.application = null;
 }
 
 async function buildGitHubTreeEntries() {
@@ -915,6 +1019,24 @@ async function buildGitHubTreeEntries() {
       sha: await createGitHubBlobFromFile(state.pendingHeroImage),
     });
     state.siteContent.heroPortrait.src = heroPath;
+  }
+
+  if (state.pendingDocumentFiles.cv) {
+    treeEntries.push({
+      path: state.siteContent.documents.cv.src,
+      mode: "100644",
+      type: "blob",
+      sha: await createGitHubBlobFromFile(state.pendingDocumentFiles.cv),
+    });
+  }
+
+  if (state.pendingDocumentFiles.application) {
+    treeEntries.push({
+      path: state.siteContent.documents.application.src,
+      mode: "100644",
+      type: "blob",
+      sha: await createGitHubBlobFromFile(state.pendingDocumentFiles.application),
+    });
   }
 
   for (const [projectId, file] of state.pendingProjectImages.entries()) {
@@ -1023,6 +1145,7 @@ async function saveAllChanges() {
 
   syncSelectedProjectFromForm();
   syncHeroSection();
+  syncDocumentSection();
   persistGitHubToken();
   setSavingState(true);
 
@@ -1087,6 +1210,9 @@ removeProjectButton.addEventListener("click", removeSelectedProject);
 
 githubTokenInput.addEventListener("input", persistGitHubToken);
 rememberGitHubTokenInput.addEventListener("change", persistGitHubToken);
+manageGitHubConnectionButton?.addEventListener("click", openGitHubSettings);
+disconnectGitHubButton?.addEventListener("click", disconnectGitHubToken);
+closeGitHubSettingsButton?.addEventListener("click", closeGitHubSettings);
 
 projectImageUploadButton.addEventListener("click", () => projectImageFileInput.click());
 projectImageFileInput.addEventListener("change", () => {
@@ -1108,6 +1234,8 @@ projectImageFileInput.addEventListener("change", () => {
 heroFields.path.addEventListener("input", syncHeroSection);
 heroFields.altDe.addEventListener("input", syncHeroSection);
 heroFields.altEn.addEventListener("input", syncHeroSection);
+cvFilePathInput.addEventListener("input", syncDocumentSection);
+applicationFilePathInput.addEventListener("input", syncDocumentSection);
 
 heroImageUploadButton.addEventListener("click", () => heroImageFileInput.click());
 heroImageFileInput.addEventListener("change", () => {
@@ -1125,10 +1253,41 @@ heroImageFileInput.addEventListener("change", () => {
   setStatus("Hero image selected. Save changes to publish it to the site.", "success");
 });
 
+cvFileUploadButton.addEventListener("click", () => cvFileInput.click());
+cvFileInput.addEventListener("change", () => {
+  const file = cvFileInput.files?.[0];
+  if (!file) {
+    return;
+  }
+
+  const extension = getFileExtension(file.name);
+  const filePath = `assets/projects/Lebenslauf-Khalil-Nabu${extension}`;
+  state.siteContent.documents.cv.src = filePath;
+  cvFilePathInput.value = filePath;
+  state.pendingDocumentFiles.cv = file;
+  setStatus("Lebenslauf file selected. Save changes to publish it to the site.", "success");
+});
+
+applicationFileUploadButton.addEventListener("click", () => applicationFileInput.click());
+applicationFileInput.addEventListener("change", () => {
+  const file = applicationFileInput.files?.[0];
+  if (!file) {
+    return;
+  }
+
+  const extension = getFileExtension(file.name);
+  const filePath = `assets/projects/Bewerbung-Khalil-Nabu${extension}`;
+  state.siteContent.documents.application.src = filePath;
+  applicationFilePathInput.value = filePath;
+  state.pendingDocumentFiles.application = file;
+  setStatus("Bewerbung file selected. Save changes to publish it to the site.", "success");
+});
+
 async function initializeAdmin() {
   githubRepoLabel.textContent = `${REPO_CONFIG.owner}/${REPO_CONFIG.repo}`;
   githubBranchLabel.textContent = REPO_CONFIG.branch;
   loadStoredGitHubToken();
+  updateConnectionUi();
 
   try {
     await loadPublishedData();

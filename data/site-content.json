@@ -1,9 +1,17 @@
 {
   "heroPortrait": {
-    "src": "assets/images/hero-portrait.png",
+    "src": "assets/images/hero-portrait.jpg",
     "alt": {
       "de": "Portrait von Khalil Nabu",
       "en": "Portrait of Khalil Nabu"
+    }
+  },
+  "documents": {
+    "cv": {
+      "src": "assets/projects/Lebenslauf-Khalil-Nabu.pdf"
+    },
+    "application": {
+      "src": "assets/projects/Bewerbung-Khalil-Nabu.pdf"
     }
   },
   "lifestyleProfiles": [

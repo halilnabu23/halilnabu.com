@@ -135,14 +135,78 @@ img { display: block; max-width: 100%; }
   margin-bottom: 24px;
 }
 
+.admin-connection-body {
+  padding: 24px;
+}
+
+.connection-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid rgba(44, 132, 52, 0.28);
+  background: rgba(236, 252, 232, 0.78);
+}
+
+.connection-summary[hidden] {
+  display: none !important;
+}
+
+.connection-summary-kicker {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.connection-summary-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.connection-summary-meta {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.connection-summary-meta span {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.connection-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .admin-connection-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  padding: 24px;
+}
+
+.admin-connection-grid[hidden] {
+  display: none !important;
 }
 
 .connection-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.document-card {
   padding: 20px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.66);
@@ -156,6 +220,23 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.04em;
   line-height: 0.95;
   text-transform: uppercase;
+}
+
+.connection-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.connection-card-actions-start {
+  justify-content: flex-start;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 24px;
 }
 
 .admin-panel {
@@ -445,8 +526,10 @@ img { display: block; max-width: 100%; }
   }
 
   .admin-header,
+  .connection-summary,
   .admin-asset-card,
   .admin-connection-grid,
+  .documents-grid,
   .translation-grid,
   .lifestyle-grid,
   .collage-edit-grid,
@@ -455,6 +538,7 @@ img { display: block; max-width: 100%; }
   }
 
   .admin-actions,
+  .connection-summary-actions,
   .panel-inline-actions {
     justify-content: flex-start;
   }

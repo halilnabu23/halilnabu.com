@@ -39,31 +39,52 @@
         </div>
       </div>
 
-      <div class="admin-connection-grid">
-        <article class="connection-card">
-          <p class="connection-title">GitHub Pages Publish</p>
-          <label>
-            <span>GitHub Token</span>
-            <input type="password" id="github-token-input" placeholder="github_pat_...">
-          </label>
-          <label class="admin-checkbox">
-            <input type="checkbox" id="remember-github-token-input">
-            <span>Remember token on this device</span>
-          </label>
-          <p class="admin-note">
-            `Save Changes` publishes directly to <strong id="github-repo-label">halilnabu23/halilnabu.com</strong>
-            on branch <strong id="github-branch-label">main</strong>. GitHub Pages will update the site automatically after the commit is pushed.
-          </p>
-        </article>
+      <div class="admin-connection-body">
+        <div class="connection-summary" id="connection-summary" hidden>
+          <div class="connection-summary-copy">
+            <p class="connection-summary-kicker">GitHub Pages Publish</p>
+            <p class="connection-summary-title">Connected</p>
+            <p class="connection-summary-meta">
+              Repo: <strong id="github-repo-label">halilnabu23/halilnabu.com</strong>
+              <span>·</span>
+              Branch: <strong id="github-branch-label">main</strong>
+            </p>
+          </div>
+          <div class="connection-summary-actions">
+            <button class="admin-button admin-button-small" type="button" id="manage-github-connection-button">Change Token</button>
+            <button class="admin-button admin-button-small" type="button" id="disconnect-github-button">Disconnect</button>
+          </div>
+        </div>
 
-        <article class="connection-card">
-          <p class="connection-title">Optional Local Folder Mode</p>
-          <p class="admin-note">
-            Use this only when you want the browser to write files into your local project folder directly.
-            Live publishing does not need this connection.
-          </p>
-          <button class="admin-button admin-button-dark" type="button" id="connect-folder-button">Connect Local Folder</button>
-        </article>
+        <div class="admin-connection-grid" id="connection-settings">
+          <article class="connection-card">
+            <p class="connection-title">GitHub Pages Publish</p>
+            <label>
+              <span>GitHub Token</span>
+              <input type="password" id="github-token-input" placeholder="github_pat_...">
+            </label>
+            <label class="admin-checkbox">
+              <input type="checkbox" id="remember-github-token-input">
+              <span>Remember token on this device</span>
+            </label>
+            <div class="connection-card-actions">
+              <button class="admin-button admin-button-small" type="button" id="close-github-settings-button">Close</button>
+            </div>
+            <p class="admin-note">
+              `Save Changes` publishes directly to <strong>halilnabu23/halilnabu.com</strong>
+              on branch <strong>main</strong>. GitHub Pages will update the site automatically after the commit is pushed.
+            </p>
+          </article>
+
+          <article class="connection-card">
+            <p class="connection-title">Optional Local Folder Mode</p>
+            <p class="admin-note">
+              Use this only when you want the browser to write files into your local project folder directly.
+              Live publishing does not need this connection.
+            </p>
+            <button class="admin-button admin-button-dark" type="button" id="connect-folder-button">Connect Local Folder</button>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -231,6 +252,41 @@
               <button class="admin-button admin-button-small" type="button" id="hero-image-upload-button">Upload / Replace Hero Image</button>
               <input type="file" id="hero-image-file-input" accept="image/*" hidden>
             </div>
+          </div>
+        </section>
+
+        <section class="admin-panel">
+          <div class="admin-panel-header">
+            <div>
+              <p class="panel-kicker">Documents</p>
+              <h2>Lebenslauf & Bewerbung</h2>
+            </div>
+          </div>
+
+          <div class="documents-grid">
+            <article class="document-card">
+              <p class="connection-title">Lebenslauf</p>
+              <label>
+                <span>File Path</span>
+                <input type="text" id="cv-file-path-input" placeholder="assets/projects/Lebenslauf-Khalil-Nabu.pdf">
+              </label>
+              <div class="connection-card-actions connection-card-actions-start">
+                <button class="admin-button admin-button-small" type="button" id="cv-file-upload-button">Upload / Replace File</button>
+                <input type="file" id="cv-file-input" accept=".pdf,.doc,.docx" hidden>
+              </div>
+            </article>
+
+            <article class="document-card">
+              <p class="connection-title">Bewerbung</p>
+              <label>
+                <span>File Path</span>
+                <input type="text" id="application-file-path-input" placeholder="assets/projects/Bewerbung-Khalil-Nabu.pdf">
+              </label>
+              <div class="connection-card-actions connection-card-actions-start">
+                <button class="admin-button admin-button-small" type="button" id="application-file-upload-button">Upload / Replace File</button>
+                <input type="file" id="application-file-input" accept=".pdf,.doc,.docx" hidden>
+              </div>
+            </article>
           </div>
         </section>
 

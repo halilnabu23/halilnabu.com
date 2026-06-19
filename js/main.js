@@ -7,6 +7,12 @@ const filterButtons = [...document.querySelectorAll(".filter-button")];
 const projectGrid = document.querySelector("#project-grid");
 const projectsMoreButton = document.querySelector("#projects-more-button");
 const contactForm = document.querySelector("#contact-form");
+const cvLinks = [
+  ...document.querySelectorAll('[data-i18n="hero.cvCta"], [data-i18n="about.cvCta"], [data-i18n="experience.cvCta"]'),
+];
+const applicationLinks = [
+  ...document.querySelectorAll('[data-i18n="hero.applicationCta"], [data-i18n="about.applicationCta"], [data-i18n="experience.applicationCta"]'),
+];
 const modal = document.querySelector("#project-modal");
 const modalCloseButton = document.querySelector("#project-modal-close");
 const modalCategory = document.querySelector("#project-modal-category");
@@ -32,6 +38,7 @@ const lifestyleCollageImages = [
 let dynamicProjects = [];
 let dynamicSiteContent = {
   heroPortrait: null,
+  documents: null,
   lifestyleProfiles: [],
 };
 
@@ -1673,6 +1680,23 @@ function applyHeroPortrait(language = currentLanguage) {
   heroPortraitImage.alt = alt;
 }
 
+function applyDocumentLinks() {
+  const cvPath = dynamicSiteContent.documents?.cv?.src;
+  const applicationPath = dynamicSiteContent.documents?.application?.src;
+
+  if (cvPath) {
+    cvLinks.forEach((link) => {
+      link.href = cvPath;
+    });
+  }
+
+  if (applicationPath) {
+    applicationLinks.forEach((link) => {
+      link.href = applicationPath;
+    });
+  }
+}
+
 async function loadDynamicSiteData() {
   const [projectsResponse, siteContentResponse] = await Promise.all([
     fetch("data/projects.json", { cache: "no-store" }),
@@ -1691,6 +1715,7 @@ async function loadDynamicSiteData() {
   dynamicProjects = Array.isArray(projectsData.projects) ? projectsData.projects : [];
   dynamicSiteContent = {
     heroPortrait: siteContentData.heroPortrait || null,
+    documents: siteContentData.documents || null,
     lifestyleProfiles: Array.isArray(siteContentData.lifestyleProfiles) ? siteContentData.lifestyleProfiles : [],
   };
 }
@@ -2138,6 +2163,7 @@ function setLanguage(language) {
   areAllProjectsVisible = false;
   applyTranslations(language);
   applyHeroPortrait(language);
+  applyDocumentLinks();
   renderProjects();
   renderLifestyleProfiles();
   updateFilterButtons();
@@ -2235,6 +2261,7 @@ async function initializePortfolio() {
 
   setLanguage(savedLanguage);
   applyHeroPortrait(savedLanguage);
+  applyDocumentLinks();
   document.querySelector("#current-year").textContent = new Date().getFullYear();
 }
 
