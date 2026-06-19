@@ -1347,6 +1347,35 @@
           ]
         }
       }
+    },
+    {
+      "id": "new-project-39",
+      "order": 38,
+      "category": "websites",
+      "image": "assets/projects/new-project-39.png",
+      "link": "",
+      "translations": {
+        "de": {
+          "categoryLabel": "Website",
+          "title": "Neues Projekt",
+          "description": "test",
+          "detail": "test",
+          "imageAlt": "",
+          "tools": [
+            "test"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Website",
+          "title": "New Project",
+          "description": "test",
+          "detail": "test",
+          "imageAlt": "",
+          "tools": [
+            "test"
+          ]
+        }
+      }
     }
   ]
 }
