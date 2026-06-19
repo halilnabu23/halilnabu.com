@@ -19,6 +19,10 @@ const heroImagePreview = document.querySelector("#hero-image-preview");
 const heroImageUploadButton = document.querySelector("#hero-image-upload-button");
 const heroImageFileInput = document.querySelector("#hero-image-file-input");
 const lifestyleAdminList = document.querySelector("#lifestyle-admin-list");
+const githubTokenInput = document.querySelector("#github-token-input");
+const rememberGitHubTokenInput = document.querySelector("#remember-github-token-input");
+const githubRepoLabel = document.querySelector("#github-repo-label");
+const githubBranchLabel = document.querySelector("#github-branch-label");
 
 const projectFields = {
   id: document.querySelector("#project-id-input"),
@@ -46,9 +50,33 @@ const heroFields = {
   altEn: document.querySelector("#hero-alt-en-input"),
 };
 
+const REPO_CONFIG = {
+  owner: "halilnabu23",
+  repo: "halilnabu.com",
+  branch: "main",
+};
+
+const TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token";
+const SESSION_TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token-session";
+const siteRootUrl = new URL(`${document.documentElement.dataset.siteRoot || "."}/`, window.location.href);
+
 const state = {
   projects: [],
-  siteContent: {
+  siteContent: createDefaultSiteContent(),
+  selectedProjectId: null,
+  directoryHandle: null,
+  pendingProjectImages: new Map(),
+  pendingHeroImage: null,
+  pendingLifestyleImages: new Map(),
+  searchQuery: "",
+  github: {
+    token: "",
+    remember: false,
+  },
+};
+
+function createDefaultSiteContent() {
+  return {
     heroPortrait: {
       src: "assets/images/hero-portrait.jpg",
       alt: {
@@ -57,14 +85,8 @@ const state = {
       },
     },
     lifestyleProfiles: [],
-  },
-  selectedProjectId: null,
-  directoryHandle: null,
-  pendingProjectImages: new Map(),
-  pendingHeroImage: null,
-  pendingLifestyleImages: new Map(),
-  searchQuery: "",
-};
+  };
+}
 
 function deepClone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -78,6 +100,15 @@ function setStatus(message, tone = "default") {
   }
 
   adminStatus.dataset.tone = tone;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function slugify(value) {
@@ -109,6 +140,82 @@ function formatTools(tools) {
   return (tools || []).join("\n");
 }
 
+function isAbsoluteUrl(value) {
+  return /^(?:[a-z]+:|\/\/)/i.test(String(value));
+}
+
+function resolveSiteUrl(relativePath) {
+  if (!relativePath) {
+    return "";
+  }
+
+  if (isAbsoluteUrl(relativePath)) {
+    return relativePath;
+  }
+
+  return new URL(relativePath, siteRootUrl).toString();
+}
+
+function createPreviewMarkup(path, alt = "") {
+  if (!path) {
+    return "<span>No image selected</span>";
+  }
+
+  return `<img src="${escapeHtml(resolveSiteUrl(path))}" alt="${escapeHtml(alt)}">`;
+}
+
+function bytesToBase64(bytes) {
+  let binary = "";
+  const chunkSize = 0x8000;
+
+  for (let index = 0; index < bytes.length; index += chunkSize) {
+    const chunk = bytes.subarray(index, index + chunkSize);
+    binary += String.fromCharCode(...chunk);
+  }
+
+  return btoa(binary);
+}
+
+function textToBase64(text) {
+  return bytesToBase64(new TextEncoder().encode(text));
+}
+
+async function fileToBase64(file) {
+  return bytesToBase64(new Uint8Array(await file.arrayBuffer()));
+}
+
+function normalizeSiteContent(siteContent) {
+  const normalized = deepClone(siteContent || createDefaultSiteContent());
+
+  normalized.heroPortrait = normalized.heroPortrait || createDefaultSiteContent().heroPortrait;
+  normalized.heroPortrait.src = normalized.heroPortrait.src || "assets/images/hero-portrait.jpg";
+  normalized.heroPortrait.alt = normalized.heroPortrait.alt || { de: "", en: "" };
+  normalized.heroPortrait.alt.de = normalized.heroPortrait.alt.de || "Portrait von Khalil Nabu";
+  normalized.heroPortrait.alt.en = normalized.heroPortrait.alt.en || "Portrait of Khalil Nabu";
+
+  normalized.lifestyleProfiles = Array.isArray(normalized.lifestyleProfiles)
+    ? normalized.lifestyleProfiles.map((profile) => ({
+      id: profile.id || slugify(profile.label?.en || profile.label?.de || "lifestyle"),
+      label: {
+        de: profile.label?.de || "",
+        en: profile.label?.en || "",
+      },
+      detail: {
+        de: profile.detail?.de || "",
+        en: profile.detail?.en || "",
+      },
+      collage: Array.isArray(profile.collage)
+        ? profile.collage.map((item) => ({
+          image: item.image || "",
+          alt: item.alt || "",
+        }))
+        : [],
+    }))
+    : [];
+
+  return normalized;
+}
+
 function normalizeProjectOrders() {
   state.projects
     .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
@@ -121,12 +228,47 @@ function getSelectedProject() {
   return state.projects.find((project) => project.id === state.selectedProjectId) || null;
 }
 
-function createPreviewMarkup(path, alt = "") {
-  if (!path) {
-    return "<span>No image selected</span>";
+function loadStoredGitHubToken() {
+  let token = "";
+  let remember = false;
+
+  try {
+    token = localStorage.getItem(TOKEN_STORAGE_KEY) || "";
+    remember = Boolean(token);
+    if (!token) {
+      token = sessionStorage.getItem(SESSION_TOKEN_STORAGE_KEY) || "";
+    }
+  } catch {
+    token = "";
+    remember = false;
   }
 
-  return `<img src="${path}" alt="${alt}">`;
+  state.github.token = token;
+  state.github.remember = remember;
+
+  githubTokenInput.value = token;
+  rememberGitHubTokenInput.checked = remember;
+}
+
+function persistGitHubToken() {
+  state.github.token = githubTokenInput.value.trim();
+  state.github.remember = rememberGitHubTokenInput.checked;
+
+  try {
+    if (state.github.token) {
+      sessionStorage.setItem(SESSION_TOKEN_STORAGE_KEY, state.github.token);
+    } else {
+      sessionStorage.removeItem(SESSION_TOKEN_STORAGE_KEY);
+    }
+
+    if (state.github.remember && state.github.token) {
+      localStorage.setItem(TOKEN_STORAGE_KEY, state.github.token);
+    } else {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
+    }
+  } catch {
+    // Ignore storage failures and keep the current in-memory token.
+  }
 }
 
 function renderProjectList() {
@@ -148,10 +290,10 @@ function renderProjectList() {
     });
 
   projectList.innerHTML = projects.map((project) => `
-    <button class="project-list-item ${project.id === state.selectedProjectId ? "is-active" : ""}" type="button" data-project-id="${project.id}">
-      <strong>${project.translations?.de?.title || project.translations?.en?.title || project.id}</strong>
-      <span>${project.id}</span>
-      <small>${project.category} · #${project.order}</small>
+    <button class="project-list-item ${project.id === state.selectedProjectId ? "is-active" : ""}" type="button" data-project-id="${escapeHtml(project.id)}">
+      <strong>${escapeHtml(project.translations?.de?.title || project.translations?.en?.title || project.id)}</strong>
+      <span>${escapeHtml(project.id)}</span>
+      <small>${escapeHtml(project.category)} · #${escapeHtml(project.order)}</small>
     </button>
   `).join("");
 
@@ -360,55 +502,74 @@ function syncHeroSection() {
   );
 }
 
+function ensureCollageItem(profile, index) {
+  if (!Array.isArray(profile.collage)) {
+    profile.collage = [];
+  }
+
+  if (!profile.collage[index]) {
+    profile.collage[index] = {
+      image: "",
+      alt: "",
+    };
+  }
+
+  return profile.collage[index];
+}
+
 function renderLifestyleAdmin() {
   lifestyleAdminList.innerHTML = state.siteContent.lifestyleProfiles.map((profile) => `
-    <article class="lifestyle-card" data-lifestyle-id="${profile.id}">
+    <article class="lifestyle-card" data-lifestyle-id="${escapeHtml(profile.id)}">
       <div class="lifestyle-card-header">
-        <strong>${profile.label.de || profile.id}</strong>
-        <small>${profile.id}</small>
+        <strong>${escapeHtml(profile.label.de || profile.id)}</strong>
+        <small>${escapeHtml(profile.id)}</small>
       </div>
 
       <div class="lifestyle-grid">
         <div>
           <label>
             <span>Label (DE)</span>
-            <input type="text" data-lifestyle-field="label-de" value="${profile.label.de || ""}">
+            <input type="text" data-lifestyle-field="label-de" value="${escapeHtml(profile.label.de || "")}">
           </label>
           <label>
             <span>Detail (DE)</span>
-            <textarea rows="5" data-lifestyle-field="detail-de">${profile.detail.de || ""}</textarea>
+            <textarea rows="5" data-lifestyle-field="detail-de">${escapeHtml(profile.detail.de || "")}</textarea>
           </label>
         </div>
         <div>
           <label>
             <span>Label (EN)</span>
-            <input type="text" data-lifestyle-field="label-en" value="${profile.label.en || ""}">
+            <input type="text" data-lifestyle-field="label-en" value="${escapeHtml(profile.label.en || "")}">
           </label>
           <label>
             <span>Detail (EN)</span>
-            <textarea rows="5" data-lifestyle-field="detail-en">${profile.detail.en || ""}</textarea>
+            <textarea rows="5" data-lifestyle-field="detail-en">${escapeHtml(profile.detail.en || "")}</textarea>
           </label>
         </div>
       </div>
 
       <div class="collage-edit-grid">
-        ${profile.collage.slice(0, 3).map((item, index) => `
-          <div class="collage-slot" data-collage-index="${index}">
-            <div class="collage-slot-preview" id="collage-preview-${profile.id}-${index}">
-              ${createPreviewMarkup(item.image, item.alt || `${profile.id} image ${index + 1}`)}
+        ${[0, 1, 2].map((index) => {
+          const item = ensureCollageItem(profile, index);
+
+          return `
+            <div class="collage-slot" data-collage-index="${index}">
+              <div class="collage-slot-preview" id="collage-preview-${escapeHtml(profile.id)}-${index}">
+                ${createPreviewMarkup(item.image, item.alt || `${profile.id} image ${index + 1}`)}
+              </div>
+              <label>
+                <span>Image Path</span>
+                <input type="text" data-lifestyle-field="image-path" data-collage-index="${index}" value="${escapeHtml(item.image || "")}">
+              </label>
+              <label>
+                <span>Image Alt</span>
+                <input type="text" data-lifestyle-field="image-alt" data-collage-index="${index}" value="${escapeHtml(item.alt || "")}">
+              </label>
+              <button class="admin-button admin-button-small" type="button" data-lifestyle-upload="${index}">Upload Image</button>
+              <input type="file" accept="image/*" hidden data-lifestyle-file="${index}">
             </div>
-            <label>
-              <span>Image Path</span>
-              <input type="text" data-lifestyle-field="image-path" data-collage-index="${index}" value="${item.image || ""}">
-            </label>
-            <label>
-              <span>Image Alt</span>
-              <input type="text" data-lifestyle-field="image-alt" data-collage-index="${index}" value="${item.alt || ""}">
-            </label>
-            <button class="admin-button admin-button-small" type="button" data-lifestyle-upload="${index}">Upload Image</button>
-            <input type="file" accept="image/*" hidden data-lifestyle-file="${index}">
-          </div>
-        `).join("")}
+          `;
+        }).join("")}
       </div>
     </article>
   `).join("");
@@ -429,15 +590,18 @@ function renderLifestyleAdmin() {
       if (fieldType === "detail-de") profile.detail.de = field.value;
       if (fieldType === "detail-en") profile.detail.en = field.value;
       if (fieldType === "image-path" && Number.isInteger(collageIndex)) {
-        profile.collage[collageIndex].image = field.value.trim();
+        ensureCollageItem(profile, collageIndex).image = field.value.trim();
       }
       if (fieldType === "image-alt" && Number.isInteger(collageIndex)) {
-        profile.collage[collageIndex].alt = field.value.trim();
+        ensureCollageItem(profile, collageIndex).alt = field.value.trim();
       }
 
-      const preview = card.querySelector(`#collage-preview-${profile.id}-${collageIndex}`);
-      if (preview && Number.isInteger(collageIndex)) {
-        preview.innerHTML = createPreviewMarkup(profile.collage[collageIndex].image, profile.collage[collageIndex].alt);
+      if (Number.isInteger(collageIndex)) {
+        const preview = card.querySelector(`#collage-preview-${profile.id}-${collageIndex}`);
+        const collageItem = ensureCollageItem(profile, collageIndex);
+        if (preview) {
+          preview.innerHTML = createPreviewMarkup(collageItem.image, collageItem.alt);
+        }
       }
     });
   });
@@ -464,11 +628,12 @@ function renderLifestyleAdmin() {
         return;
       }
 
+      const collageItem = ensureCollageItem(profile, collageIndex);
       const extension = getFileExtension(file.name);
       const imagePath = `assets/images/lifestyle-${slugify(profile.id)}-${collageIndex + 1}${extension}`;
-      profile.collage[collageIndex].image = imagePath;
-      if (!profile.collage[collageIndex].alt) {
-        profile.collage[collageIndex].alt = `${profile.label.en || profile.label.de || profile.id} image ${collageIndex + 1}`;
+      collageItem.image = imagePath;
+      if (!collageItem.alt) {
+        collageItem.alt = `${profile.label.en || profile.label.de || profile.id} image ${collageIndex + 1}`;
       }
 
       state.pendingLifestyleImages.set(`${profile.id}:${collageIndex}`, file);
@@ -476,9 +641,9 @@ function renderLifestyleAdmin() {
       const pathInput = card.querySelector(`[data-lifestyle-field="image-path"][data-collage-index="${collageIndex}"]`);
       const altInput = card.querySelector(`[data-lifestyle-field="image-alt"][data-collage-index="${collageIndex}"]`);
       if (pathInput) pathInput.value = imagePath;
-      if (altInput) altInput.value = profile.collage[collageIndex].alt;
-      if (preview) preview.innerHTML = createPreviewMarkup(URL.createObjectURL(file), profile.collage[collageIndex].alt);
-      setStatus(`Selected a new image for ${profile.label.de || profile.id}. Save changes to copy it into the project.`, "success");
+      if (altInput) altInput.value = collageItem.alt;
+      if (preview) preview.innerHTML = createPreviewMarkup(URL.createObjectURL(file), collageItem.alt);
+      setStatus(`Selected a new image for ${profile.label.de || profile.id}. Save changes to publish it.`, "success");
     });
   });
 }
@@ -491,10 +656,16 @@ function renderAdmin() {
   renderLifestyleAdmin();
 }
 
+function syncLoadedData(projectsData, siteContentData) {
+  state.projects = deepClone(Array.isArray(projectsData.projects) ? projectsData.projects : []);
+  state.siteContent = normalizeSiteContent(siteContentData);
+  state.selectedProjectId = state.projects[0]?.id || null;
+}
+
 async function loadPublishedData() {
   const [projectsResponse, siteResponse] = await Promise.all([
-    fetch("data/projects.json", { cache: "no-store" }),
-    fetch("data/site-content.json", { cache: "no-store" }),
+    fetch(resolveSiteUrl("data/projects.json"), { cache: "no-store" }),
+    fetch(resolveSiteUrl("data/site-content.json"), { cache: "no-store" }),
   ]);
 
   if (!projectsResponse.ok || !siteResponse.ok) {
@@ -506,9 +677,7 @@ async function loadPublishedData() {
     siteResponse.json(),
   ]);
 
-  state.projects = deepClone(projectsData.projects || []);
-  state.siteContent = deepClone(siteContentData);
-  state.selectedProjectId = state.projects[0]?.id || null;
+  syncLoadedData(projectsData, siteContentData);
 }
 
 async function readJsonFromDirectory(relativePath) {
@@ -553,6 +722,17 @@ async function writeBinaryFile(relativePath, file) {
   await writable.close();
 }
 
+function buildProjectsPayload() {
+  normalizeProjectOrders();
+  return {
+    projects: [...state.projects].sort((a, b) => a.order - b.order),
+  };
+}
+
+function buildSiteContentPayload() {
+  return normalizeSiteContent(state.siteContent);
+}
+
 async function connectProjectFolder() {
   if (!window.showDirectoryPicker) {
     setStatus("Your browser does not support direct folder access. Use the latest Edge or Chrome on your computer.", "error");
@@ -566,11 +746,9 @@ async function connectProjectFolder() {
       readJsonFromDirectory("data/site-content.json"),
     ]);
 
-    state.projects = deepClone(projectsData.projects || []);
-    state.siteContent = deepClone(siteContentData);
-    state.selectedProjectId = state.projects[0]?.id || null;
+    syncLoadedData(projectsData, siteContentData);
     renderAdmin();
-    setStatus("Project folder connected. You can now save directly into the local portfolio files.", "success");
+    setStatus("Local project folder connected. You can now write files directly into this workspace from the browser.", "success");
   } catch (error) {
     console.error(error);
     setStatus("Folder connection was cancelled or the selected folder does not contain the expected data files.", "warning");
@@ -584,9 +762,7 @@ async function reloadData() {
         readJsonFromDirectory("data/projects.json"),
         readJsonFromDirectory("data/site-content.json"),
       ]);
-      state.projects = deepClone(projectsData.projects || []);
-      state.siteContent = deepClone(siteContentData);
-      state.selectedProjectId = state.projects[0]?.id || null;
+      syncLoadedData(projectsData, siteContentData);
       renderAdmin();
       setStatus("Reloaded data from the connected local folder.", "success");
       return;
@@ -594,71 +770,242 @@ async function reloadData() {
 
     await loadPublishedData();
     renderAdmin();
-    setStatus("Reloaded data from the current static site.", "success");
+    setStatus("Reloaded data from the live website JSON files.", "success");
   } catch (error) {
     console.error(error);
     setStatus("Could not reload data.", "error");
   }
 }
 
+async function saveToLocalFolder() {
+  if (!state.directoryHandle) {
+    throw new Error("Connect your local project folder first.");
+  }
+
+  if (state.pendingHeroImage) {
+    const extension = getFileExtension(state.pendingHeroImage.name);
+    const heroPath = `assets/images/hero-portrait${extension}`;
+    await writeBinaryFile(heroPath, state.pendingHeroImage);
+    state.siteContent.heroPortrait.src = heroPath;
+    state.pendingHeroImage = null;
+  }
+
+  for (const [projectId, file] of state.pendingProjectImages.entries()) {
+    const project = state.projects.find((item) => item.id === projectId);
+    if (!project) {
+      continue;
+    }
+
+    const extension = getFileExtension(file.name);
+    const filePath = `assets/projects/${slugify(project.id)}${extension}`;
+    await writeBinaryFile(filePath, file);
+    project.image = filePath;
+  }
+  state.pendingProjectImages.clear();
+
+  for (const [key, file] of state.pendingLifestyleImages.entries()) {
+    const [profileId, collageIndex] = key.split(":");
+    const profile = state.siteContent.lifestyleProfiles.find((item) => item.id === profileId);
+    const index = Number(collageIndex);
+    if (!profile || !Number.isInteger(index)) {
+      continue;
+    }
+
+    const extension = getFileExtension(file.name);
+    const filePath = `assets/images/lifestyle-${slugify(profile.id)}-${index + 1}${extension}`;
+    await writeBinaryFile(filePath, file);
+    ensureCollageItem(profile, index).image = filePath;
+  }
+  state.pendingLifestyleImages.clear();
+
+  await writeTextFile("data/projects.json", `${JSON.stringify(buildProjectsPayload(), null, 2)}\n`);
+  await writeTextFile("data/site-content.json", `${JSON.stringify(buildSiteContentPayload(), null, 2)}\n`);
+}
+
+async function githubRequest(path, options = {}) {
+  persistGitHubToken();
+
+  if (!state.github.token) {
+    throw new Error("Add a GitHub token before publishing to the live website.");
+  }
+
+  const response = await fetch(`https://api.github.com${path}`, {
+    method: options.method || "GET",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${state.github.token}`,
+      "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...options.headers,
+    },
+    body: options.body,
+  });
+
+  if (!response.ok) {
+    let message = `GitHub request failed (${response.status}).`;
+    try {
+      const payload = await response.json();
+      if (payload.message) {
+        message = `GitHub request failed: ${payload.message}`;
+      }
+    } catch {
+      // Ignore JSON parsing issues and keep the generic message.
+    }
+    throw new Error(message);
+  }
+
+  if (response.status === 204) {
+    return null;
+  }
+
+  return response.json();
+}
+
+async function createGitHubBlobFromText(content) {
+  const result = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/blobs`, {
+    method: "POST",
+    body: JSON.stringify({
+      content: textToBase64(content),
+      encoding: "base64",
+    }),
+  });
+
+  return result.sha;
+}
+
+async function createGitHubBlobFromFile(file) {
+  const result = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/blobs`, {
+    method: "POST",
+    body: JSON.stringify({
+      content: await fileToBase64(file),
+      encoding: "base64",
+    }),
+  });
+
+  return result.sha;
+}
+
+async function publishToGitHub() {
+  const refData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/ref/heads/${REPO_CONFIG.branch}`);
+  const parentCommitSha = refData.object.sha;
+  const commitData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits/${parentCommitSha}`);
+  const treeEntries = [];
+
+  if (state.pendingHeroImage) {
+    const extension = getFileExtension(state.pendingHeroImage.name);
+    const heroPath = `assets/images/hero-portrait${extension}`;
+    treeEntries.push({
+      path: heroPath,
+      mode: "100644",
+      type: "blob",
+      sha: await createGitHubBlobFromFile(state.pendingHeroImage),
+    });
+    state.siteContent.heroPortrait.src = heroPath;
+    state.pendingHeroImage = null;
+  }
+
+  for (const [projectId, file] of state.pendingProjectImages.entries()) {
+    const project = state.projects.find((item) => item.id === projectId);
+    if (!project) {
+      continue;
+    }
+
+    const extension = getFileExtension(file.name);
+    const filePath = `assets/projects/${slugify(project.id)}${extension}`;
+    treeEntries.push({
+      path: filePath,
+      mode: "100644",
+      type: "blob",
+      sha: await createGitHubBlobFromFile(file),
+    });
+    project.image = filePath;
+  }
+  state.pendingProjectImages.clear();
+
+  for (const [key, file] of state.pendingLifestyleImages.entries()) {
+    const [profileId, collageIndex] = key.split(":");
+    const profile = state.siteContent.lifestyleProfiles.find((item) => item.id === profileId);
+    const index = Number(collageIndex);
+    if (!profile || !Number.isInteger(index)) {
+      continue;
+    }
+
+    const extension = getFileExtension(file.name);
+    const filePath = `assets/images/lifestyle-${slugify(profile.id)}-${index + 1}${extension}`;
+    treeEntries.push({
+      path: filePath,
+      mode: "100644",
+      type: "blob",
+      sha: await createGitHubBlobFromFile(file),
+    });
+    ensureCollageItem(profile, index).image = filePath;
+  }
+  state.pendingLifestyleImages.clear();
+
+  treeEntries.push({
+    path: "data/projects.json",
+    mode: "100644",
+    type: "blob",
+    sha: await createGitHubBlobFromText(`${JSON.stringify(buildProjectsPayload(), null, 2)}\n`),
+  });
+  treeEntries.push({
+    path: "data/site-content.json",
+    mode: "100644",
+    type: "blob",
+    sha: await createGitHubBlobFromText(`${JSON.stringify(buildSiteContentPayload(), null, 2)}\n`),
+  });
+
+  const treeData = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/trees`, {
+    method: "POST",
+    body: JSON.stringify({
+      base_tree: commitData.tree.sha,
+      tree: treeEntries,
+    }),
+  });
+
+  const commitMessage = `Update portfolio content via /admin (${new Date().toISOString()})`;
+  const newCommit = await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/commits`, {
+    method: "POST",
+    body: JSON.stringify({
+      message: commitMessage,
+      tree: treeData.sha,
+      parents: [parentCommitSha],
+    }),
+  });
+
+  await githubRequest(`/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.repo}/git/refs/heads/${REPO_CONFIG.branch}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      sha: newCommit.sha,
+      force: false,
+    }),
+  });
+}
+
 async function saveAllChanges() {
   syncSelectedProjectFromForm();
   syncHeroSection();
-
-  if (!state.directoryHandle) {
-    setStatus("Connect your local project folder first. Saving directly into files only works after folder access is granted.", "error");
-    return;
-  }
+  persistGitHubToken();
 
   try {
-    if (state.pendingHeroImage) {
-      const extension = getFileExtension(state.pendingHeroImage.name);
-      const heroPath = `assets/images/hero-portrait${extension}`;
-      await writeBinaryFile(heroPath, state.pendingHeroImage);
-      state.siteContent.heroPortrait.src = heroPath;
-      state.pendingHeroImage = null;
+    if (state.github.token) {
+      await publishToGitHub();
+      renderAdmin();
+      setStatus("Saved to GitHub successfully. GitHub Pages will publish the updated site automatically after the new commit is processed.", "success");
+      return;
     }
 
-    for (const [projectId, file] of state.pendingProjectImages.entries()) {
-      const project = state.projects.find((item) => item.id === projectId);
-      if (!project) {
-        continue;
-      }
-
-      const extension = getFileExtension(file.name);
-      const filePath = `assets/projects/${slugify(project.id)}${extension}`;
-      await writeBinaryFile(filePath, file);
-      project.image = filePath;
+    if (state.directoryHandle) {
+      await saveToLocalFolder();
+      renderAdmin();
+      setStatus("Saved into the connected local project folder successfully.", "success");
+      return;
     }
-    state.pendingProjectImages.clear();
 
-    for (const [key, file] of state.pendingLifestyleImages.entries()) {
-      const [profileId, collageIndex] = key.split(":");
-      const profile = state.siteContent.lifestyleProfiles.find((item) => item.id === profileId);
-      const index = Number(collageIndex);
-      if (!profile || !Number.isInteger(index)) {
-        continue;
-      }
-
-      const extension = getFileExtension(file.name);
-      const filePath = `assets/images/lifestyle-${slugify(profile.id)}-${index + 1}${extension}`;
-      await writeBinaryFile(filePath, file);
-      profile.collage[index].image = filePath;
-    }
-    state.pendingLifestyleImages.clear();
-
-    normalizeProjectOrders();
-    const projectsPayload = { projects: [...state.projects].sort((a, b) => a.order - b.order) };
-    await writeTextFile("data/projects.json", `${JSON.stringify(projectsPayload, null, 2)}\n`);
-    await writeTextFile("data/site-content.json", `${JSON.stringify(state.siteContent, null, 2)}\n`);
-
-    fillProjectForm(getSelectedProject());
-    fillHeroSection();
-    renderLifestyleAdmin();
-    setStatus("Saved projects.json, site-content.json and any newly uploaded images into your local project folder.", "success");
+    setStatus("Add a GitHub token for live publishing or connect the local project folder for local file saving.", "error");
   } catch (error) {
     console.error(error);
-    setStatus("Saving failed. Make sure you selected the real project folder and that the browser still has access to it.", "error");
+    setStatus(error.message || "Saving failed.", "error");
   }
 }
 
@@ -668,8 +1015,8 @@ function downloadBackupJson() {
 
   const backupPayload = {
     generatedAt: new Date().toISOString(),
-    projects: [...state.projects].sort((a, b) => a.order - b.order),
-    siteContent: state.siteContent,
+    projects: buildProjectsPayload().projects,
+    siteContent: buildSiteContentPayload(),
   };
 
   const blob = new Blob([JSON.stringify(backupPayload, null, 2)], { type: "application/json" });
@@ -697,6 +1044,9 @@ moveProjectUpButton.addEventListener("click", () => moveSelectedProject(-1));
 moveProjectDownButton.addEventListener("click", () => moveSelectedProject(1));
 removeProjectButton.addEventListener("click", removeSelectedProject);
 
+githubTokenInput.addEventListener("input", persistGitHubToken);
+rememberGitHubTokenInput.addEventListener("change", persistGitHubToken);
+
 projectImageUploadButton.addEventListener("click", () => projectImageFileInput.click());
 projectImageFileInput.addEventListener("change", () => {
   const project = getSelectedProject();
@@ -711,7 +1061,7 @@ projectImageFileInput.addEventListener("change", () => {
   projectFields.image.value = imagePath;
   state.pendingProjectImages.set(project.id, file);
   projectImagePreview.innerHTML = createPreviewMarkup(URL.createObjectURL(file), project.translations.de.imageAlt || project.id);
-  setStatus("Cover image selected. Save changes to copy it into assets/projects.", "success");
+  setStatus("Cover image selected. Save changes to publish it to the site.", "success");
 });
 
 heroFields.path.addEventListener("input", syncHeroSection);
@@ -731,14 +1081,23 @@ heroImageFileInput.addEventListener("change", () => {
   heroFields.path.value = imagePath;
   state.pendingHeroImage = file;
   heroImagePreview.innerHTML = createPreviewMarkup(URL.createObjectURL(file), state.siteContent.heroPortrait.alt.de || "Hero portrait");
-  setStatus("Hero image selected. Save changes to copy it into assets/images.", "success");
+  setStatus("Hero image selected. Save changes to publish it to the site.", "success");
 });
 
 async function initializeAdmin() {
+  githubRepoLabel.textContent = `${REPO_CONFIG.owner}/${REPO_CONFIG.repo}`;
+  githubBranchLabel.textContent = REPO_CONFIG.branch;
+  loadStoredGitHubToken();
+
   try {
     await loadPublishedData();
     renderAdmin();
-    setStatus("Published data loaded. Connect the local project folder when you want to save directly into your files.", "success");
+    if (state.github.token) {
+      setStatus("Live website data loaded. Your GitHub token is ready, so Save Changes will publish directly to the site.", "success");
+      return;
+    }
+
+    setStatus("Live website data loaded. Add a GitHub token for direct publishing, or connect the local project folder if you want local file writes instead.", "success");
   } catch (error) {
     console.error(error);
     setStatus("Could not load the current JSON files. Make sure data/projects.json and data/site-content.json exist.", "error");

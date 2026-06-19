@@ -22,11 +22,18 @@ const imageLightboxCloseButton = document.querySelector("#image-lightbox-close")
 const lifestyleList = document.querySelector("#lifestyle-list");
 const lifestyleDetailLabel = document.querySelector("#lifestyle-detail-label");
 const lifestyleDetailCopy = document.querySelector("#lifestyle-detail-copy");
+const heroPortraitImage = document.querySelector(".hero-portrait img");
 const lifestyleCollageImages = [
   document.querySelector("#lifestyle-collage-image-1"),
   document.querySelector("#lifestyle-collage-image-2"),
   document.querySelector("#lifestyle-collage-image-3"),
 ];
+
+let dynamicProjects = [];
+let dynamicSiteContent = {
+  heroPortrait: null,
+  lifestyleProfiles: [],
+};
 
 const portfolioContent = {
   de: {
@@ -1577,7 +1584,35 @@ function getText(language, key) {
   return key.split(".").reduce((value, segment) => value && value[segment], portfolioContent[language]);
 }
 
+function mapProjectForLanguage(project, language) {
+  const translation = project.translations?.[language]
+    || project.translations?.de
+    || project.translations?.en
+    || {};
+
+  return {
+    id: project.id,
+    order: Number(project.order) || 0,
+    category: project.category || "websites",
+    categoryLabel: translation.categoryLabel || "",
+    title: translation.title || project.id,
+    description: translation.description || "",
+    detail: translation.detail || "",
+    tools: Array.isArray(translation.tools) ? translation.tools : [],
+    image: project.image || "",
+    imageAlt: translation.imageAlt || "",
+    link: project.link || "",
+  };
+}
+
 function getProjects(language) {
+  if (dynamicProjects.length) {
+    return [...dynamicProjects]
+      .filter((project) => !HIDDEN_PROJECT_IDS.has(project.id))
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
+      .map((project) => mapProjectForLanguage(project, language));
+  }
+
   return portfolioContent[language].projects.items
     .filter((project) => !HIDDEN_PROJECT_IDS.has(project.id))
     .sort((a, b) => {
@@ -1595,6 +1630,15 @@ function getProjects(language) {
 }
 
 function getLifestyleProfiles(language) {
+  if (dynamicSiteContent.lifestyleProfiles?.length) {
+    return dynamicSiteContent.lifestyleProfiles.map((profile) => ({
+      id: profile.id,
+      label: profile.label?.[language] || profile.label?.de || profile.label?.en || profile.id,
+      detail: profile.detail?.[language] || profile.detail?.de || profile.detail?.en || "",
+      collage: Array.isArray(profile.collage) ? profile.collage.slice(0, 3) : [],
+    }));
+  }
+
   return lifestyleProfiles[language] || lifestyleProfiles.de;
 }
 
@@ -1605,6 +1649,50 @@ function escapeSvgText(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function applyHeroPortrait(language = currentLanguage) {
+  if (!heroPortraitImage || !dynamicSiteContent.heroPortrait?.src) {
+    return;
+  }
+
+  heroPortraitImage.src = dynamicSiteContent.heroPortrait.src;
+  const alt = dynamicSiteContent.heroPortrait.alt?.[language]
+    || dynamicSiteContent.heroPortrait.alt?.de
+    || dynamicSiteContent.heroPortrait.alt?.en
+    || heroPortraitImage.alt;
+  heroPortraitImage.alt = alt;
+}
+
+async function loadDynamicSiteData() {
+  const [projectsResponse, siteContentResponse] = await Promise.all([
+    fetch("data/projects.json", { cache: "no-store" }),
+    fetch("data/site-content.json", { cache: "no-store" }),
+  ]);
+
+  if (!projectsResponse.ok || !siteContentResponse.ok) {
+    throw new Error("Could not load portfolio JSON data.");
+  }
+
+  const [projectsData, siteContentData] = await Promise.all([
+    projectsResponse.json(),
+    siteContentResponse.json(),
+  ]);
+
+  dynamicProjects = Array.isArray(projectsData.projects) ? projectsData.projects : [];
+  dynamicSiteContent = {
+    heroPortrait: siteContentData.heroPortrait || null,
+    lifestyleProfiles: Array.isArray(siteContentData.lifestyleProfiles) ? siteContentData.lifestyleProfiles : [],
+  };
 }
 
 function splitTitleLines(value, maxLineLength = 16, maxLines = 3) {
@@ -1802,19 +1890,25 @@ document.querySelectorAll("main section[id]").forEach((section) => sectionObserv
 
 function buildProjectCard(project) {
   const preview = getProjectPreview(project);
+  const safeCategory = escapeHtml(project.categoryLabel);
+  const safeTitle = escapeHtml(project.title);
+  const safeDescription = escapeHtml(project.description);
+  const safeImageSrc = escapeHtml(preview.src);
+  const safeImageAlt = escapeHtml(preview.alt);
+  const safeProjectId = escapeHtml(project.id);
 
   return `
-    <article class="project-card reveal" data-category="${project.category}">
+    <article class="project-card reveal" data-category="${escapeHtml(project.category)}">
       <div class="project-image ${project.image ? "" : "project-image--generated"}">
-        <img src="${preview.src}" alt="${preview.alt}" loading="lazy">
-        <span class="project-image-badge">${project.categoryLabel}</span>
+        <img src="${safeImageSrc}" alt="${safeImageAlt}" loading="lazy">
+        <span class="project-image-badge">${safeCategory}</span>
       </div>
       <div class="project-card-body">
-        <p class="project-category">${project.categoryLabel}</p>
-        <h3>${project.title}</h3>
-        <p class="project-description">${project.description}</p>
-        <div class="project-tools">${project.tools.map((tool) => `<span>${tool}</span>`).join("")}</div>
-        <button class="button button-outline button-small project-open" type="button" data-project-id="${project.id}">
+        <p class="project-category">${safeCategory}</p>
+        <h3>${safeTitle}</h3>
+        <p class="project-description">${safeDescription}</p>
+        <div class="project-tools">${project.tools.map((tool) => `<span>${escapeHtml(tool)}</span>`).join("")}</div>
+        <button class="button button-outline button-small project-open" type="button" data-project-id="${safeProjectId}">
           ${getText(currentLanguage, "projects.viewMore")}
         </button>
       </div>
@@ -1931,17 +2025,17 @@ function openProjectModal(projectId) {
   modalTitle.textContent = project.title;
   modalDescription.textContent = project.description;
   modalDetail.textContent = project.detail;
-  modalTools.innerHTML = project.tools.map((tool) => `<li>${tool}</li>`).join("");
+  modalTools.innerHTML = project.tools.map((tool) => `<li>${escapeHtml(tool)}</li>`).join("");
   modalVisual.className = `project-modal-visual ${project.image ? "" : "project-modal-visual--generated"}`;
   modalVisual.innerHTML = `
     <div class="project-modal-stage">
       <div class="project-modal-browser">
         <div class="project-modal-browser-bar"><span></span><span></span><span></span></div>
-        <button class="project-modal-image-button" type="button" data-project-image="${preview.src}" data-project-image-alt="${preview.alt}">
+        <button class="project-modal-image-button" type="button" data-project-image="${escapeHtml(preview.src)}" data-project-image-alt="${escapeHtml(preview.alt)}">
           <div class="project-modal-image-frame">
-            <img src="${preview.src}" alt="${preview.alt}">
+            <img src="${escapeHtml(preview.src)}" alt="${escapeHtml(preview.alt)}">
           </div>
-          <span class="project-modal-visual-badge">${project.categoryLabel}</span>
+          <span class="project-modal-visual-badge">${escapeHtml(project.categoryLabel)}</span>
           <span class="project-modal-zoom-hint">${getText(currentLanguage, "projects.zoomHint")}</span>
         </button>
       </div>
@@ -2043,6 +2137,7 @@ function setLanguage(language) {
   currentLanguage = language;
   areAllProjectsVisible = false;
   applyTranslations(language);
+  applyHeroPortrait(language);
   renderProjects();
   renderLifestyleProfiles();
   updateFilterButtons();
@@ -2131,5 +2226,16 @@ try {
   savedLanguage = "de";
 }
 
-setLanguage(savedLanguage);
-document.querySelector("#current-year").textContent = new Date().getFullYear();
+async function initializePortfolio() {
+  try {
+    await loadDynamicSiteData();
+  } catch (error) {
+    console.error(error);
+  }
+
+  setLanguage(savedLanguage);
+  applyHeroPortrait(savedLanguage);
+  document.querySelector("#current-year").textContent = new Date().getFullYear();
+}
+
+initializePortfolio();
