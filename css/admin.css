@@ -139,6 +139,53 @@ img { display: block; max-width: 100%; }
   padding: 24px;
 }
 
+.quick-documents-card {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.quick-documents-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.quick-documents-header .admin-note {
+  margin: 8px 0 0;
+}
+
+.quick-documents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.quick-document-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: rgba(249, 248, 241, 0.82);
+}
+
+.quick-document-item strong {
+  display: block;
+  font-size: 16px;
+}
+
+.quick-document-path {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  word-break: break-word;
+}
+
 .connection-summary {
   display: flex;
   justify-content: space-between;
@@ -528,6 +575,7 @@ img { display: block; max-width: 100%; }
   .admin-header,
   .connection-summary,
   .admin-asset-card,
+  .quick-documents-grid,
   .admin-connection-grid,
   .documents-grid,
   .translation-grid,
@@ -541,5 +589,10 @@ img { display: block; max-width: 100%; }
   .connection-summary-actions,
   .panel-inline-actions {
     justify-content: flex-start;
+  }
+
+  .quick-document-item {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

@@ -20,10 +20,14 @@ const heroImageUploadButton = document.querySelector("#hero-image-upload-button"
 const heroImageFileInput = document.querySelector("#hero-image-file-input");
 const cvFilePathInput = document.querySelector("#cv-file-path-input");
 const cvFileUploadButton = document.querySelector("#cv-file-upload-button");
+const cvFileUploadButtonTop = document.querySelector("#cv-file-upload-button-top");
 const cvFileInput = document.querySelector("#cv-file-input");
+const cvFileQuickPath = document.querySelector("#cv-file-quick-path");
 const applicationFilePathInput = document.querySelector("#application-file-path-input");
 const applicationFileUploadButton = document.querySelector("#application-file-upload-button");
+const applicationFileUploadButtonTop = document.querySelector("#application-file-upload-button-top");
 const applicationFileInput = document.querySelector("#application-file-input");
+const applicationFileQuickPath = document.querySelector("#application-file-quick-path");
 const lifestyleAdminList = document.querySelector("#lifestyle-admin-list");
 const githubTokenInput = document.querySelector("#github-token-input");
 const rememberGitHubTokenInput = document.querySelector("#remember-github-token-input");
@@ -591,13 +595,25 @@ function syncHeroSection() {
 }
 
 function fillDocumentSection() {
-  cvFilePathInput.value = state.siteContent.documents?.cv?.src || "";
-  applicationFilePathInput.value = state.siteContent.documents?.application?.src || "";
+  const cvPath = state.siteContent.documents?.cv?.src || "";
+  const applicationPath = state.siteContent.documents?.application?.src || "";
+
+  cvFilePathInput.value = cvPath;
+  applicationFilePathInput.value = applicationPath;
+
+  if (cvFileQuickPath) {
+    cvFileQuickPath.textContent = cvPath || "No file selected";
+  }
+
+  if (applicationFileQuickPath) {
+    applicationFileQuickPath.textContent = applicationPath || "No file selected";
+  }
 }
 
 function syncDocumentSection() {
   state.siteContent.documents.cv.src = cvFilePathInput.value.trim();
   state.siteContent.documents.application.src = applicationFilePathInput.value.trim();
+  fillDocumentSection();
 }
 
 function ensureCollageItem(profile, index) {
@@ -1254,6 +1270,7 @@ heroImageFileInput.addEventListener("change", () => {
 });
 
 cvFileUploadButton.addEventListener("click", () => cvFileInput.click());
+cvFileUploadButtonTop?.addEventListener("click", () => cvFileInput.click());
 cvFileInput.addEventListener("change", () => {
   const file = cvFileInput.files?.[0];
   if (!file) {
@@ -1269,6 +1286,7 @@ cvFileInput.addEventListener("change", () => {
 });
 
 applicationFileUploadButton.addEventListener("click", () => applicationFileInput.click());
+applicationFileUploadButtonTop?.addEventListener("click", () => applicationFileInput.click());
 applicationFileInput.addEventListener("change", () => {
   const file = applicationFileInput.files?.[0];
   if (!file) {
