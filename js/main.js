@@ -1680,19 +1680,54 @@ function applyHeroPortrait(language = currentLanguage) {
   heroPortraitImage.alt = alt;
 }
 
+function buildVersionedAssetUrl(path, version) {
+  if (!path) {
+    return "";
+  }
+
+  if (!version) {
+    return path;
+  }
+
+  const url = new URL(path, window.location.href);
+  url.searchParams.set("v", version);
+  return url.toString();
+}
+
+function applyDownloadLinkAttributes(link, path, version) {
+  const url = buildVersionedAssetUrl(path, version);
+  if (!url) {
+    return;
+  }
+
+  link.href = url;
+
+  try {
+    const fileUrl = new URL(path, window.location.href);
+    const fileName = fileUrl.pathname.split("/").pop();
+    if (fileName) {
+      link.setAttribute("download", fileName);
+    }
+  } catch {
+    // Ignore invalid file names and keep the existing download behavior.
+  }
+}
+
 function applyDocumentLinks() {
   const cvPath = dynamicSiteContent.documents?.cv?.src;
+  const cvVersion = dynamicSiteContent.documents?.cv?.updatedAt;
   const applicationPath = dynamicSiteContent.documents?.application?.src;
+  const applicationVersion = dynamicSiteContent.documents?.application?.updatedAt;
 
   if (cvPath) {
     cvLinks.forEach((link) => {
-      link.href = cvPath;
+      applyDownloadLinkAttributes(link, cvPath, cvVersion);
     });
   }
 
   if (applicationPath) {
     applicationLinks.forEach((link) => {
-      link.href = applicationPath;
+      applyDownloadLinkAttributes(link, applicationPath, applicationVersion);
     });
   }
 }

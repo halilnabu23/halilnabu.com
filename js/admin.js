@@ -108,9 +108,11 @@ function createDefaultSiteContent() {
     documents: {
       cv: {
         src: "assets/projects/Lebenslauf-Khalil-Nabu.pdf",
+        updatedAt: "",
       },
       application: {
         src: "assets/projects/Bewerbung-Khalil-Nabu.pdf",
+        updatedAt: "",
       },
     },
     lifestyleProfiles: [],
@@ -228,10 +230,12 @@ function normalizeSiteContent(siteContent) {
   normalized.heroPortrait.alt.de = normalized.heroPortrait.alt.de || "Portrait von Khalil Nabu";
   normalized.heroPortrait.alt.en = normalized.heroPortrait.alt.en || "Portrait of Khalil Nabu";
   normalized.documents = normalized.documents || createDefaultSiteContent().documents;
-  normalized.documents.cv = normalized.documents.cv || { src: "assets/projects/Lebenslauf-Khalil-Nabu.pdf" };
-  normalized.documents.application = normalized.documents.application || { src: "assets/projects/Bewerbung-Khalil-Nabu.pdf" };
+  normalized.documents.cv = normalized.documents.cv || { src: "assets/projects/Lebenslauf-Khalil-Nabu.pdf", updatedAt: "" };
+  normalized.documents.application = normalized.documents.application || { src: "assets/projects/Bewerbung-Khalil-Nabu.pdf", updatedAt: "" };
   normalized.documents.cv.src = normalized.documents.cv.src || "assets/projects/Lebenslauf-Khalil-Nabu.pdf";
   normalized.documents.application.src = normalized.documents.application.src || "assets/projects/Bewerbung-Khalil-Nabu.pdf";
+  normalized.documents.cv.updatedAt = normalized.documents.cv.updatedAt || "";
+  normalized.documents.application.updatedAt = normalized.documents.application.updatedAt || "";
 
   normalized.lifestyleProfiles = Array.isArray(normalized.lifestyleProfiles)
     ? normalized.lifestyleProfiles.map((profile) => ({
@@ -1280,8 +1284,10 @@ cvFileInput.addEventListener("change", () => {
   const extension = getFileExtension(file.name);
   const filePath = `assets/projects/Lebenslauf-Khalil-Nabu${extension}`;
   state.siteContent.documents.cv.src = filePath;
+  state.siteContent.documents.cv.updatedAt = new Date().toISOString();
   cvFilePathInput.value = filePath;
   state.pendingDocumentFiles.cv = file;
+  fillDocumentSection();
   setStatus("Lebenslauf file selected. Save changes to publish it to the site.", "success");
 });
 
@@ -1296,8 +1302,10 @@ applicationFileInput.addEventListener("change", () => {
   const extension = getFileExtension(file.name);
   const filePath = `assets/projects/Bewerbung-Khalil-Nabu${extension}`;
   state.siteContent.documents.application.src = filePath;
+  state.siteContent.documents.application.updatedAt = new Date().toISOString();
   applicationFilePathInput.value = filePath;
   state.pendingDocumentFiles.application = file;
+  fillDocumentSection();
   setStatus("Bewerbung file selected. Save changes to publish it to the site.", "success");
 });
 

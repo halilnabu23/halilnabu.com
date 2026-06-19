@@ -8,10 +8,12 @@
   },
   "documents": {
     "cv": {
-      "src": "assets/projects/Lebenslauf-Khalil-Nabu.pdf"
+      "src": "assets/projects/Lebenslauf-Khalil-Nabu.pdf",
+      "updatedAt": ""
     },
     "application": {
-      "src": "assets/projects/Bewerbung-Khalil-Nabu.pdf"
+      "src": "assets/projects/Bewerbung-Khalil-Nabu.pdf",
+      "updatedAt": ""
     }
   },
   "lifestyleProfiles": [
