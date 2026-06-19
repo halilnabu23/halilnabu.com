@@ -87,6 +87,7 @@ img { display: block; max-width: 100%; }
 .fact { min-height: 180px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
 .fact:last-child { border-right: 0; }
 .fact strong { font-family: var(--display); font-size: clamp(44px, 5vw, 72px); letter-spacing: -.06em; line-height: 1; }
+.facts-grid .fact:nth-child(3) strong { font-size: clamp(36px, 4vw, 48px); line-height: .98; letter-spacing: -.05em; }
 .fact span { max-width: 180px; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.35; text-transform: uppercase; letter-spacing: .07em; }
 
 .skills { background: var(--white); }
