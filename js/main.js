@@ -92,7 +92,7 @@ const portfolioContent = {
       applicationCta: "Bewerbung herunterladen",
       fact1: "Jahre Berufserfahrung",
       fact2: "Instagram Community",
-      fact3: "Bilingual für internationale Kommunikation",
+      fact3: "Deutsch, Englisch, Russisch & Ukrainisch",
       fact4: "Design, Code und Content",
     },
     skills: {
@@ -655,7 +655,7 @@ const portfolioContent = {
       block1Label: "Berufserfahrung",
       block1Title: "Webdesigner & Frontend Entwickler",
       block1Org: "breadcrumb mediasolutions GmbH",
-      block1Date: "09.2023 - heute",
+      block1Date: "09.2023 - 06.2026",
       block1Copy:
         "Während meiner vierjährigen Berufserfahrung war ich an der Entwicklung und Betreuung zahlreicher Websites sowie digitaler Projekte beteiligt. Zu meinen Aufgaben gehörten die Gestaltung moderner Benutzeroberflächen, die technische Umsetzung responsiver Websites, die Erstellung von Werbematerialien und digitalen Inhalten sowie die Zusammenarbeit mit Kunden und Projektteams.",
       block2Label: "Ausbildung",
@@ -780,7 +780,7 @@ const portfolioContent = {
       applicationCta: "Download Application",
       fact1: "Years of experience",
       fact2: "Instagram community",
-      fact3: "Bilingual for international communication",
+      fact3: "German, English, Russian & Ukrainian",
       fact4: "Design, code and content",
     },
     skills: {
@@ -1343,7 +1343,7 @@ const portfolioContent = {
       block1Label: "Professional Experience",
       block1Title: "Web Designer & Frontend Developer",
       block1Org: "breadcrumb mediasolutions GmbH",
-      block1Date: "09/2023 - present",
+      block1Date: "09/2023 - 06/2026",
       block1Copy:
         "During my four years of professional experience, I have been involved in the development and support of numerous websites and digital projects. My tasks included designing modern user interfaces, implementing responsive websites, creating promotional materials and digital content, and collaborating with clients and project teams.",
       block2Label: "Education",
