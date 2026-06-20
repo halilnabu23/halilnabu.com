@@ -1572,6 +1572,48 @@ portfolioContent.en.testimonials = {
   meta3: "Project focus: Branding, content & launch",
 };
 
+Object.assign(portfolioContent.de.header, {
+  navResults: "In Zahlen",
+});
+portfolioContent.de.results = {
+  kicker: "In Zahlen",
+  title: "Die wichtigsten Zahlen auf einen Blick.",
+  copy: "Ein kompakter Ãœberblick Ã¼ber meine bisherige Projekterfahrung, die Zusammenarbeit mit Kunden und meinen Fokus im Bereich Webdesign und Frontend.",
+  card1Metric: "30",
+  card1Title: "Projekte",
+  card1Role: "Websites, Screen Designs, Printmaterialien und digitale Inhalte fÃ¼r verschiedene Branchen.",
+  card1Outcome: "Von Corporate Websites bis zu Social Media Assets und visuellen Markenauftritten.",
+  card2Metric: "20",
+  card2Title: "Kunden",
+  card2Role: "Zusammenarbeit mit Unternehmen, Marken, Portalen und Institutionen aus unterschiedlichen Bereichen.",
+  card2Outcome: "Klare Kommunikation, direkte Abstimmung und saubere Umsetzung Ã¼ber mehrere Projektarten hinweg.",
+  card3Metric: "4",
+  card3Title: "Jahre Erfahrung",
+  card3Role: "Praxis in Webdesign, Frontend-Entwicklung, UI/UX, Content und digitaler Gestaltung.",
+  card3Outcome: "Mit Blick fÃ¼r Ã„sthetik, Responsive Design, NutzerfÃ¼hrung und technische Sauberkeit.",
+};
+
+Object.assign(portfolioContent.en.header, {
+  navResults: "Numbers",
+});
+portfolioContent.en.results = {
+  kicker: "In Numbers",
+  title: "The key numbers at a glance.",
+  copy: "A compact overview of my project experience, client collaborations and focus across web design and frontend work.",
+  card1Metric: "30",
+  card1Title: "Projects",
+  card1Role: "Websites, screen designs, print materials and digital content across different industries.",
+  card1Outcome: "From corporate websites to social media assets and visual brand appearances.",
+  card2Metric: "20",
+  card2Title: "Clients",
+  card2Role: "Collaboration with companies, brands, portals and institutions from different fields.",
+  card2Outcome: "Clear communication, direct coordination and clean execution across multiple project types.",
+  card3Metric: "4",
+  card3Title: "Years of Experience",
+  card3Role: "Hands-on work in web design, frontend development, UI/UX, content and digital design.",
+  card3Outcome: "With a strong eye for aesthetics, responsive design, user flow and technical quality.",
+};
+
 const lifestyleProfiles = {
   de: [
     {
