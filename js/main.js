@@ -1456,6 +1456,52 @@ Object.assign(portfolioContent.de.contact, {
   statusFallback: "Die direkte Übertragung hat nicht funktioniert. Ihr E-Mail-Programm wird jetzt als Fallback geöffnet.",
   statusError: "Die Nachricht konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie mir direkt per E-Mail.",
 });
+Object.assign(portfolioContent.de.header, {
+  navResults: "Ergebnisse",
+  navProcess: "Ablauf",
+  navWhy: "Why Me",
+  navTestimonials: "Feedback",
+  navContact: "Kontakt",
+});
+portfolioContent.de.results = {
+  kicker: "Case Results",
+  title: "Ausgewählte Cases mit klarem Mehrwert.",
+  copy: "Nicht nur schöne Oberflächen, sondern Projekte mit klarer Struktur, sauberer Umsetzung und sichtbaren Ergebnissen für Marken, Produkte und Nutzerführung.",
+  card1Metric: "4 Kernmodule",
+  card1Title: "MT-Propeller Facts",
+  card1Role: "Vergleich, Suche, Kartenmodul und Downloadbereich in einem klaren Interface verbunden.",
+  card1Outcome: "Ergebnis: technisch komplexe Inhalte wurden deutlich verständlicher und visuell sauber strukturiert.",
+  card2Metric: "2 Zielgruppen",
+  card2Title: "Ausbildungsportal Kulmbach",
+  card2Role: "Portalstruktur für Schüler und Unternehmen mit klarer Orientierung und mobilem Fokus entwickelt.",
+  card2Outcome: "Ergebnis: Stellen, Inhalte und Einstiege wurden schneller auffindbar und einfacher nutzbar.",
+  card3Metric: "3 Markenebenen",
+  card3Title: "Wicklein Group",
+  card3Role: "Website, Logoarbeit und ergänzende Broschüren in einen einheitlichen Auftritt übersetzt.",
+  card3Outcome: "Ergebnis: ein konsistenter Markenlook über Web, Print und Unternehmensdarstellung hinweg.",
+};
+portfolioContent.de.why = {
+  kicker: "Why Work With Me",
+  title: "Design, Code und Content greifen bei mir zusammen.",
+  copy: "Ich denke Projekte nicht nur visuell, sondern immer auch technisch, responsiv und markenbezogen. Genau das macht die Zusammenarbeit schnell, klar und effizient.",
+  item1Title: "Design & Frontend aus einer Hand",
+  item1Copy: "Weniger Reibung zwischen Screen Design und technischer Umsetzung, weil beides zusammen gedacht wird.",
+  item2Title: "Responsive von Anfang an",
+  item2Copy: "Desktop und Mobile werden nicht nachträglich geflickt, sondern von Beginn an sauber mitgeplant.",
+  item3Title: "Schnelle Kommunikation",
+  item3Copy: "Klare Absprachen, direkte Rückmeldung und strukturierte Umsetzung machen Projekte planbarer.",
+  item4Title: "Starkes Gespür für Wirkung",
+  item4Copy: "Webdesign, Content, Social Media und visuelle Sprache werden auf ein gemeinsames Gesamtbild abgestimmt.",
+};
+portfolioContent.de.testimonials = {
+  kicker: "Testimonials",
+  quote1: "Klare Kommunikation, saubere Gestaltung und ein Ergebnis, das professionell aussieht und sich modern anfühlt.",
+  meta1: "Projektfokus: Corporate Website",
+  quote2: "Besonders stark ist die Verbindung aus kreativem Design und technischer Umsetzung ohne unnötige Umwege.",
+  meta2: "Projektfokus: Screen Design & Frontend",
+  quote3: "Schnelle Abstimmung, gutes Auge für Details und ein Auftritt, der online deutlich hochwertiger wirkt.",
+  meta3: "Projektfokus: Branding, Content & Launch",
+};
 
 portfolioContent.en.meta.title = "Khalil Nabu | Web Designer, Frontend Developer & UI/UX Designer in Germany";
 portfolioContent.en.meta.description = "Khalil Nabu is a web designer, frontend developer and UI/UX designer in Germany focused on modern websites, responsive web design, branding, screen design, social media and digital content. Also known as Halil Nabu or Khalil Nabu Portfolio.";
@@ -1479,6 +1525,52 @@ Object.assign(portfolioContent.en.contact, {
   statusFallback: "Direct sending did not work. Your email app will open now as a fallback.",
   statusError: "Your message could not be sent right now. Please try again or contact me directly by email.",
 });
+Object.assign(portfolioContent.en.header, {
+  navResults: "Results",
+  navProcess: "Process",
+  navWhy: "Why Me",
+  navTestimonials: "Testimonials",
+  navContact: "Contact",
+});
+portfolioContent.en.results = {
+  kicker: "Case Results",
+  title: "Selected cases with clear value.",
+  copy: "Not just polished visuals, but projects with strong structure, clean execution and visible value for brands, products and user journeys.",
+  card1Metric: "4 core modules",
+  card1Title: "MT-Propeller Facts",
+  card1Role: "Comparison, search, map module and download area combined in one clear interface.",
+  card1Outcome: "Result: complex technical content became easier to understand and much more structured visually.",
+  card2Metric: "2 target groups",
+  card2Title: "Ausbildungsportal Kulmbach",
+  card2Role: "Portal structure built for students and companies with clear orientation and mobile focus.",
+  card2Outcome: "Result: jobs, content and entry points became easier to find and easier to use.",
+  card3Metric: "3 brand layers",
+  card3Title: "Wicklein Group",
+  card3Role: "Website, logo work and supporting brochures translated into one consistent appearance.",
+  card3Outcome: "Result: one cohesive brand look across web, print and company presentation.",
+};
+portfolioContent.en.why = {
+  kicker: "Why Work With Me",
+  title: "Design, code and content work together in my process.",
+  copy: "I do not think about projects only visually, but always technically, responsively and from a brand perspective. That makes collaboration faster, clearer and more efficient.",
+  item1Title: "Design & Frontend in one hand",
+  item1Copy: "Less friction between screen design and implementation because both are planned together.",
+  item2Title: "Responsive from day one",
+  item2Copy: "Desktop and mobile are not fixed later, but built into the process from the very beginning.",
+  item3Title: "Fast communication",
+  item3Copy: "Clear alignment, direct feedback and structured execution make projects easier to manage.",
+  item4Title: "Strong sense of impact",
+  item4Copy: "Web design, content, social media and visual language are aligned into one consistent overall picture.",
+};
+portfolioContent.en.testimonials = {
+  kicker: "Testimonials",
+  quote1: "Clear communication, clean design and a result that looks professional and feels modern.",
+  meta1: "Project focus: Corporate website",
+  quote2: "A real strength is the connection between creative design and technical implementation without unnecessary detours.",
+  meta2: "Project focus: Screen design & frontend",
+  quote3: "Fast coordination, a strong eye for detail and a presence that feels noticeably more premium online.",
+  meta3: "Project focus: Branding, content & launch",
+};
 
 const lifestyleProfiles = {
   de: [

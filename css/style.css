@@ -31,8 +31,8 @@ img { display: block; max-width: 100%; }
 .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.02em; }
 .brand-mark { width: 44px; height: 44px; display: grid; place-items: center; background: var(--ink); color: var(--white); font-family: var(--display); font-size: 20px; font-weight: 900; line-height: 1; }
 .brand-name { white-space: nowrap; }
-.site-nav { display: flex; align-items: center; gap: clamp(18px, 2vw, 34px); margin-left: auto; }
-.site-nav a { position: relative; font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+.site-nav { display: flex; align-items: center; gap: clamp(12px, 1.2vw, 22px); margin-left: auto; }
+.site-nav a { position: relative; font-size: 12px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
 .site-nav a::after { content: ""; position: absolute; inset: auto 0 -7px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform .25s; }
 .site-nav a:hover::after, .site-nav a.is-active::after { transform: scaleX(1); transform-origin: left; }
 .header-actions { display: flex; align-items: center; gap: 22px; }
@@ -131,6 +131,16 @@ img { display: block; max-width: 100%; }
 .project-card-empty .project-card-body { justify-content: center; }
 .project-tools span, .experience-tags li { padding: 7px 10px; border: 1px solid var(--line); font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; list-style: none; }
 
+.results { background: var(--ink); color: var(--white); }
+.results-intro { display: grid; grid-template-columns: .95fr 1.05fr; gap: 6vw; align-items: end; margin-bottom: 48px; }
+.results-intro p { max-width: 560px; color: #b8b8b1; }
+.results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.result-card { min-height: 100%; padding: 26px; border: 1px solid #3d3d39; background: rgba(255,255,255,.03); }
+.result-metric { margin: 0 0 18px; color: var(--accent); font-family: var(--display); font-size: clamp(34px, 4vw, 56px); line-height: .92; letter-spacing: -.05em; text-transform: uppercase; }
+.result-card h3 { margin: 0 0 14px; font-family: var(--display); font-size: 34px; line-height: .92; letter-spacing: -.04em; text-transform: uppercase; }
+.result-role { margin: 0 0 18px; color: var(--white); }
+.result-outcome { margin: 0; color: #a7a7a0; }
+
 .services { background: var(--ink); color: var(--white); }
 .services-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10vw; }
 .service-list { border-top: 1px solid #555; }
@@ -149,6 +159,22 @@ img { display: block; max-width: 100%; }
 .process-card span { display: inline-block; margin-bottom: 16px; color: var(--muted); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .process-card h3 { margin: 0 0 14px; font-family: var(--display); font-size: 30px; line-height: .95; letter-spacing: -.04em; text-transform: uppercase; }
 .process-card p { margin: 0; color: var(--muted); }
+
+.why-work { background: #f8f5ec; }
+.why-grid { display: grid; grid-template-columns: .86fr 1.14fr; gap: 10vw; align-items: start; }
+.why-copy p { max-width: 470px; margin: 22px 0 0; color: var(--muted); }
+.why-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.why-card { min-height: 100%; padding: 24px; border: 1px solid var(--line); background: var(--white); }
+.why-card span { display: inline-block; margin-bottom: 16px; color: var(--muted); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.why-card h3 { margin: 0 0 14px; font-family: var(--display); font-size: 30px; line-height: .95; letter-spacing: -.04em; text-transform: uppercase; }
+.why-card p { margin: 0; color: var(--muted); }
+
+.testimonials { background: var(--white); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.testimonial-card { min-height: 100%; padding: 28px; border: 1px solid var(--line); background: #faf8f1; }
+.testimonial-stars { margin: 0 0 18px; color: var(--accent); letter-spacing: .18em; font-size: 16px; }
+.testimonial-quote { margin: 0 0 24px; font-size: 18px; line-height: 1.7; }
+.testimonial-meta { margin: 0; color: var(--muted); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 
 .experience { background: #faf8f1; }
 .experience-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10vw; }
@@ -297,7 +323,9 @@ img { display: block; max-width: 100%; }
   .hero-portrait { box-shadow: 16px 16px 0 var(--accent); }
   .section { padding-block: 95px; }
   .section-heading { margin-bottom: 55px; }
-  .about-grid, .skills-grid, .services-layout, .process-grid, .experience-grid, .presence-grid, .lifestyle-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .about-grid, .skills-grid, .results-intro, .services-layout, .process-grid, .why-grid, .experience-grid, .presence-grid, .lifestyle-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .results-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .why-list { grid-template-columns: 1fr 1fr; }
   .process-list { grid-template-columns: 1fr 1fr; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
   .fact:nth-child(2) { border-right: 0; }
@@ -364,10 +392,14 @@ img { display: block; max-width: 100%; }
   .project-card h3, .experience-card h3 { font-size: clamp(22px, 7.4vw, 28px); line-height: .95; overflow-wrap: anywhere; }
   .project-card-body { padding: 20px; }
   .project-description { min-height: auto; }
+  .result-card, .testimonial-card, .why-card { padding: 22px 18px; }
+  .result-card h3, .why-card h3 { font-size: clamp(24px, 7vw, 30px); }
+  .testimonial-quote { font-size: 16px; }
   .experience-card { padding: 22px 18px; }
   .experience-card p { overflow-wrap: anywhere; }
   .service-list article { grid-template-columns: 30px 1fr; }
   .service-list article > i { display: none; }
+  .why-list { grid-template-columns: 1fr; }
   .process-list { grid-template-columns: 1fr; }
   .process-card { padding: 22px 18px; }
   .process-card h3 { font-size: clamp(24px, 7vw, 30px); }
