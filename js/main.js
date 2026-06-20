@@ -7,6 +7,8 @@ const filterButtons = [...document.querySelectorAll(".filter-button")];
 const projectGrid = document.querySelector("#project-grid");
 const projectsMoreButton = document.querySelector("#projects-more-button");
 const contactForm = document.querySelector("#contact-form");
+const contactFormStatus = document.querySelector("#contact-form-status");
+const contactFormSubmitButton = contactForm?.querySelector('button[type="submit"]');
 const cvLinks = [
   ...document.querySelectorAll('[data-i18n="hero.cvCta"], [data-i18n="about.cvCta"], [data-i18n="experience.cvCta"]'),
 ];
@@ -34,6 +36,7 @@ const lifestyleCollageImages = [
   document.querySelector("#lifestyle-collage-image-2"),
   document.querySelector("#lifestyle-collage-image-3"),
 ];
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/halilnabu23@gmail.com";
 
 let dynamicProjects = [];
 let dynamicSiteContent = {
@@ -41,11 +44,12 @@ let dynamicSiteContent = {
   documents: null,
   lifestyleProfiles: [],
 };
+let dynamicAssetVersion = "";
 
 const portfolioContent = {
   de: {
     meta: {
-      title: "Khalil Nabu | Webdesigner, Frontend Entwickler & UI/UX Designer",
+      title: "Khalil Nabu | Webdesigner, Frontend Entwickler & UI/UX Designer in Deutschland",
       description:
         "Khalil Nabu ist Webdesigner, Frontend Entwickler und UI/UX Designer. Portfolio für moderne Websites, responsive Webdesign, Branding, Screen Design und digitale Inhalte. Auch bekannt als Halil Nabu.",
     },
@@ -1430,6 +1434,52 @@ const portfolioContent = {
   },
 };
 
+portfolioContent.de.meta.title = "Khalil Nabu | Webdesigner, Frontend Entwickler & UI/UX Designer in Deutschland";
+portfolioContent.de.meta.description = "Khalil Nabu ist Webdesigner, Frontend Entwickler und UI/UX Designer in Deutschland. Portfolio für moderne Websites, responsive Webdesign, Branding, Screen Design, Social Media und digitale Inhalte. Auch bekannt als Halil Nabu oder Халил Набу.";
+portfolioContent.de.process = {
+  kicker: "Ablauf",
+  title: "Vom ersten Briefing bis zum fertigen Auftritt.",
+  copy: "Ich unterstütze Unternehmen, Marken und persönliche Projekte vom Konzept bis zur finalen Umsetzung. So entstehen Websites, Interfaces und Inhalte, die klar aussehen, gut funktionieren und professionell wirken.",
+  step1Title: "Strategie & Struktur",
+  step1Copy: "Wir definieren Ziel, Inhalt, Nutzerführung und den klaren Aufbau der Website oder des Projekts.",
+  step2Title: "Design & Screen Layout",
+  step2Copy: "Ich entwickle eine visuelle Richtung mit modernem Webdesign, sauberer Typografie und passender Markenwirkung.",
+  step3Title: "Frontend & Responsive Umsetzung",
+  step3Copy: "Das Design wird technisch präzise umgesetzt, mobil optimiert und für eine klare Nutzung auf allen Geräten aufgebaut.",
+  step4Title: "Content, Launch & Feinschliff",
+  step4Copy: "Zum Schluss werden Inhalte, Bilder, Downloads und finale Details abgestimmt, damit alles sauber online gehen kann.",
+};
+Object.assign(portfolioContent.de.contact, {
+  helper: "Sie können direkt über das Formular schreiben oder mich alternativ per E-Mail und Instagram erreichen.",
+  statusSending: "Nachricht wird gesendet ...",
+  statusSuccess: "Danke. Ihre Nachricht wurde gesendet und ich melde mich schnellstmöglich zurück.",
+  statusFallback: "Die direkte Übertragung hat nicht funktioniert. Ihr E-Mail-Programm wird jetzt als Fallback geöffnet.",
+  statusError: "Die Nachricht konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie mir direkt per E-Mail.",
+});
+
+portfolioContent.en.meta.title = "Khalil Nabu | Web Designer, Frontend Developer & UI/UX Designer in Germany";
+portfolioContent.en.meta.description = "Khalil Nabu is a web designer, frontend developer and UI/UX designer in Germany focused on modern websites, responsive web design, branding, screen design, social media and digital content. Also known as Halil Nabu or Khalil Nabu Portfolio.";
+portfolioContent.en.process = {
+  kicker: "Process",
+  title: "From the first briefing to the final launch.",
+  copy: "I support companies, brands and personal projects from concept to final execution. The result is websites, interfaces and content that look clear, work smoothly and feel professional.",
+  step1Title: "Strategy & Structure",
+  step1Copy: "We define the goal, content, user journey and the clear structure of the website or project.",
+  step2Title: "Design & Screen Layout",
+  step2Copy: "I develop a visual direction with modern web design, clean typography and a fitting brand presence.",
+  step3Title: "Frontend & Responsive Build",
+  step3Copy: "The design is implemented precisely, optimized for mobile and built for clean usability across all devices.",
+  step4Title: "Content, Launch & Polish",
+  step4Copy: "In the final step, content, visuals, downloads and the finishing details are aligned so everything is ready to go live cleanly.",
+};
+Object.assign(portfolioContent.en.contact, {
+  helper: "You can send a message directly through the form or reach me via email and Instagram.",
+  statusSending: "Sending your message ...",
+  statusSuccess: "Thank you. Your message was sent successfully and I will get back to you soon.",
+  statusFallback: "Direct sending did not work. Your email app will open now as a fallback.",
+  statusError: "Your message could not be sent right now. Please try again or contact me directly by email.",
+});
+
 const lifestyleProfiles = {
   de: [
     {
@@ -1682,7 +1732,7 @@ function applyHeroPortrait(language = currentLanguage) {
     return;
   }
 
-  heroPortraitImage.src = dynamicSiteContent.heroPortrait.src;
+  heroPortraitImage.src = buildVersionedAssetUrl(dynamicSiteContent.heroPortrait.src, dynamicAssetVersion);
   const alt = dynamicSiteContent.heroPortrait.alt?.[language]
     || dynamicSiteContent.heroPortrait.alt?.de
     || dynamicSiteContent.heroPortrait.alt?.en
@@ -1742,6 +1792,49 @@ function applyDocumentLinks() {
   }
 }
 
+function setContactFormStatus(message = "", tone = "default") {
+  if (!contactFormStatus) {
+    return;
+  }
+
+  if (!message) {
+    contactFormStatus.hidden = true;
+    contactFormStatus.textContent = "";
+    delete contactFormStatus.dataset.tone;
+    return;
+  }
+
+  contactFormStatus.hidden = false;
+  contactFormStatus.textContent = message;
+  if (tone === "default") {
+    delete contactFormStatus.dataset.tone;
+    return;
+  }
+
+  contactFormStatus.dataset.tone = tone;
+}
+
+function buildContactMailtoUrl(formData, selectedSubject) {
+  const subject = `${getText(currentLanguage, "contact.sentSubject")}: ${selectedSubject}`;
+  const body = `${formData.get("message")}\n\n-\n${formData.get("name")}\n${formData.get("email")}`;
+  return `mailto:halilnabu23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function setContactSubmitState(isSending) {
+  if (!contactFormSubmitButton) {
+    return;
+  }
+
+  contactFormSubmitButton.disabled = isSending;
+  contactFormSubmitButton.setAttribute("aria-busy", String(isSending));
+  const label = contactFormSubmitButton.querySelector("span");
+  if (label) {
+    label.textContent = isSending
+      ? getText(currentLanguage, "contact.statusSending")
+      : getText(currentLanguage, "contact.submit");
+  }
+}
+
 async function loadDynamicSiteData() {
   const [projectsResponse, siteContentResponse] = await Promise.all([
     fetch("data/projects.json", { cache: "no-store" }),
@@ -1756,6 +1849,14 @@ async function loadDynamicSiteData() {
     projectsResponse.json(),
     siteContentResponse.json(),
   ]);
+
+  const projectsVersion = (projectsResponse.headers.get("last-modified")
+    || projectsResponse.headers.get("etag")
+    || "").replace(/"/g, "");
+  const siteContentVersion = (siteContentResponse.headers.get("last-modified")
+    || siteContentResponse.headers.get("etag")
+    || "").replace(/"/g, "");
+  dynamicAssetVersion = siteContentVersion || projectsVersion || "";
 
   dynamicProjects = Array.isArray(projectsData.projects) ? projectsData.projects : [];
   dynamicSiteContent = {
@@ -1793,7 +1894,7 @@ function splitTitleLines(value, maxLineLength = 16, maxLines = 3) {
 function getProjectPreview(project) {
   if (project.image) {
     return {
-      src: project.image,
+      src: buildVersionedAssetUrl(project.image, dynamicAssetVersion),
       alt: project.imageAlt || `${project.title} preview`,
     };
   }
@@ -1863,7 +1964,7 @@ function setLifestyleProfile(profile) {
     if (!image || !collageItem) {
       return;
     }
-    image.src = collageItem.image;
+    image.src = buildVersionedAssetUrl(collageItem.image, dynamicAssetVersion);
     image.alt = collageItem.alt;
   });
 
@@ -1982,7 +2083,7 @@ function buildProjectCard(project) {
   return `
     <article class="project-card reveal" data-category="${escapeHtml(project.category)}">
       <div class="project-image ${project.image ? "" : "project-image--generated"}">
-        <img src="${safeImageSrc}" alt="${safeImageAlt}" loading="lazy">
+        <img src="${safeImageSrc}" alt="${safeImageAlt}" loading="lazy" decoding="async">
         <span class="project-image-badge">${safeCategory}</span>
       </div>
       <div class="project-card-body">
@@ -2181,10 +2282,9 @@ function applyTranslations(language) {
   document.documentElement.lang = language;
   document.title = portfolioContent[language].meta.title;
 
-  const description = document.querySelector('meta[name="description"]');
-  if (description) {
+  document.querySelectorAll('meta[name="description"]').forEach((description) => {
     description.setAttribute("content", portfolioContent[language].meta.description);
-  }
+  });
 
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) {
@@ -2317,13 +2417,59 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-contactForm.addEventListener("submit", (event) => {
+contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  if (!contactForm.reportValidity()) {
+    return;
+  }
+
   const formData = new FormData(contactForm);
-  const selectedSubject = contactForm.querySelector('select[name="subject"]').selectedOptions[0].textContent;
-  const subject = `${getText(currentLanguage, "contact.sentSubject")}: ${selectedSubject}`;
-  const body = `${formData.get("message")}\n\n-\n${formData.get("name")}\n${formData.get("email")}`;
-  window.location.href = `mailto:halilnabu23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const selectedSubject = contactForm.querySelector('select[name="subject"]').selectedOptions[0]?.textContent
+    || getText(currentLanguage, "contact.subjectOption1");
+  const mailtoUrl = buildContactMailtoUrl(formData, selectedSubject);
+
+  setContactSubmitState(true);
+  setContactFormStatus(getText(currentLanguage, "contact.statusSending"), "warning");
+
+  try {
+    const response = await fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        subject: selectedSubject,
+        message: formData.get("message"),
+        _subject: `${getText(currentLanguage, "contact.sentSubject")}: ${selectedSubject}`,
+        _template: "table",
+        _captcha: "false",
+        _honey: formData.get("_honey") || "",
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Contact form request failed");
+    }
+
+    contactForm.reset();
+    setContactFormStatus(getText(currentLanguage, "contact.statusSuccess"), "success");
+  } catch (error) {
+    console.error(error);
+    setContactFormStatus(getText(currentLanguage, "contact.statusFallback"), "warning");
+    window.location.href = mailtoUrl;
+  } finally {
+    setContactSubmitState(false);
+  }
+});
+
+contactForm.addEventListener("input", () => {
+  if (!contactFormStatus?.hidden) {
+    setContactFormStatus("");
+  }
 });
 
 let savedLanguage = "de";

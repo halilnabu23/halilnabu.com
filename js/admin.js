@@ -108,7 +108,7 @@ let adminInitialized = false;
 function createDefaultSiteContent() {
   return {
     heroPortrait: {
-      src: "assets/images/hero-portrait.jpg",
+      src: "assets/images/hero-portrait.png",
       alt: {
         de: "Portrait von Khalil Nabu",
         en: "Portrait of Khalil Nabu",
@@ -234,7 +234,7 @@ function normalizeSiteContent(siteContent) {
   const normalized = deepClone(siteContent || createDefaultSiteContent());
 
   normalized.heroPortrait = normalized.heroPortrait || createDefaultSiteContent().heroPortrait;
-  normalized.heroPortrait.src = normalized.heroPortrait.src || "assets/images/hero-portrait.jpg";
+  normalized.heroPortrait.src = normalized.heroPortrait.src || "assets/images/hero-portrait.png";
   normalized.heroPortrait.alt = normalized.heroPortrait.alt || { de: "", en: "" };
   normalized.heroPortrait.alt.de = normalized.heroPortrait.alt.de || "Portrait von Khalil Nabu";
   normalized.heroPortrait.alt.en = normalized.heroPortrait.alt.en || "Portrait of Khalil Nabu";
