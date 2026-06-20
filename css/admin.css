@@ -11,7 +11,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; }
+html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
 body {
   background:
     radial-gradient(circle at top right, rgba(199, 255, 61, 0.14), transparent 24%),
@@ -19,6 +19,7 @@ body {
   color: var(--ink);
   font-family: var(--body);
   line-height: 1.55;
+  overflow-x: hidden;
 }
 
 button, input, textarea, select { font: inherit; }
@@ -271,8 +272,10 @@ img { display: block; max-width: 100%; }
 
 .connection-card-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   margin-top: 14px;
+  gap: 10px;
 }
 
 .connection-card-actions-start {
@@ -294,6 +297,7 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   background: rgba(255, 254, 249, 0.88);
   backdrop-filter: blur(10px);
+  min-width: 0;
 }
 
 .admin-panel-header {
@@ -305,11 +309,16 @@ img { display: block; max-width: 100%; }
   border-bottom: 1px solid var(--line);
 }
 
+.admin-panel-header > * {
+  min-width: 0;
+}
+
 .panel-inline-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
+  min-width: 0;
 }
 
 .admin-search {
@@ -350,6 +359,7 @@ img { display: block; max-width: 100%; }
   max-height: calc(100vh - 260px);
   overflow: auto;
   padding: 18px 24px 24px;
+  min-width: 0;
 }
 
 .project-list-item {
@@ -357,6 +367,9 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   background: var(--white);
   cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+  text-align: left;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -374,9 +387,11 @@ img { display: block; max-width: 100%; }
   display: block;
   margin-bottom: 4px;
   font-family: var(--display);
-  font-size: 26px;
+  font-size: clamp(20px, 2.2vw, 26px);
   line-height: 0.95;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .project-list-item small,
@@ -384,10 +399,13 @@ img { display: block; max-width: 100%; }
   display: block;
   color: var(--muted);
   font-size: 12px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .admin-form {
   padding: 24px;
+  min-width: 0;
 }
 
 .admin-form-grid {
@@ -447,6 +465,7 @@ img { display: block; max-width: 100%; }
   padding: 18px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.55);
+  min-width: 0;
 }
 
 .translation-grid legend {
@@ -576,6 +595,11 @@ img { display: block; max-width: 100%; }
     padding-top: 18px;
   }
 
+  .admin-panel-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .admin-header,
   .connection-summary,
   .admin-asset-card,
@@ -593,6 +617,15 @@ img { display: block; max-width: 100%; }
   .connection-summary-actions,
   .panel-inline-actions {
     justify-content: flex-start;
+  }
+
+  .panel-inline-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel-inline-actions .admin-button {
+    width: 100%;
   }
 
   .quick-document-item {
@@ -703,6 +736,13 @@ img { display: block; max-width: 100%; }
     font-size: 22px;
   }
 
+  .admin-panel h2,
+  #project-form-heading {
+    font-size: clamp(24px, 6vw, 34px);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .admin-asset-card {
     gap: 16px;
     margin: 18px 0;
@@ -745,6 +785,21 @@ img { display: block; max-width: 100%; }
 
   .admin-panel h2 {
     font-size: clamp(24px, 8vw, 32px);
+  }
+
+  .project-list-item {
+    padding: 12px;
+  }
+
+  .project-list-item strong {
+    font-size: clamp(18px, 8.6vw, 22px);
+    line-height: 0.98;
+  }
+
+  .panel-inline-actions .admin-button,
+  .connection-summary-actions .admin-button,
+  .admin-actions .admin-button {
+    min-height: 44px;
   }
 
   .admin-form-grid,
