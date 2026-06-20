@@ -45,9 +45,9 @@ let dynamicSiteContent = {
 const portfolioContent = {
   de: {
     meta: {
-      title: "Khalil Nabu - Webdesigner & Frontend Entwickler",
+      title: "Khalil Nabu | Webdesigner, Frontend Entwickler & UI/UX Designer",
       description:
-        "Portfolio von Khalil Nabu, Webdesigner und Frontend Entwickler mit Fokus auf moderne Websites, Screen Design und digitale Inhalte.",
+        "Khalil Nabu ist Webdesigner, Frontend Entwickler und UI/UX Designer. Portfolio für moderne Websites, responsive Webdesign, Branding, Screen Design und digitale Inhalte. Auch bekannt als Halil Nabu.",
     },
     common: {
       skip: "Zum Inhalt springen",
@@ -737,9 +737,9 @@ const portfolioContent = {
   },
   en: {
     meta: {
-      title: "Khalil Nabu - Web Designer & Frontend Developer",
+      title: "Khalil Nabu | Web Designer, Frontend Developer & UI/UX Designer",
       description:
-        "Portfolio of Khalil Nabu, web designer and frontend developer focused on modern websites, screen design and digital content.",
+        "Khalil Nabu is a web designer, frontend developer and UI/UX designer focused on modern websites, responsive web design, branding, screen design and digital content. Also known as Halil Nabu.",
     },
     common: {
       skip: "Skip to content",
@@ -2184,6 +2184,26 @@ function applyTranslations(language) {
   const description = document.querySelector('meta[name="description"]');
   if (description) {
     description.setAttribute("content", portfolioContent[language].meta.description);
+  }
+
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) {
+    ogTitle.setAttribute("content", portfolioContent[language].meta.title);
+  }
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) {
+    ogDescription.setAttribute("content", portfolioContent[language].meta.description);
+  }
+
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) {
+    twitterTitle.setAttribute("content", portfolioContent[language].meta.title);
+  }
+
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDescription) {
+    twitterDescription.setAttribute("content", portfolioContent[language].meta.description);
   }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
