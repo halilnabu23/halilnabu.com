@@ -36,6 +36,11 @@ const connectionSettings = document.querySelector("#connection-settings");
 const manageGitHubConnectionButton = document.querySelector("#manage-github-connection-button");
 const disconnectGitHubButton = document.querySelector("#disconnect-github-button");
 const closeGitHubSettingsButton = document.querySelector("#close-github-settings-button");
+const adminShell = document.querySelector("#admin-shell");
+const adminAuthGate = document.querySelector("#admin-auth-gate");
+const adminAuthForm = document.querySelector("#admin-auth-form");
+const adminAuthPasswordInput = document.querySelector("#admin-auth-password");
+const adminAuthError = document.querySelector("#admin-auth-error");
 
 const projectFields = {
   id: document.querySelector("#project-id-input"),
@@ -71,6 +76,8 @@ const REPO_CONFIG = {
 
 const TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token";
 const SESSION_TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token-session";
+const ADMIN_AUTH_SESSION_KEY = "khalil-nabu-admin-auth";
+const ADMIN_PASSWORD_HASH = "6483c9d77344f95a0e938d15ceda31087ab5a892f98ed343f81eb815e6dafd32";
 const siteRootUrl = new URL(`${document.documentElement.dataset.siteRoot || "."}/`, window.location.href);
 
 const state = {
@@ -93,6 +100,8 @@ const state = {
     settingsOpen: false,
   },
 };
+
+let adminInitialized = false;
 
 function createDefaultSiteContent() {
   return {
@@ -1326,4 +1335,67 @@ async function initializeAdmin() {
   }
 }
 
-initializeAdmin();
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(String(value));
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function showAdminShell() {
+  adminAuthGate.hidden = true;
+  adminShell.hidden = false;
+}
+
+function showAdminGate() {
+  adminShell.hidden = true;
+  adminAuthGate.hidden = false;
+  adminAuthPasswordInput.focus();
+}
+
+function startAdminApp() {
+  if (adminInitialized) {
+    return;
+  }
+
+  adminInitialized = true;
+  initializeAdmin();
+}
+
+async function unlockAdminWithPassword(password) {
+  const passwordHash = await sha256(password);
+  if (passwordHash !== ADMIN_PASSWORD_HASH) {
+    throw new Error("Invalid password");
+  }
+
+  sessionStorage.setItem(ADMIN_AUTH_SESSION_KEY, ADMIN_PASSWORD_HASH);
+  showAdminShell();
+  startAdminApp();
+}
+
+async function bootstrapAdminAccess() {
+  const hasSession = sessionStorage.getItem(ADMIN_AUTH_SESSION_KEY) === ADMIN_PASSWORD_HASH;
+  if (hasSession) {
+    showAdminShell();
+    startAdminApp();
+    return;
+  }
+
+  showAdminGate();
+
+  adminAuthForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    adminAuthError.hidden = true;
+
+    try {
+      await unlockAdminWithPassword(adminAuthPasswordInput.value.trim());
+      adminAuthPasswordInput.value = "";
+    } catch (error) {
+      console.error(error);
+      adminAuthPasswordInput.value = "";
+      adminAuthError.hidden = false;
+      adminAuthPasswordInput.focus();
+    }
+  }, { once: false });
+}
+
+bootstrapAdminAccess();

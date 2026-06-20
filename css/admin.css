@@ -25,6 +25,68 @@ body {
 button, input, textarea, select { font: inherit; }
 img { display: block; max-width: 100%; }
 
+.admin-auth-gate {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.admin-auth-card {
+  width: min(460px, 100%);
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: rgba(255, 254, 249, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(17, 17, 15, 0.08);
+}
+
+.admin-auth-card h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(42px, 9vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.admin-auth-copy {
+  margin: 16px 0 22px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.admin-auth-field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.admin-auth-field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.admin-auth-field input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.admin-auth-error {
+  margin: 0 0 14px;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .admin-shell {
   width: min(1500px, calc(100vw - 48px));
   margin: 0 auto;
@@ -768,6 +830,14 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 480px) {
+  .admin-auth-gate {
+    padding: 14px;
+  }
+
+  .admin-auth-card {
+    padding: 20px 16px;
+  }
+
   .admin-shell {
     width: calc(100vw - 12px);
   }

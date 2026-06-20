@@ -12,7 +12,23 @@
   <script src="../js/admin.js" defer></script>
 </head>
 <body>
-  <div class="admin-shell">
+  <div class="admin-auth-gate" id="admin-auth-gate">
+    <form class="admin-auth-card" id="admin-auth-form" autocomplete="off">
+      <p class="admin-eyebrow">Protected Admin</p>
+      <h1>Admin Login</h1>
+      <p class="admin-auth-copy">
+        Enter the admin password to open the portfolio dashboard.
+      </p>
+      <label class="admin-auth-field">
+        <span>Password</span>
+        <input type="password" id="admin-auth-password" placeholder="Enter password" required>
+      </label>
+      <p class="admin-auth-error" id="admin-auth-error" hidden>Wrong password. Please try again.</p>
+      <button class="admin-button admin-button-accent" type="submit">Open Admin</button>
+    </form>
+  </div>
+
+  <div class="admin-shell" id="admin-shell" hidden>
     <header class="admin-header">
       <div>
         <p class="admin-eyebrow">Portfolio Admin</p>
