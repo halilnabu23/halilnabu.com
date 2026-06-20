@@ -286,6 +286,10 @@ img { display: block; max-width: 100%; }
   padding: 24px;
 }
 
+.documents-grid-compact {
+  padding: 0;
+}
+
 .admin-panel {
   border: 1px solid var(--line);
   background: rgba(255, 254, 249, 0.88);
@@ -594,5 +598,178 @@ img { display: block; max-width: 100%; }
   .quick-document-item {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-shell {
+    width: calc(100vw - 16px);
+    padding: 14px 0 26px;
+  }
+
+  .admin-header {
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .admin-header h1 {
+    font-size: clamp(38px, 13vw, 62px);
+  }
+
+  .admin-intro {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .admin-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .admin-actions .admin-button {
+    width: 100%;
+  }
+
+  .admin-button {
+    min-height: 46px;
+    padding: 0 16px;
+    letter-spacing: 0.06em;
+  }
+
+  .admin-panel-header,
+  .admin-connection-body,
+  .admin-form,
+  .lifestyle-admin-list,
+  .documents-grid,
+  .admin-search,
+  .project-list {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .admin-panel-header {
+    padding-top: 18px;
+    padding-bottom: 16px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel-inline-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .panel-inline-actions .admin-button {
+    width: 100%;
+  }
+
+  .connection-summary {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .connection-summary-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .connection-summary-actions .admin-button {
+    width: 100%;
+  }
+
+  .quick-documents-card,
+  .connection-card,
+  .document-card,
+  .admin-asset-card,
+  .translation-grid fieldset,
+  .lifestyle-card,
+  .collage-slot {
+    padding: 16px;
+  }
+
+  .connection-title {
+    font-size: 24px;
+  }
+
+  .project-list-item {
+    padding: 14px;
+  }
+
+  .project-list-item strong {
+    font-size: 22px;
+  }
+
+  .admin-asset-card {
+    gap: 16px;
+    margin: 18px 0;
+  }
+
+  .asset-preview {
+    min-height: 190px;
+  }
+
+  .asset-preview-portrait {
+    min-height: 260px;
+  }
+
+  .quick-document-path {
+    font-size: 12px;
+  }
+
+  .collage-slot-preview,
+  .collage-slot-preview img {
+    height: 120px;
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-shell {
+    width: calc(100vw - 12px);
+  }
+
+  .admin-status {
+    margin-bottom: 18px;
+    padding: 14px;
+    font-size: 13px;
+  }
+
+  .panel-inline-actions,
+  .connection-summary-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-panel h2 {
+    font-size: clamp(24px, 8vw, 32px);
+  }
+
+  .admin-form-grid,
+  .translation-grid,
+  .lifestyle-grid,
+  .collage-edit-grid,
+  .documents-grid {
+    gap: 14px;
+  }
+
+  .admin-form input,
+  .admin-form textarea,
+  .admin-form select,
+  .admin-search input,
+  .asset-meta input,
+  .lifestyle-card input,
+  .lifestyle-card textarea {
+    padding: 12px;
+  }
+
+  .hero-card {
+    padding: 16px;
+  }
+
+  .admin-note {
+    font-size: 12px;
   }
 }

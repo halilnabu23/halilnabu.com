@@ -66,21 +66,31 @@
             </div>
           </div>
 
-          <div class="quick-documents-grid">
-            <article class="quick-document-item">
-              <div>
-                <strong>Lebenslauf</strong>
-                <p class="quick-document-path" id="cv-file-quick-path">assets/projects/Lebenslauf-Khalil-Nabu.pdf</p>
+          <div class="documents-grid documents-grid-compact">
+            <article class="document-card">
+              <p class="connection-title">Lebenslauf</p>
+              <p class="quick-document-path" id="cv-file-quick-path">assets/projects/Lebenslauf-Khalil-Nabu.pdf</p>
+              <label>
+                <span>File Path</span>
+                <input type="text" id="cv-file-path-input" placeholder="assets/projects/Lebenslauf-Khalil-Nabu.pdf">
+              </label>
+              <div class="connection-card-actions connection-card-actions-start">
+                <button class="admin-button admin-button-small" type="button" id="cv-file-upload-button">Upload / Replace File</button>
+                <input type="file" id="cv-file-input" accept=".pdf,.doc,.docx" hidden>
               </div>
-              <button class="admin-button admin-button-small" type="button" id="cv-file-upload-button-top">Upload / Replace File</button>
             </article>
 
-            <article class="quick-document-item">
-              <div>
-                <strong>Bewerbung</strong>
-                <p class="quick-document-path" id="application-file-quick-path">assets/projects/Bewerbung-Khalil-Nabu.pdf</p>
+            <article class="document-card">
+              <p class="connection-title">Bewerbung</p>
+              <p class="quick-document-path" id="application-file-quick-path">assets/projects/Bewerbung-Khalil-Nabu.pdf</p>
+              <label>
+                <span>File Path</span>
+                <input type="text" id="application-file-path-input" placeholder="assets/projects/Bewerbung-Khalil-Nabu.pdf">
+              </label>
+              <div class="connection-card-actions connection-card-actions-start">
+                <button class="admin-button admin-button-small" type="button" id="application-file-upload-button">Upload / Replace File</button>
+                <input type="file" id="application-file-input" accept=".pdf,.doc,.docx" hidden>
               </div>
-              <button class="admin-button admin-button-small" type="button" id="application-file-upload-button-top">Upload / Replace File</button>
             </article>
           </div>
         </div>
@@ -281,41 +291,6 @@
               <button class="admin-button admin-button-small" type="button" id="hero-image-upload-button">Upload / Replace Hero Image</button>
               <input type="file" id="hero-image-file-input" accept="image/*" hidden>
             </div>
-          </div>
-        </section>
-
-        <section class="admin-panel" id="documents-panel">
-          <div class="admin-panel-header">
-            <div>
-              <p class="panel-kicker">Documents</p>
-              <h2>Lebenslauf & Bewerbung</h2>
-            </div>
-          </div>
-
-          <div class="documents-grid">
-            <article class="document-card">
-              <p class="connection-title">Lebenslauf</p>
-              <label>
-                <span>File Path</span>
-                <input type="text" id="cv-file-path-input" placeholder="assets/projects/Lebenslauf-Khalil-Nabu.pdf">
-              </label>
-              <div class="connection-card-actions connection-card-actions-start">
-                <button class="admin-button admin-button-small" type="button" id="cv-file-upload-button">Upload / Replace File</button>
-                <input type="file" id="cv-file-input" accept=".pdf,.doc,.docx" hidden>
-              </div>
-            </article>
-
-            <article class="document-card">
-              <p class="connection-title">Bewerbung</p>
-              <label>
-                <span>File Path</span>
-                <input type="text" id="application-file-path-input" placeholder="assets/projects/Bewerbung-Khalil-Nabu.pdf">
-              </label>
-              <div class="connection-card-actions connection-card-actions-start">
-                <button class="admin-button admin-button-small" type="button" id="application-file-upload-button">Upload / Replace File</button>
-                <input type="file" id="application-file-input" accept=".pdf,.doc,.docx" hidden>
-              </div>
-            </article>
           </div>
         </section>
 
