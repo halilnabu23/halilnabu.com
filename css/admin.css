@@ -24,6 +24,7 @@ body {
 
 button, input, textarea, select { font: inherit; }
 img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 
 .admin-auth-gate {
   min-height: 100vh;
