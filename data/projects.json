@@ -1347,6 +1347,117 @@
           ]
         }
       }
+    },
+    {
+      "id": "instagram-reel-lifestyle-cut-01",
+      "order": 38,
+      "category": "video",
+      "image": "",
+      "link": "https://www.instagram.com/reel/DYb_UKXs0le/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "translations": {
+        "de": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 01",
+          "description": "Kurzformat-Video fÃ¼r Instagram Reels mit dynamischem Schnitt, vertikalem Storytelling und klarer visueller Rhythmik.",
+          "detail": "Dieses Reel steht fÃ¼r meinen Ansatz im Bereich Short-Form-Video: saubere Schnitte, gutes Timing, starke Bildauswahl und ein Aufbau, der speziell fÃ¼r die Aufmerksamkeit auf mobilen Plattformen optimiert ist.",
+          "imageAlt": "Instagram Reel Projekt von Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Video Editing",
+            "Short Form",
+            "Storytelling",
+            "Vertical Format"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 01",
+          "description": "Short-form video for Instagram Reels with dynamic editing, vertical storytelling and a clear visual rhythm.",
+          "detail": "This reel reflects my approach to short-form video: clean cuts, strong timing, curated shot selection and a structure built specifically for attention on mobile platforms.",
+          "imageAlt": "Instagram reel project by Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Video Editing",
+            "Short Form",
+            "Storytelling",
+            "Vertical Format"
+          ]
+        }
+      }
+    },
+    {
+      "id": "instagram-reel-lifestyle-cut-02",
+      "order": 39,
+      "category": "video",
+      "image": "",
+      "link": "https://www.instagram.com/reel/DRrZsqqCAsE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "translations": {
+        "de": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 02",
+          "description": "Reel im Social-Video-Format mit moderner Schnittdynamik, Fokus auf Stimmung und starkem vertikalem Aufbau.",
+          "detail": "Hier liegt der Schwerpunkt auf Rhythmus, AtmosphÃ¤re und einem klaren Flow zwischen den Szenen. Das Ergebnis ist ein kompaktes Videoformat, das sich natÃ¼rlich in Instagram Reels einfÃ¼gt.",
+          "imageAlt": "Instagram Reel Projekt von Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Editing",
+            "Motion Rhythm",
+            "Social Video",
+            "Vertical Format"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 02",
+          "description": "Social video reel with modern edit pacing, a mood-driven structure and a strong vertical composition.",
+          "detail": "This piece focuses on rhythm, atmosphere and a clean flow between scenes. The result is a compact video format that feels natural inside Instagram Reels.",
+          "imageAlt": "Instagram reel project by Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Editing",
+            "Motion Rhythm",
+            "Social Video",
+            "Vertical Format"
+          ]
+        }
+      }
+    },
+    {
+      "id": "instagram-reel-lifestyle-cut-03",
+      "order": 40,
+      "category": "video",
+      "image": "",
+      "link": "https://www.instagram.com/reel/DWoQbS7DFCb/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "translations": {
+        "de": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 03",
+          "description": "Vertikales Reel mit schneller Aufmerksamkeit, klarer BildfÃ¼hrung und passender Aufbereitung fÃ¼r Social Media.",
+          "detail": "Dieses Beispiel zeigt, wie ich Inhalte fÃ¼r Reels visuell verdichte: kurze starke Momente, klarer Einstieg und eine Bearbeitung, die auf mobile Nutzung und hohe Wiedererkennung ausgelegt ist.",
+          "imageAlt": "Instagram Reel Projekt von Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Video Editing",
+            "Mobile-first",
+            "Creative Direction",
+            "Short Form"
+          ]
+        },
+        "en": {
+          "categoryLabel": "Instagram Reel",
+          "title": "Lifestyle Reel Cut 03",
+          "description": "Vertical reel with fast attention capture, clear visual direction and a polished social-media-ready edit.",
+          "detail": "This example shows how I condense content for reels: short impactful moments, a clear opening and editing choices designed for mobile viewing and memorability.",
+          "imageAlt": "Instagram reel project by Khalil Nabu",
+          "tools": [
+            "Instagram Reels",
+            "Video Editing",
+            "Mobile-first",
+            "Creative Direction",
+            "Short Form"
+          ]
+        }
+      }
     }
   ]
 }

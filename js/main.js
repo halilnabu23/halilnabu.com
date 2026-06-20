@@ -125,6 +125,7 @@ const portfolioContent = {
       detailLabel: "Projektbeschreibung",
       modalCta: "Projekt anfragen",
       liveCta: "Website ansehen",
+      reelCta: "Reel ansehen",
       modalCloseAria: "Projekt schließen",
       zoomHint: "Vollansicht",
       uploadNote:
@@ -813,6 +814,7 @@ const portfolioContent = {
       detailLabel: "Project Description",
       modalCta: "Discuss Project",
       liveCta: "View Live Website",
+      reelCta: "View Reel",
       modalCloseAria: "Close project",
       zoomHint: "Full view",
       uploadNote:
@@ -1799,9 +1801,23 @@ function getProjectPreview(project) {
 
   const theme = themeByCategory[project.category] || themeByCategory.websites;
   const lines = splitTitleLines(project.placeholder || project.title);
+  const isVideoProject = project.category === "video";
   const titleMarkup = lines
     .map((line, index) => `<tspan x="74" dy="${index === 0 ? 0 : 102}">${escapeSvgText(line)}</tspan>`)
     .join("");
+  const footerMarkup = isVideoProject
+    ? `
+      <circle cx="982" cy="432" r="138" fill="${theme.accent}" opacity=".92" />
+      <polygon points="946,358 946,506 1062,432" fill="${theme.background}" />
+      <text x="74" y="742" fill="${theme.accent}" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="4">
+        ${escapeSvgText("Instagram Reel")}
+      </text>
+    `
+    : `
+      <text x="74" y="742" fill="${theme.text}" font-family="Arial, Helvetica, sans-serif" font-size="26" opacity=".72">
+        ${escapeSvgText("Khalil Nabu Portfolio")}
+      </text>
+    `;
 
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-label="${escapeSvgText(project.title)}">
@@ -1815,9 +1831,7 @@ function getProjectPreview(project) {
       <text x="74" y="325" fill="${theme.text}" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="116" font-weight="900" letter-spacing="-4">
         ${titleMarkup}
       </text>
-      <text x="74" y="742" fill="${theme.text}" font-family="Arial, Helvetica, sans-serif" font-size="26" opacity=".72">
-        ${escapeSvgText("Khalil Nabu Portfolio")}
-      </text>
+      ${footerMarkup}
     </svg>
   `;
 
@@ -2031,7 +2045,11 @@ function setModalCta(project) {
     modalCta.href = project.link;
     modalCta.target = "_blank";
     modalCta.rel = "noreferrer";
-    modalCta.innerHTML = `<span>${getText(currentLanguage, "projects.liveCta")}</span><span aria-hidden="true">↗</span>`;
+    const isInstagramReel = /instagram\.com\/reel\//i.test(project.link);
+    const ctaLabel = isInstagramReel
+      ? getText(currentLanguage, "projects.reelCta")
+      : getText(currentLanguage, "projects.liveCta");
+    modalCta.innerHTML = `<span>${ctaLabel}</span><span aria-hidden="true">↗</span>`;
     return;
   }
 
