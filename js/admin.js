@@ -39,6 +39,7 @@ const closeGitHubSettingsButton = document.querySelector("#close-github-settings
 const adminShell = document.querySelector("#admin-shell");
 const adminAuthGate = document.querySelector("#admin-auth-gate");
 const adminAuthForm = document.querySelector("#admin-auth-form");
+const adminAuthUsernameInput = document.querySelector("#admin-auth-username");
 const adminAuthPasswordInput = document.querySelector("#admin-auth-password");
 const adminAuthError = document.querySelector("#admin-auth-error");
 
@@ -77,7 +78,8 @@ const REPO_CONFIG = {
 const TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token";
 const SESSION_TOKEN_STORAGE_KEY = "khalil-nabu-admin-github-token-session";
 const ADMIN_AUTH_SESSION_KEY = "khalil-nabu-admin-auth";
-const ADMIN_PASSWORD_HASH = "6483c9d77344f95a0e938d15ceda31087ab5a892f98ed343f81eb815e6dafd32";
+const ADMIN_USERNAME = "halilnabu";
+const ADMIN_PASSWORD_HASH = "22f0b2ac1c2d3a5b7d5084572f4af499e7b914c764527d0ff3beeb1bad6ec2d0";
 const siteRootUrl = new URL(`${document.documentElement.dataset.siteRoot || "."}/`, window.location.href);
 
 const state = {
@@ -1349,7 +1351,7 @@ function showAdminShell() {
 function showAdminGate() {
   adminShell.hidden = true;
   adminAuthGate.hidden = false;
-  adminAuthPasswordInput.focus();
+  adminAuthUsernameInput.focus();
 }
 
 function startAdminApp() {
@@ -1361,7 +1363,11 @@ function startAdminApp() {
   initializeAdmin();
 }
 
-async function unlockAdminWithPassword(password) {
+async function unlockAdminWithCredentials(username, password) {
+  if (username !== ADMIN_USERNAME) {
+    throw new Error("Invalid login");
+  }
+
   const passwordHash = await sha256(password);
   if (passwordHash !== ADMIN_PASSWORD_HASH) {
     throw new Error("Invalid password");
@@ -1387,13 +1393,18 @@ async function bootstrapAdminAccess() {
     adminAuthError.hidden = true;
 
     try {
-      await unlockAdminWithPassword(adminAuthPasswordInput.value.trim());
+      await unlockAdminWithCredentials(
+        adminAuthUsernameInput.value.trim(),
+        adminAuthPasswordInput.value.trim(),
+      );
+      adminAuthUsernameInput.value = "";
       adminAuthPasswordInput.value = "";
     } catch (error) {
       console.error(error);
+      adminAuthUsernameInput.value = "";
       adminAuthPasswordInput.value = "";
       adminAuthError.hidden = false;
-      adminAuthPasswordInput.focus();
+      adminAuthUsernameInput.focus();
     }
   }, { once: false });
 }
