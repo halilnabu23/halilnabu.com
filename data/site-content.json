@@ -29,11 +29,11 @@
       },
       "collage": [
         {
-          "image": "assets/images/travel-1.png",
+          "image": "assets/images/lifestyle-travel-1.jpeg",
           "alt": "Khalil Nabu travelling"
         },
         {
-          "image": "assets/images/travel-2.png",
+          "image": "assets/images/lifestyle-travel-2.jpeg",
           "alt": "Khalil Nabu travel portrait"
         },
         {
@@ -58,15 +58,15 @@
       },
       "collage": [
         {
-          "image": "assets/images/concert-1.png",
+          "image": "assets/images/lifestyle-music-1.jpeg",
           "alt": "Khalil Nabu in a music setting"
         },
         {
-          "image": "assets/images/lifestyle-2.png",
+          "image": "assets/images/lifestyle-music-2.jpeg",
           "alt": "Black and white portrait"
         },
         {
-          "image": "assets/images/lifestyle-1.png",
+          "image": "assets/images/lifestyle-music-3.jpeg",
           "alt": "Khalil Nabu portrait"
         },
         {
@@ -116,7 +116,7 @@
       },
       "collage": [
         {
-          "image": "assets/images/lifestyle-1.png",
+          "image": "assets/images/lifestyle-content-1.jpeg",
           "alt": "Content production portrait"
         },
         {
@@ -153,7 +153,7 @@
           "alt": "Story driven portrait"
         },
         {
-          "image": "assets/images/travel-1.png",
+          "image": "assets/images/lifestyle-vlogs-3.jpeg",
           "alt": "Travel architecture inspiration"
         },
         {
@@ -174,11 +174,11 @@
       },
       "collage": [
         {
-          "image": "assets/images/lifestyle-1.png",
+          "image": "assets/images/lifestyle-fitness-1.jpeg",
           "alt": "Fitness and lifestyle portrait"
         },
         {
-          "image": "assets/images/lifestyle-4.png",
+          "image": "assets/images/lifestyle-fitness-2.jpeg",
           "alt": "Active outdoor photo"
         },
         {
